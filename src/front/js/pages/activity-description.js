@@ -4,26 +4,28 @@ import { Link, useParams } from "react-router-dom";
 import { Navbar } from "../component/navbar"
 import { Footer } from "../component/footer"
 
-export const ActivityDetails = () => {
+export const ActivityDescription = () => {
     const {store, actions} = useContext(Context);
     const {id} = useParams();
 
     useEffect(() => {
-        actions.loadActivityDetail(id);
     },[]);
 
     return(
         <>
-        <div className="container text-white">
-            <h1 className="d-block text-center text-warning m-5">{"store"}</h1>
-            <div className="d-flex">
-            <img src={"" +  + ".jpg"} className="border-warning width: w-25 h-25" alt="Character"/>
-                <div className="card ms-5 bg-black">
-                    <div className="card-header bg-warning">
+        <div className="container text-white m-5">
+            <h1 className="d-block text-center text-info m-5">Título de la actividad</h1>
+            <div className="d-flex justify-content-center">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Football_iu_1996.jpg/1024px-Football_iu_1996.jpg" className="width: w-25 h-25" alt="Nope"/>
+                <div className="card ms-5">
+                    <div className="card-header bg-info">
                         Description
                     </div>
                     <ul className="list-group list-group-flush">
-                        <li className="list-group-item bg-black text-white">{"store"}</li>
+                        <li className="list-group-item">Participantes</li>
+                        <li className="list-group-item">Localización</li>
+                        <li className="list-group-item">Descripción usuario</li>
+                        <li className="list-group-item text-center"><button type="button" class="btn btn-info">Apuntarse</button></li>
                     </ul>
                 </div>
             </div>
