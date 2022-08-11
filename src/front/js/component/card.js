@@ -27,7 +27,7 @@ export const Card = () => {
                     />{" "}
                   </a>
                   <div className="card-body">
-                    <h5 className="card-title">Futbol</h5>
+                    <h5 className="card-title">Soccer</h5>
                   </div>
                 </div>
               </div>
@@ -57,7 +57,7 @@ export const Card = () => {
                     />{" "}
                   </a>
                   <div className="card-body">
-                    <h5 className="card-title">Voley</h5>
+                    <h5 className="card-title">Volleyball</h5>
                   </div>
                 </div>
               </div>
@@ -88,7 +88,7 @@ export const Card = () => {
                     />{" "}
                   </a>
                   <div className="card-body">
-                    <h5 className="card-title">Basquet</h5>
+                    <h5 className="card-title">Basketball</h5>
                   </div>
                 </div>
               </div>

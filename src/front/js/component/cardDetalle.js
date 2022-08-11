@@ -2,7 +2,16 @@ import React, { useContext } from "react";
 // import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
 // import { Context } from "../store/appContext";
+import { useEffect } from "react";
+import Swal from "sweetalert2";
+
 export const CardDetalle = () => {
+  useEffect(() => {
+    viewAlert();
+  }, []);
+  const viewAlert = () => {
+    Swal.fire("¡Ya estás apuntado!", "Lo has hecho muy bien", "succes");
+  };
   return (
     <>
       {/* ESTA SERÍA LA DEL DETALLE */}
@@ -22,15 +31,16 @@ export const CardDetalle = () => {
                 alt="group of people playing soccer"
               />
               <div className="card-body">
-                <h5 className="card-title">Futbol</h5>
+                <h5 className="card-title">Soccer</h5>
                 <h6 className="card-subtitle mb-2 text-muted">Date</h6>
                 <h6 className="card-subtitle mb-2 text-muted">City</h6>
+
                 <h6 className="card-subtitle mb-2 text-muted">
                   <i className="fa-solid fa fa-user"></i>
                 </h6>
-                {/* alert te has apuntado */}
+
                 <a href="#" className="btn ">
-                  <i class="fa-solid fa fa-sun"></i>
+                  <i className="fa fa -solid fa -cloud-sun-rain"></i>
                 </a>
               </div>
             </div>
