@@ -17,9 +17,9 @@ export const CardDetalle = () => {
               }}
             >
               <img
-                src="https://us.123rf.com/450wm/rrraven/rrraven1310/rrraven131000105/23083801-vector-icono-de-f%C3%BAtbol-azul-sobre-fondo-blanco-.jpg?ver=6"
+                src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                 className="card-img-top"
-                alt="balon de futbol"
+                alt="group of people playing soccer"
               />
               <div className="card-body">
                 <h5 className="card-title">Futbol</h5>

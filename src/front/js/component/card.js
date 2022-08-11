@@ -23,7 +23,7 @@ export const Card = () => {
                     <img
                       src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                       className="card-img-top"
-                      alt="grupo de personas jugando futbol"
+                      alt="group of people playing soccer"
                     />{" "}
                   </a>
                   <div className="card-body">
@@ -53,7 +53,7 @@ export const Card = () => {
                     <img
                       src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                       className="card-img-top"
-                      alt="grupo de personas jugando voley"
+                      alt="group of people playing volleyball"
                     />{" "}
                   </a>
                   <div className="card-body">
@@ -84,7 +84,7 @@ export const Card = () => {
                     <img
                       src="https://images.pexels.com/photos/5560205/pexels-photo-5560205.jpeg?auto=compress&cs=tinysrgb&w=800"
                       className="card-img-top"
-                      alt="grupo de personas jugando basquet"
+                      alt="group of people playing basketball"
                     />{" "}
                   </a>
                   <div className="card-body">
