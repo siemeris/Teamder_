@@ -6,9 +6,10 @@ export const Card = () => {
   return (
     <>
       {/* FIRST ROW */}
+      {/* FIRST CARD */}
       <div className="container mx-auto mt-4">
         <div className="row">
-          <div className="col-12 col-md-4 col-lg-6">
+          <div className="col-4">
             <div
               className="card"
               style={{
@@ -29,8 +30,8 @@ export const Card = () => {
             </div>
           </div>
 
-          {/* Segunda card */}
-          <div className="col-12 col-md-4 col-lg-6">
+          {/* SECOND CARD*/}
+          <div className="col-4">
             <div
               className="card"
               style={{
@@ -51,9 +52,9 @@ export const Card = () => {
             </div>
           </div>
 
-          {/* Tercera card */}
+          {/* THIRD CARD*/}
 
-          <div className="col-12 col-md-4 col-lg-6">
+          <div className="col-4">
             <div
               className="card"
               style={{
@@ -78,9 +79,10 @@ export const Card = () => {
 
       {/* SECOND ROW */}
 
+      {/* FOURTH CARD */}
       <div className="container mx-auto mt-4">
         <div className="row">
-          <div className="col-12 col-md-4 col-lg-6">
+          <div className="col-4">
             <div
               className="card"
               style={{
@@ -92,17 +94,17 @@ export const Card = () => {
               <Link to="/CardDetalle">
                 {" "}
                 <img
-                  src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  src="https://images.pexels.com/photos/5970275/pexels-photo-5970275.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
                   className="card-img-top"
-                  alt="group of people playing soccer"
+                  alt="group of people cycling"
                 />
               </Link>
-              <h5 className="card-title">Soccer</h5>
+              <h5 className="card-title">Cycling</h5>
             </div>
           </div>
 
-          {/* Segunda card */}
-          <div className="col-12 col-md-4 col-lg-6">
+          {/* FIFTH CARD */}
+          <div className="col-4">
             <div
               className="card"
               style={{
@@ -114,18 +116,18 @@ export const Card = () => {
               <Link to="/CardDetalle">
                 {" "}
                 <img
-                  src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  src="https://media.istockphoto.com/photos/mature-people-jogging-in-park-picture-id1319764741?k=20&m=1319764741&s=612x612&w=0&h=2jfy8EViJ6SfbdgfQnUq7mbjHmPrIwD-nskljXxiM5Q="
                   className="card-img-top"
-                  alt="group of people playing volleyball"
+                  alt="group of people running"
                 />
               </Link>
-              <h5 className="card-title">Volleyball</h5>
+              <h5 className="card-title">Running</h5>
             </div>
           </div>
 
-          {/* Tercera card */}
+          {/* SIXTH CARD */}
 
-          <div className="col-12 col-md-4 col-lg-6">
+          <div className="col-4">
             <div
               className="card"
               style={{
@@ -137,12 +139,12 @@ export const Card = () => {
               <Link to="/CardDetalle">
                 {" "}
                 <img
-                  src="https://images.pexels.com/photos/5560205/pexels-photo-5560205.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  src="https://images.pexels.com/photos/8172933/pexels-photo-8172933.jpeg?auto=compress&cs=tinysrgb&w=800"
                   className="card-img-top"
-                  alt="group of people playing basketball"
+                  alt="group of people doing yoga"
                 />
               </Link>
-              <h5 className="card-title">Basketball</h5>
+              <h5 className="card-title">Yoga</h5>
             </div>
           </div>
         </div>
