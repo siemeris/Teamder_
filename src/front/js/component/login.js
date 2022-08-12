@@ -1,25 +1,43 @@
-gi import React from 'react';
-import "/workspace/react-flask-hello/src/front/styles/login.css"
+import React from 'react';
 
 export const LoginForm =() => {
   return (
-  <>
-    <div className='container ml-auto col-3 border border-4 rounded-3 p-4'>
-      <div className='container-fluid ml-auto'>
-        <div className="mb-3">
-            <label className="usernametext">Username</label>
-            <input className='rounded-2' type="text" placeholder="Enter username" />
-        </div>
-        <div className="">
-            <label className='passtext'>Password</label>
-            <input className='rounded-2' type="password" placeholder="Password" />
-        </div>
-            <button className="btn-info mt-3 rounded-2" variant="primary" type="submit">
-             Login
-            </button>
-        </div>
+
+<>
+
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Launch demo modal
+</button>
+
+<div className="modal" id="exampleModal" tabindex="-1">
+  <div className="modal-dialog modal-sm">
+    <div className="modal-content">
+      <div className="modal-header">
+        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div className="modal-body">
+
+      <form>
+  <div className="mb-3">
+    <label for="exampleInputEmail1" className="form-label">Email address</label>
+    <input type="email" className="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
+  </div>
+
+  <div className="mb-3">
+    <label for="exampleInputPassword1" className="form-label">Password</label>
+    <input type="password" className="form-control" id="exampleInputPassword1"/>
+  </div>
+ 
+ </form>
+      </div>
+      <div className="modal-footer m-auto">
+        <button type="submit" className="btn btn-info" data-bs-dismiss="modal">Login</button>
+      </div>
     </div>
-  </>
+  </div>
+ </div>
+</>
+
   );
 }
 

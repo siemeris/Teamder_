@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import teamderImg from "/workspace/Teamder/src/front/img/teamderImg.png";
 import "../../styles/home.css";
+import LoginForm from "../component/login";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -20,6 +21,7 @@ export const Home = () => {
 				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
 					Read documentation
 				</a>
+				<LoginForm/>
 			</p>
 		</div>
 	);
