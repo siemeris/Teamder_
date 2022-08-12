@@ -11,10 +11,11 @@ export const Card = () => {
         <div className="row">
           <div className="col-4">
             <div
-              className="card"
+              className="card px-3 py-3 border border-gray rounded-1"
               style={{
                 width: "20rem",
                 height: "15rem",
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -26,17 +27,18 @@ export const Card = () => {
                   alt="group of people playing soccer"
                 />
               </Link>
-              <h5 className="card-title">Soccer</h5>
+              <h5 className="card-title text-center text-info mt-1">Soccer</h5>
             </div>
           </div>
 
           {/* SECOND CARD*/}
           <div className="col-4">
             <div
-              className="card"
+              className="card px-3 py-3 border border-gray rounded-1"
               style={{
                 width: "20rem",
                 height: "15rem",
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -48,7 +50,9 @@ export const Card = () => {
                   alt="group of people playing volleyball"
                 />
               </Link>
-              <h5 className="card-title">Volleyball</h5>
+              <h5 className="card-title text-center text-info mt-1">
+                Volleyball
+              </h5>
             </div>
           </div>
 
@@ -56,10 +60,11 @@ export const Card = () => {
 
           <div className="col-4">
             <div
-              className="card"
+              className="card px-3 py-3 border border-gray rounded-1"
               style={{
                 width: "20rem",
                 height: "15rem",
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -71,7 +76,9 @@ export const Card = () => {
                   alt="group of people playing basketball"
                 />
               </Link>
-              <h5 className="card-title">Basketball</h5>
+              <h5 className="card-title text-center text-info mt-1">
+                Basketball
+              </h5>
             </div>
           </div>
         </div>
@@ -84,10 +91,11 @@ export const Card = () => {
         <div className="row">
           <div className="col-4">
             <div
-              className="card"
+              className="card px-3 py-3 border border-gray rounded-1"
               style={{
                 width: "20rem",
                 height: "15rem",
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -99,17 +107,18 @@ export const Card = () => {
                   alt="group of people cycling"
                 />
               </Link>
-              <h5 className="card-title">Cycling</h5>
+              <h5 className="card-title text-center text-info mt-1">Cycling</h5>
             </div>
           </div>
 
           {/* FIFTH CARD */}
           <div className="col-4">
             <div
-              className="card"
+              className="card px-3 py-3 border border-gray rounded-1"
               style={{
                 width: "20rem",
                 height: "15rem",
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -121,7 +130,7 @@ export const Card = () => {
                   alt="group of people running"
                 />
               </Link>
-              <h5 className="card-title">Running</h5>
+              <h5 className="card-title text-center text-info mt-1">Running</h5>
             </div>
           </div>
 
@@ -129,10 +138,11 @@ export const Card = () => {
 
           <div className="col-4">
             <div
-              className="card"
+              className="card px-3 py-3 border border-gray rounded-1 "
               style={{
                 width: "20rem",
                 height: "15rem",
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -144,7 +154,7 @@ export const Card = () => {
                   alt="group of people doing yoga"
                 />
               </Link>
-              <h5 className="card-title">Yoga</h5>
+              <h5 className="card-title text-center text-info mt-1">Yoga</h5>
             </div>
           </div>
         </div>
