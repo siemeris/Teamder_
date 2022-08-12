@@ -52,7 +52,7 @@ export const Footer = () => (
     </section>
   </div>
   <div className="text-center p-3" style= {{backgroundColor: "rgba(0, 0, 0, 0.2)"}}>
-    © 2022 Teamder 
+    © 2022 Teamder
     <a className="text-white" href="https://mdbootstrap.com/">Teamder.es</a>
   </div>
 </footer>
