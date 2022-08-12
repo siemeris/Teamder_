@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-// import { Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 // import PropTypes from "prop-types";
 // import { Context } from "../store/appContext";
 export const Card = () => {
@@ -18,14 +18,14 @@ export const Card = () => {
                   }}
                 >
                   {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-                  <a href="http://www.secretariaplus.com">
+                  <Link to="/CardDetalle">
                     {" "}
                     <img
                       src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                       className="card-img-top"
                       alt="group of people playing soccer"
-                    />{" "}
-                  </a>
+                    />
+                  </Link>
                   <div className="card-body">
                     <h5 className="card-title">Soccer</h5>
                   </div>
@@ -48,14 +48,14 @@ export const Card = () => {
                   }}
                 >
                   {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-                  <a href="http://www.secretariaplus.com">
+                  <Link to="/CardDetalle">
                     {" "}
                     <img
                       src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                       className="card-img-top"
                       alt="group of people playing volleyball"
-                    />{" "}
-                  </a>
+                    />
+                  </Link>
                   <div className="card-body">
                     <h5 className="card-title">Volleyball</h5>
                   </div>
@@ -79,14 +79,14 @@ export const Card = () => {
                   }}
                 >
                   {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-                  <a href="http://www.secretariaplus.com">
+                  <Link to="/CardDetalle">
                     {" "}
                     <img
                       src="https://images.pexels.com/photos/5560205/pexels-photo-5560205.jpeg?auto=compress&cs=tinysrgb&w=800"
                       className="card-img-top"
                       alt="group of people playing basketball"
-                    />{" "}
-                  </a>
+                    />
+                  </Link>
                   <div className="card-body">
                     <h5 className="card-title">Basketball</h5>
                   </div>
