@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 export const Footer = () => (
-<div className="container-fluid p-0">
+<div className="container-fluid p-0 fixed-bottom">
 
   <footer className="bg-light text-center text-white">
    
