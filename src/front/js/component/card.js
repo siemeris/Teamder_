@@ -14,7 +14,7 @@ export const Card = () => {
               className="card"
               style={{
                 width: "20rem",
-                height: "20rem",
+                height: "15rem",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -36,7 +36,7 @@ export const Card = () => {
               className="card"
               style={{
                 width: "20rem",
-                height: "20rem",
+                height: "15rem",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -59,7 +59,7 @@ export const Card = () => {
               className="card"
               style={{
                 width: "20rem",
-                height: "20rem",
+                height: "15rem",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -87,7 +87,7 @@ export const Card = () => {
               className="card"
               style={{
                 width: "20rem",
-                height: "20rem",
+                height: "15rem",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -109,7 +109,7 @@ export const Card = () => {
               className="card"
               style={{
                 width: "20rem",
-                height: "20rem",
+                height: "15rem",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
@@ -132,7 +132,7 @@ export const Card = () => {
               className="card"
               style={{
                 width: "20rem",
-                height: "20rem",
+                height: "15rem",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
