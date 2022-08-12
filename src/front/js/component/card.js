@@ -5,93 +5,144 @@ import { Link } from "react-router-dom";
 export const Card = () => {
   return (
     <>
-      <div className="row">
-        <div className="col-4">
-          <div className="container mx-auto mt-4">
-            <div className="row">
-              <div className="col-md-4">
-                <div
-                  className="card"
-                  style={{
-                    width: "20rem",
-                    height: "20rem",
-                  }}
-                >
-                  {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-                  <Link to="/CardDetalle">
-                    {" "}
-                    <img
-                      src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                      className="card-img-top"
-                      alt="group of people playing soccer"
-                    />
-                  </Link>
-                  <div className="card-body">
-                    <h5 className="card-title">Soccer</h5>
-                  </div>
-                </div>
-              </div>
+      {/* FIRST ROW */}
+      <div className="container mx-auto mt-4">
+        <div className="row">
+          <div className="col-12 col-md-4 col-lg-6">
+            <div
+              className="card"
+              style={{
+                width: "20rem",
+                height: "20rem",
+              }}
+            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/CardDetalle">
+                {" "}
+                <img
+                  src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  className="card-img-top"
+                  alt="group of people playing soccer"
+                />
+              </Link>
+              <h5 className="card-title">Soccer</h5>
+            </div>
+          </div>
+
+          {/* Segunda card */}
+          <div className="col-12 col-md-4 col-lg-6">
+            <div
+              className="card"
+              style={{
+                width: "20rem",
+                height: "20rem",
+              }}
+            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/CardDetalle">
+                {" "}
+                <img
+                  src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  className="card-img-top"
+                  alt="group of people playing volleyball"
+                />
+              </Link>
+              <h5 className="card-title">Volleyball</h5>
+            </div>
+          </div>
+
+          {/* Tercera card */}
+
+          <div className="col-12 col-md-4 col-lg-6">
+            <div
+              className="card"
+              style={{
+                width: "20rem",
+                height: "20rem",
+              }}
+            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/CardDetalle">
+                {" "}
+                <img
+                  src="https://images.pexels.com/photos/5560205/pexels-photo-5560205.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  className="card-img-top"
+                  alt="group of people playing basketball"
+                />
+              </Link>
+              <h5 className="card-title">Basketball</h5>
             </div>
           </div>
         </div>
+      </div>
 
-        {/* Segunda card */}
-        <div className="col-4">
-          <div className="container mx-auto mt-4">
-            <div className="row">
-              <div className="col-md-4">
-                <div
-                  className="card"
-                  style={{
-                    width: "20rem",
-                    height: "20rem",
-                  }}
-                >
-                  {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-                  <Link to="/CardDetalle">
-                    {" "}
-                    <img
-                      src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                      className="card-img-top"
-                      alt="group of people playing volleyball"
-                    />
-                  </Link>
-                  <div className="card-body">
-                    <h5 className="card-title">Volleyball</h5>
-                  </div>
-                </div>
-              </div>
+      {/* SECOND ROW */}
+
+      <div className="container mx-auto mt-4">
+        <div className="row">
+          <div className="col-12 col-md-4 col-lg-6">
+            <div
+              className="card"
+              style={{
+                width: "20rem",
+                height: "20rem",
+              }}
+            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/CardDetalle">
+                {" "}
+                <img
+                  src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  className="card-img-top"
+                  alt="group of people playing soccer"
+                />
+              </Link>
+              <h5 className="card-title">Soccer</h5>
             </div>
           </div>
-        </div>
 
-        {/* Tercera card */}
+          {/* Segunda card */}
+          <div className="col-12 col-md-4 col-lg-6">
+            <div
+              className="card"
+              style={{
+                width: "20rem",
+                height: "20rem",
+              }}
+            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/CardDetalle">
+                {" "}
+                <img
+                  src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
+                  className="card-img-top"
+                  alt="group of people playing volleyball"
+                />
+              </Link>
+              <h5 className="card-title">Volleyball</h5>
+            </div>
+          </div>
 
-        <div className="col-4">
-          <div className="container mx-auto mt-4">
-            <div className="row">
-              <div className="col-md-4">
-                <div
-                  className="card"
-                  style={{
-                    width: "20rem",
-                    height: "20rem",
-                  }}
-                >
-                  {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-                  <Link to="/CardDetalle">
-                    {" "}
-                    <img
-                      src="https://images.pexels.com/photos/5560205/pexels-photo-5560205.jpeg?auto=compress&cs=tinysrgb&w=800"
-                      className="card-img-top"
-                      alt="group of people playing basketball"
-                    />
-                  </Link>
-                  <div className="card-body">
-                    <h5 className="card-title">Basketball</h5>
-                  </div>
-                </div>
-              </div>
+          {/* Tercera card */}
+
+          <div className="col-12 col-md-4 col-lg-6">
+            <div
+              className="card"
+              style={{
+                width: "20rem",
+                height: "20rem",
+              }}
+            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/CardDetalle">
+                {" "}
+                <img
+                  src="https://images.pexels.com/photos/5560205/pexels-photo-5560205.jpeg?auto=compress&cs=tinysrgb&w=800"
+                  className="card-img-top"
+                  alt="group of people playing basketball"
+                />
+              </Link>
+              <h5 className="card-title">Basketball</h5>
             </div>
           </div>
         </div>
