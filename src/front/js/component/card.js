@@ -26,7 +26,7 @@ export const Card = () => {
                   alt="group of people playing soccer"
                 />
               </Link>
-              <h5 className="card-title text-center text-info mt-1">Soccer</h5>
+              <h5 className="card-title text-center mt-1">Soccer</h5>
             </div>
           </div>
 
@@ -49,9 +49,7 @@ export const Card = () => {
                   alt="group of people playing volleyball"
                 />
               </Link>
-              <h5 className="card-title text-center text-info mt-1">
-                Volleyball
-              </h5>
+              <h5 className="card-title text-center  mt-1">Volleyball</h5>
             </div>
           </div>
 
@@ -75,9 +73,7 @@ export const Card = () => {
                   alt="group of people playing basketball"
                 />
               </Link>
-              <h5 className="card-title text-center text-info mt-1">
-                Basketball
-              </h5>
+              <h5 className="card-title text-center  mt-1">Basketball</h5>
             </div>
           </div>
         </div>
@@ -106,7 +102,7 @@ export const Card = () => {
                   alt="group of people cycling"
                 />
               </Link>
-              <h5 className="card-title text-center text-info mt-1">Cycling</h5>
+              <h5 className="card-title text-center  mt-1">Cycling</h5>
             </div>
           </div>
 
@@ -129,7 +125,7 @@ export const Card = () => {
                   alt="group of people running"
                 />
               </Link>
-              <h5 className="card-title text-center text-info mt-1">Running</h5>
+              <h5 className="card-title text-center  mt-1">Running</h5>
             </div>
           </div>
 
@@ -153,7 +149,7 @@ export const Card = () => {
                   alt="group of people doing yoga"
                 />
               </Link>
-              <h5 className="card-title text-center text-info mt-1">Yoga</h5>
+              <h5 className="card-title text-center  mt-1">Yoga</h5>
             </div>
           </div>
         </div>
