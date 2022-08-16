@@ -82,7 +82,7 @@ export const Card = () => {
             <div
               className="card px-3 py-3 border border-gray rounded-1"
               style={{
-                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+                boxgit: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
