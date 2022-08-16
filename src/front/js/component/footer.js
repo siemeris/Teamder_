@@ -3,7 +3,7 @@ import React, { Component } from "react";
 export const Footer = () => {
   return (
     <div className="container-fluid p-0 ">
-      {/* <footer className="bg-light text-center text-white fixed-bottom">
+      <footer className="bg-light text-center text-white">
         <div className="container p-4">
           <section className="">
             <a
@@ -62,7 +62,7 @@ export const Footer = () => {
         >
           © 2022 Teamder
         </div>
-      </footer> */}
+      </footer>
     </div>
   );
 };

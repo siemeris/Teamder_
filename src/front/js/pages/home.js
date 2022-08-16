@@ -9,7 +9,7 @@ export const Home = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container w-75 overflow-auto">
+    <div className=" homeBody container w-75">
       <div className="text-center mt-1">
         <p>
           <img src={Jumbotron02} className="w-100 h-25" />
