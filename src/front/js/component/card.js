@@ -8,12 +8,10 @@ export const Card = () => {
       {/* FIRST CARD */}
       <div className="container mx-auto mt-4">
         <div className="row">
-          <div className="col-4">
+          <div className="col-md-4">
             <div
               className="card px-3 py-3 border border-gray rounded-1"
               style={{
-                width: "20rem",
-                height: "15rem",
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
@@ -31,12 +29,10 @@ export const Card = () => {
           </div>
 
           {/* SECOND CARD*/}
-          <div className="col-4">
+          <div className="col-md-4">
             <div
               className="card px-3 py-3 border border-gray rounded-1"
               style={{
-                width: "20rem",
-                height: "15rem",
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
@@ -55,12 +51,10 @@ export const Card = () => {
 
           {/* THIRD CARD*/}
 
-          <div className="col-4">
+          <div className="col-md-4">
             <div
               className="card px-3 py-3 border border-gray rounded-1"
               style={{
-                width: "20rem",
-                height: "15rem",
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
@@ -82,14 +76,12 @@ export const Card = () => {
       {/* SECOND ROW */}
 
       {/* FOURTH CARD */}
-      <div className="container mx-auto mt-4">
+      <div className="container mx-auto mt-4 ">
         <div className="row">
-          <div className="col-4">
+          <div className="col-md-4">
             <div
               className="card px-3 py-3 border border-gray rounded-1"
               style={{
-                width: "20rem",
-                height: "15rem",
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
@@ -107,12 +99,10 @@ export const Card = () => {
           </div>
 
           {/* FIFTH CARD */}
-          <div className="col-4">
+          <div className="col-md-4">
             <div
               className="card px-3 py-3 border border-gray rounded-1"
               style={{
-                width: "20rem",
-                height: "15rem",
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
@@ -131,12 +121,10 @@ export const Card = () => {
 
           {/* SIXTH CARD */}
 
-          <div className="col-4">
+          <div className="col-md-4">
             <div
               className="card px-3 py-3 border border-gray rounded-1 "
               style={{
-                width: "20rem",
-                height: "15rem",
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >

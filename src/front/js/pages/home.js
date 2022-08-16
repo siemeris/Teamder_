@@ -16,6 +16,42 @@ export const Home = () => {
         </p>
       </div>
       <Card />
+      <div className="row">
+        <div className="col-3">
+          {" "}
+          <CardDetalle />
+        </div>
+        <div className="col-3">
+          {" "}
+          <CardDetalle />
+        </div>
+        <div className="col-3">
+          {" "}
+          <CardDetalle />
+        </div>
+        <div className="col-3">
+          {" "}
+          <CardDetalle />
+        </div>
+      </div>
+      <div className="row">
+        <div className="col-3">
+          {" "}
+          <CardDetalle />
+        </div>
+        <div className="col-3">
+          {" "}
+          <CardDetalle />
+        </div>
+        <div className="col-3">
+          {" "}
+          <CardDetalle />
+        </div>
+        <div className="col-3">
+          {" "}
+          <CardDetalle />
+        </div>
+      </div>
     </div>
   );
 };
