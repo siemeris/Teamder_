@@ -15,7 +15,9 @@ export const Home = () => {
           <img src={Jumbotron02} className="w-100 h-25" />
         </p>
       </div>
+      <h1 className="text-center text-info p-2 mt-5">Categories</h1>
       <Card />
+      <h1 className="text-center text-info p-2 mt-5">Activities</h1>
       <div className="row">
         <div className="col-3">
           {" "}
@@ -34,24 +36,7 @@ export const Home = () => {
           <CardDetalle />
         </div>
       </div>
-      <div className="row">
-        <div className="col-3">
-          {" "}
-          <CardDetalle />
-        </div>
-        <div className="col-3">
-          {" "}
-          <CardDetalle />
-        </div>
-        <div className="col-3">
-          {" "}
-          <CardDetalle />
-        </div>
-        <div className="col-3">
-          {" "}
-          <CardDetalle />
-        </div>
-      </div>
+      <h1 className="text-center text-info p-2 mt-5">Near you</h1>
     </div>
   );
 };
