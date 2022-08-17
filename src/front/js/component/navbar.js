@@ -2,12 +2,13 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logo2 from "/workspace/Teamder/src/front/img/Logo2.png";
 import "/workspace/Teamder/src/front/styles/navbar.css"
+import {SignUpPage} from "/workspace/Teamder/src/front/js/component/signup.js" 
 
 
 export const Navbar = () => {
   return (
     <>
-<nav className="navbar navbar-expand-lg navbar-light bg-light ">
+<nav className="navbar navbar-expand-lg navbar-light bg-light fixed-top">
 
 <a className="TeamderLogo navbar-brand ml-auto d-flex ms-3" href="#">
         <img
@@ -36,7 +37,7 @@ export const Navbar = () => {
                   <i class="fas fa-user text-info"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="/singup">Sign up</a></li>
+                  <li><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>Sign Up</li>
                   <li><a class="dropdown-item" href="/login">Login</a></li>
                   <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
@@ -46,6 +47,23 @@ export const Navbar = () => {
       </div>
     </nav>
 
+    <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Signup</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <SignUpPage />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
     </>
   );
 };
