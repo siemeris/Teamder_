@@ -12,6 +12,7 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { UserProfile } from "./pages/userprofile";
 import { ActivityDescription } from "./pages/activity-description";
+import { Category } from "./pages/category";
 
 
 //create your first component
@@ -32,6 +33,7 @@ const Layout = () => {
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<ActivityPanel />} path="/activitypanel" />
                         <Route element={<UserProfile />} path="/userprofile" />
+                        <Route element={<Category />} path="/category" />
                     </Routes>
                     <Footer />
                 </ScrollToTop>

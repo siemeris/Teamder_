@@ -16,7 +16,7 @@ export const Card = () => {
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-              <Link to="/CardDetalle">
+              <Link to="/category">
                 {" "}
                 <img
                   src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -37,7 +37,7 @@ export const Card = () => {
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-              <Link to="/CardDetalle">
+              <Link to="/category">
                 {" "}
                 <img
                   src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
@@ -59,7 +59,7 @@ export const Card = () => {
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-              <Link to="/CardDetalle">
+              <Link to="/category">
                 {" "}
                 <img
                   src="https://images.pexels.com/photos/5560205/pexels-photo-5560205.jpeg?auto=compress&cs=tinysrgb&w=800"
@@ -86,7 +86,7 @@ export const Card = () => {
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-              <Link to="/CardDetalle">
+              <Link to="/category">
                 {" "}
                 <img
                   src="https://images.pexels.com/photos/5970275/pexels-photo-5970275.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
@@ -107,7 +107,7 @@ export const Card = () => {
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-              <Link to="/CardDetalle">
+              <Link to="/category">
                 {" "}
                 <img
                   src="https://media.istockphoto.com/photos/mature-people-jogging-in-park-picture-id1319764741?k=20&m=1319764741&s=612x612&w=0&h=2jfy8EViJ6SfbdgfQnUq7mbjHmPrIwD-nskljXxiM5Q="
@@ -129,7 +129,7 @@ export const Card = () => {
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-              <Link to="/CardDetalle">
+              <Link to="/category">
                 {" "}
                 <img
                   src="https://images.pexels.com/photos/8172933/pexels-photo-8172933.jpeg?auto=compress&cs=tinysrgb&w=800"
