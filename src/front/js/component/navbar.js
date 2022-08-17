@@ -1,12 +1,14 @@
 import React from "react";
-import "/workspace/Teamder/src/front/styles/navbar.css";
 import { Link } from "react-router-dom";
 import Logo2 from "/workspace/Teamder/src/front/img/Logo2.png";
+import "/workspace/Teamder/src/front/styles/navbar.css"
+
 
 export const Navbar = () => {
   return (
-    <nav className="navbar navbar-light bg-light fixed-top">
-      <a className="TeamderLogo navbar-brand ml-auto d-flex ms-3" href="#">
+<nav className="navbar navbar-expand-lg navbar-light bg-light ">
+
+<a className="TeamderLogo navbar-brand ml-auto d-flex ms-3" href="#">
         <img
           src={Logo2}
           alt="logo"
@@ -14,55 +16,33 @@ export const Navbar = () => {
           height="30"
           className=" d-inline-block align-text-top"
         />
-        <span className="textologo ms-2 ">Teamder</span>
+        <span className="ms-2 "><Link to="/" className="textologo navbar-brand ps-2"><span className="">Teamder</span></Link></span>
       </a>
-      <ul className="list-unstyled">
-        <li class="nav-item dropdown me-3">
-          <a
-            class="nav-link dropdown-toggle text-info "
-            href="#"
-            id="navbarDropdownMenuLink"
-            role="button"
-            data-bs-toggle="dropdown"
-            aria-expanded="false"
-          >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="25"
-              height="25"
-              fill="currentColor"
-              class="bi bi-person-circle text-info"
-              viewBox="0 0 16 16"
-            >
-              <path d="M11 6a3 3 0 1 1-6 0 3 3 0 0 1 6 0z" />
-              <path
-                fill-rule="evenodd"
-                d="M0 8a8 8 0 1 1 16 0A8 8 0 0 1 0 8zm8-7a7 7 0 0 0-5.468 11.37C3.242 11.226 4.805 10 8 10s4.757 1.225 5.468 2.37A7 7 0 0 0 8 1z"
-              />
-            </svg>
-          </a>
-          <ul
-            class="dropdown-menu dropdown-menu-end"
-            aria-labelledby="navbarDropdownMenuLink"
-          >
-            <li>
-              <a class="dropdown-item" href="#">
-                Login
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Signup
-              </a>
-            </li>
-            <li>
-              <a class="dropdown-item" href="#">
-                Logout
-              </a>
-            </li>
-          </ul>
-        </li>
-      </ul>
+        <button className="navbar-toggler text-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
+            <span className="navbar-toggler-icon"></span>
+        </button>
+      <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
+          <ul className="navbar-nav ms-auto pe-5">
+              <li className="nav-item">
+                <Link to="/signup" className="nav-link">
+                  <button class="btn btn-light me-3 btn-outline-info">
+                  <i class="fas fa-calendar-check text-info"></i>
+                  </button>
+                </Link></li>
+              <li className="nav-item">
+              <div class="dropdown mt-2 ">
+                <button class="btn btn-light dropdown-toggle text-info btn-outline-info" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fas fa-user text-info"></i>
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="/singup">Sign up</a></li>
+                  <li><a class="dropdown-item" href="/login">Login</a></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
+                </ul>
+              </div>
+              </li>
+         </ul>
+      </div>
     </nav>
   );
 };

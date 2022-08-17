@@ -73,7 +73,11 @@
 		]
 	},
 	"dependencies": {
+<<<<<<< HEAD
 		"@react-google-maps/api": "^2.12.1",
+=======
+		"bootstrap-icons": "^1.9.1",
+>>>>>>> origin/navbar
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-calendar": "^3.7.0",
