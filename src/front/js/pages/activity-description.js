@@ -13,7 +13,7 @@ export const ActivityDescription = () => {
 
     return(
         <>
-        <div className="container text-white m-5">
+        <div className="container text-white m-5 p-5">
             <h1 className="d-block text-center text-info m-5">Título de la actividad</h1>
             <div className="d-flex justify-content-center">
             <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/Football_iu_1996.jpg/1024px-Football_iu_1996.jpg" className="width: w-25 h-25" alt="Nope"/>
