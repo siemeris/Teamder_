@@ -6,12 +6,10 @@ import { Card } from "/workspace/Teamder/src/front/js/component/card.js";
 import { CardDetalle } from "/workspace/Teamder/src/front/js/component/cardDetalle.js";
 import { MapComponent } from "/workspace/Teamder/src/front/js/component/mapcomponent.jsx";
 import LoginForm from "../component/login";
-
-
+import SignUpPage from "../component/signup";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
-
   return (
     <div className=" homeBody container w-75">
       <div className="text-center mt-1">
@@ -45,3 +43,4 @@ export const Home = () => {
     </div>
   );
 };
+
