@@ -73,6 +73,7 @@
 		]
 	},
 	"dependencies": {
+		"@react-google-maps/api": "^2.12.1",
 		"prop-types": "^15.6.1",
 		"react": "^16.8.4",
 		"react-calendar": "^3.7.0",
