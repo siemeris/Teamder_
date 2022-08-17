@@ -1,13 +1,11 @@
 import React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ScrollToTop from "./component/scrollToTop";
-
 import { Home } from "./pages/home";
 import { Demo } from "./pages/demo";
 import { Single } from "./pages/single";
 import { ActivityPanel } from "./pages/activitypanel";
 import injectContext from "./store/appContext";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { UserProfile } from "./pages/userprofile";
@@ -34,6 +32,7 @@ const Layout = () => {
                         <Route element={<ActivityPanel />} path="/activitypanel" />
                         <Route element={<UserProfile />} path="/userprofile" />
                         <Route element={<Category />} path="/category" />
+                    
                     </Routes>
                     <Footer />
                 </ScrollToTop>
