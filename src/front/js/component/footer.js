@@ -1,8 +1,9 @@
 import React, { Component } from "react";
+import "/workspace/Teamder/src/front/styles/footer.css"
 
 export const Footer = () => {
   return (
-    <div className="container-fluid p-0 ">
+    <div className="footercss container-fluid p-0 ">
       <footer className="bg-light text-center text-white">
         <div className="container p-4">
           <section className="">
