@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { GoogleMap, InfoWindow, LoadScript, Marker } from "@react-google-maps/api";
 
-const MapComponent = () => {
+export const MapComponent = () => {
     const initialMarkers = [
         {
             position: {
@@ -87,4 +87,3 @@ const MapComponent = () => {
     );
 };
 
-export default MapComponent;

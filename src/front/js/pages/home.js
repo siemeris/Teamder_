@@ -4,6 +4,7 @@ import "../../styles/home.css";
 import Jumbotron02 from "/workspace/Teamder/src/front/img/Jumbotron02.png";
 import { Card } from "/workspace/Teamder/src/front/js/component/card.js";
 import { CardDetalle } from "/workspace/Teamder/src/front/js/component/cardDetalle.js";
+import { MapComponent } from "/workspace/Teamder/src/front/js/component/mapcomponent.jsx";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);
@@ -37,6 +38,7 @@ export const Home = () => {
         </div>
       </div>
       <h1 className="text-center text-info p-2 mt-5">Near you</h1>
+      <MapComponent />
     </div>
   );
 };
