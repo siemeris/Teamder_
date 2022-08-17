@@ -11,6 +11,8 @@ import { Footer } from "./component/footer";
 import { UserProfile } from "./pages/userprofile";
 import { ActivityDescription } from "./pages/activity-description";
 import { Category } from "./pages/category";
+import SignUpPage from "./component/signup";
+import LoginForm from "./component/login";
 
 
 //create your first component
@@ -32,6 +34,8 @@ const Layout = () => {
                         <Route element={<ActivityPanel />} path="/activitypanel" />
                         <Route element={<UserProfile />} path="/userprofile" />
                         <Route element={<Category />} path="/category" />
+                        <Route element={<SignUpPage />} path="/component/signup" />
+                        <Route element={<LoginForm />} path="/component/login" />
                     
                     </Routes>
                     <Footer />
