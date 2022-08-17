@@ -35,9 +35,9 @@ export const Navbar = () => {
                   <i class="fas fa-user text-info"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><a class="dropdown-item" href="#">Sign up</a></li>
-                  <li><a class="dropdown-item" href="#">Login</a></li>
-                  <li><a class="dropdown-item" href="#">Logout</a></li>
+                  <li><a class="dropdown-item" href="/singup">Sign up</a></li>
+                  <li><a class="dropdown-item" href="/login">Login</a></li>
+                  <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
               </div>
               </li>
