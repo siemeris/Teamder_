@@ -6,6 +6,7 @@ import "/workspace/Teamder/src/front/styles/navbar.css"
 
 export const Navbar = () => {
   return (
+    <>
 <nav className="navbar navbar-expand-lg navbar-light bg-light ">
 
 <a className="TeamderLogo navbar-brand ml-auto d-flex ms-3" href="#">
@@ -16,7 +17,7 @@ export const Navbar = () => {
           height="30"
           className=" d-inline-block align-text-top"
         />
-        <span className="ms-2 "><Link to="/" className="textologo navbar-brand ps-2"><span className="">Teamder</span></Link></span>
+        <span className="ms-2 "><Link to="/" className="textologo navbar-brand ps-2"><span className="textologo">Teamder</span></Link></span>
       </a>
         <button className="navbar-toggler text-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
@@ -44,5 +45,7 @@ export const Navbar = () => {
          </ul>
       </div>
     </nav>
+
+    </>
   );
 };
