@@ -9,7 +9,7 @@ export const UserProfile = () => {
   const { store, actions } = useContext(Context);
 
   return (
-    <div className="container">
+    <div className="container pt-5">
       <div className="main-body">
         <nav aria-label="breadcrumb" className="main-breadcrumb">
           <ol className="breadcrumb">

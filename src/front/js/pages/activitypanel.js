@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import "./activitypanel.css";
+import "/workspace/Teamder/src/front/styles/activitypanel.css";
 import { AddActivity } from "./addactivity.js";
 
 export function ActivityPanel() {
     const [value, onChange] = useState(new Date());
 
     return (
-        <div className="app-body mt-5">
-            <main>
+        <div className="app-body pt-5">
+            <main className="pt-5">
                 <div className="container">
                     <div className="div-event">
                         <div className="row">
