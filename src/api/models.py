@@ -16,6 +16,7 @@ class User(db.Model):
     activities = db.relationship('Activities', backref='user', lazy=True)
     def __repr__(self):
          return '<User {self.email}>'
+    
     def serialize(self):
          return {
              "id": self.id,
@@ -27,8 +28,12 @@ class User(db.Model):
              "password": self.password,
              "mobile": self.mobile,
              "address": self.address,
-            #  "activities": obtain_actividades()
+             "activities": obtain_activities()
          }
+
+    def obtain_activities(self):
+        return list(map(lambda x: x.serialize(), self.activities))
+
 class Activities(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name= db.Column(db.String(120), unique=True, nullable=False)
@@ -58,5 +63,6 @@ class Activities(db.Model):
              "players": players.db,
              "latitude": latitude.db,
              "longitude": longitude.db,
-             "user_id" : obtain_user_id()
+             "user_id" : user_id.db,
          }
+
