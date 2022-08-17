@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Logo2 from "/workspace/Teamder/src/front/img/Logo2.png";
 import "/workspace/Teamder/src/front/styles/navbar.css"
-import {SignUpPage} from "/workspace/Teamder/src/front/js/component/signup.js" 
+import { SignUpPage } from "/workspace/Teamder/src/front/js/component/signup.js" 
+import { LoginForm } from "/workspace/Teamder/src/front/js/component/login.js" 
 
 
 export const Navbar = () => {
@@ -26,7 +27,7 @@ export const Navbar = () => {
       <div className="collapse navbar-collapse" id="navbarTogglerDemo01">
           <ul className="navbar-nav ms-auto pe-5">
               <li className="nav-item">
-                <Link to="/signup" className="nav-link">
+                <Link to="/activitypanel" className="nav-link">
                   <button class="btn btn-light me-3 btn-outline-info">
                   <i class="fas fa-calendar-check text-info"></i>
                   </button>
@@ -37,8 +38,8 @@ export const Navbar = () => {
                   <i class="fas fa-user text-info"></i>
                 </button>
                 <ul class="dropdown-menu dropdown-menu-end">
-                  <li><button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop"/>Sign Up</li>
-                  <li><a class="dropdown-item" href="/login">Login</a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdrop">Sign Up</a></li>
+                  <li><a class="dropdown-item" data-bs-toggle="modal" data-bs-target="#staticBackdropLOG">Login</a></li>
                   <li><a class="dropdown-item" href="/logout">Logout</a></li>
                 </ul>
               </div>
@@ -56,6 +57,24 @@ export const Navbar = () => {
             </div>
             <div class="modal-body">
               <SignUpPage />
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+              <button type="submit" class="btn btn-info">Submit</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal fade" id="staticBackdropLOG" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="staticBackdropLabel">Login</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <LoginForm />
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>

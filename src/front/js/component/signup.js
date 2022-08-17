@@ -1,22 +1,10 @@
 import React from "react";
 
-const SignUpPage = () => {
+export const SignUpPage = () => {
     return (
 
       <>
 
-      <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#exampleModal">
-        Sign Up 
-      </button>
-      
-      <div className="modal" id="exampleModal" tabindex="-1">
-        <div className="modal-dialog modal-lg">
-          <div className="modal-content">
-            <div className="modal-header">
-              <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div className="modal-body">
-      
             <form>
 
         <div className="mb-3">
@@ -57,15 +45,8 @@ const SignUpPage = () => {
         
        
        </form>
-            </div>
-            <div className="modal-footer m-auto">
-              <button type="submit" className="btn btn-info" data-bs-dismiss="modal">Sign Up!!</button>
-            </div>
-          </div>
-        </div>
-       </div>
+
       </>
     )
 };
 
-export default SignUpPage;
