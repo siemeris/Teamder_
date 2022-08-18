@@ -24,7 +24,7 @@ export function ActivityPanel() {
                                         <div className="div-create text-end">
                                             <h6>
                                                 Create event
-                                                <button type="button" className="btn btn-outline-info btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                                                <button type="button" className="btn btn-outline-info btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#staticBackdropCREATE">
                                                     +
                                                 </button>
 
@@ -126,7 +126,7 @@ export function ActivityPanel() {
                 </div>
             </main>
 
-            <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+            <div className="modal fade" id="staticBackdropCREATE" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
                 <div className="modal-dialog modal-lg">
                     <div className="modal-content">
                         <div className="modal-header">
