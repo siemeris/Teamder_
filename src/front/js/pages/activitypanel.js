@@ -37,7 +37,7 @@ export function ActivityPanel() {
                                         <div>
                                             <div
                                                 className="event-card card"
-                                                style={{ backgroundColor: "rgb(135, 206, 235)" }}
+                                                style={{ backgroundColor: "rgb(15, 231, 241)" }}
                                             >
                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
                                                     <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
@@ -64,7 +64,7 @@ export function ActivityPanel() {
                                         <div>
                                             <div
                                                 className="event-card card"
-                                                style={{ backgroundColor: "rgb(135, 206, 235)" }}
+                                                style={{ backgroundColor: "rgb(15, 231, 241)" }}
                                             >
                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill ">
                                                     
@@ -90,7 +90,7 @@ export function ActivityPanel() {
                                         <div>
                                             <div
                                                 className="event-card card"
-                                                style={{ backgroundColor: "rgb(135, 206, 235)" }}
+                                                style={{ backgroundColor: "rgb(15, 231, 241)" }}
                                             >
                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill ">
                                                     <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
