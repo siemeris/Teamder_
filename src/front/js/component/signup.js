@@ -19,7 +19,7 @@ export const SignUpPage = () => {
       
               <form>
                 <div className="mb-3">
-                  <label for="exampleInputName1" className="form-label">
+                  <label htmlFor="exampleInputName1" className="form-label">
                     Name
                   </label>
                   <input
@@ -30,51 +30,51 @@ export const SignUpPage = () => {
                   />
                 </div>
                 <div className="mb-3">
-                  <label for="exampleInputName1" className="form-label">
+                  <label htmlFor="exampleInputName1" className="form-label">
                     Username
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="exampleInputName1"
+                    id="exampleInputName2"
                     onChange={(e) => setUsername(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
-                  <label for="exampleInputLastname1" className="form-label">
+                  <label htmlFor="exampleInputLastname1" className="form-label">
                     Lastname
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="exampleInputLastname1"
+                    id="exampleInputLastname2"
                     onChange={(e) => setLastname(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
-                  <label for="exampleInputAge1" className="form-label">
+                  <label htmlFor="exampleInputAge1" className="form-label">
                     Age
                   </label>
                   <input
                     type="int"
                     className="form-control"
-                    id="exampleInputAge1"
+                    id="exampleInputAge3"
                     onChange={(e) => setAge(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
-                  <label for="exampleInpuGender1" className="form-label">
+                  <label htmlFor="exampleInpuGender1" className="form-label">
                     Gender
                   </label>
                   <input
                     type="text"
                     className="form-control"
-                    id="exampleInpuGender1"
+                    id="exampleInpuGender3"
                     onChange={(e) => setGender(e.target.value)}
                   />
                 </div>
                 <div className="mb-3">
-                  <label for="exampleInputEmail1" className="form-label">
+                  <label htmlFor="exampleInputEmail1" className="form-label">
                     Email address
                   </label>
                   <input
@@ -86,13 +86,13 @@ export const SignUpPage = () => {
                   />
                 </div>
                 <div className="mb-3">
-                  <label for="exampleInputPassword1" className="form-label">
+                  <label htmlFor="exampleInputPassword1" className="form-label">
                     Password
                   </label>
                   <input
                     type="password"
                     className="form-control"
-                    id="exampleInputPassword1"
+                    id="exampleInputPassword"
                     onChange={(e) => setPassword(e.target.value)}
                   />
                 </div>
