@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo2 from "/workspace/Teamder/src/front/img/Logo2.png";
+import Logo3 from "/workspace/Teamder/src/front/img/Logo3.png";
 import "/workspace/Teamder/src/front/styles/navbar.css"
 
 
@@ -10,13 +10,12 @@ export const Navbar = () => {
 
 <a className="TeamderLogo navbar-brand ml-auto d-flex ms-3" href="#">
         <img
-          src={Logo2}
+          src={Logo3}
           alt="logo"
-          width="30"
-          height="30"
+          width="240"
+          height="60"
           className=" d-inline-block align-text-top"
         />
-        <span className="ms-2 "><Link to="/" className="textologo navbar-brand ps-2"><span className="">Teamder</span></Link></span>
       </a>
         <button className="navbar-toggler text-info" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo01" aria-controls="navbarTogglerDemo01" aria-expanded="false" aria-label="Toggle navigation">
             <span className="navbar-toggler-icon"></span>
