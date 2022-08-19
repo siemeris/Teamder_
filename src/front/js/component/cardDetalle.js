@@ -8,7 +8,7 @@ export const CardDetalle = () => {
       <div className="container mx-auto mt-4">
         <div className="row">
           <div>
-            <div className="card px-3 py-3 border border-light shadow border-4 rounded-1">
+            <div className="card px-1 py-1 border border-light shadow border-4 rounded-1">
               <Link to="/activity-description">
                 <img
                   src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
