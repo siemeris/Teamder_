@@ -58,6 +58,20 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                 });
             },
+
+			addActivity: async (infouserpassw) => {
+                await fetch("/addActivity", {
+                    method: "POST",
+                    body: JSON.stringify(infouserpassw),
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                }).then((resp) => {
+                    if (resp.ok) {
+                        console.log("registro OK");
+                    }
+                });
+            },
 		
 
 

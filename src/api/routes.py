@@ -16,3 +16,15 @@ def handle_hello():
     }
 
     return jsonify(response_body), 200
+
+@api.route('/addActivity', methods=['POST'])
+def addActivity():
+    request_body = request.get_json(force=True)
+    activity = Activity (category = request_body["category"], title = request_body["name"], description = request_body["description"],players = request_body["participants"], date = request_body["date"], city = request_body["city"], location = request_body["location"], time = request_body["time"],)
+
+    db.session.add(activity)
+    db.session.commit()
+    return jsonify(), 200
+
+
+

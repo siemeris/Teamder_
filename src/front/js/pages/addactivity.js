@@ -74,7 +74,18 @@ export const AddActivity = () => {
       
       <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-info">Add Activity</button>
+                            <button type="submit" className="btn btn-info" onClick={() => {
+          actions.addActivity({
+            category: category,
+            title: title,
+            description: description,
+            participants: participants,
+            date: date,
+            city: city,
+            location: location,
+            time: time,
+          })
+        }}>Add Activity</button>
                         </div>
     </form>
   );
