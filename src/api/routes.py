@@ -2,7 +2,7 @@
 This module takes care of starting the API Server, Loading the DB and Adding the endpoints
 """
 from flask import Flask, request, jsonify, url_for, Blueprint
-from api.models import db, User
+from api.models import db, User, Activities
 from api.utils import generate_sitemap, APIException
 
 api = Blueprint('api', __name__)
@@ -20,11 +20,16 @@ def handle_hello():
 @api.route('/addActivity', methods=['POST'])
 def addActivity():
     request_body = request.get_json(force=True)
-    activity = Activity (category = request_body["category"], title = request_body["name"], description = request_body["description"],players = request_body["participants"], date = request_body["date"], city = request_body["city"], location = request_body["location"], time = request_body["time"],)
+    activity = Activities(category = request_body["category"], name = request_body["title"], players = request_body["participants"], date = request_body["date"], city = request_body["city"], location = request_body["location"], time = request_body["time"],)
 
     db.session.add(activity)
     db.session.commit()
     return jsonify(), 200
+
+@api.route('/obtenerActivity', methods=['GET'])
+def obtenerActivity():
+    response_body = "OK"
+    return jsonify(response_body), 200
 
 
 

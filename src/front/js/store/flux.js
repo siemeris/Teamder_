@@ -60,7 +60,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
 			addActivity: async (infouserpassw) => {
-                await fetch("/addActivity", {
+                await fetch("https://3001-miguelubeda-teamder-n31f6804ux2.ws-eu62.gitpod.io/api/addActivity", {
                     method: "POST",
                     body: JSON.stringify(infouserpassw),
                     headers: {
@@ -70,6 +70,9 @@ const getState = ({ getStore, getActions, setStore }) => {
                     if (resp.ok) {
                         console.log("registro OK");
                     }
+					else {
+						console.log(resp.status)
+					}
                 });
             },
 		

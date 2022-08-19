@@ -18,7 +18,7 @@ export const AddActivity = () => {
 
   return (
 
-    <form className="mx-5 mt-4">
+    <form className="mx-5 mt-4" onSubmit={e => {e.preventDefault();}}>
       <div className="mb-3">
         <label for="exampleInputEmail1" className="form-label">
           Category
