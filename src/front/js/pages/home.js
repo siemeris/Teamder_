@@ -18,8 +18,10 @@ export const Home = () => {
         </p>
       </div>
       <h1 className="text-center text-info p-2 mt-5">Categories</h1>
+      <hr></hr>
       <Card />
       <h1 className="text-center text-info p-2 mt-5">Activities</h1>
+      <hr></hr>
       <div className="row">
         <div className="col-3">
           {" "}
@@ -39,8 +41,8 @@ export const Home = () => {
         </div>
       </div>
       <h1 className="text-center text-info p-2 mt-5">Near you</h1>
+      <hr></hr>
       <MapComponent />
     </div>
   );
 };
-
