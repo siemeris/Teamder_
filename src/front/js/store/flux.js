@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			login: (infouserpass) => {
 				const response = fetch(
-				  "/token",
+				  "https://3001-miguelubeda-teamder-p0o7ksr6hmj.ws-eu62.gitpod.io/api/token",
 				  {
 					//mode: 'no-cors',
 					method: "POST",
@@ -44,9 +44,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  .then(data =>{localStorage.setItem("token", data.token); })
 			  .catch();
 			  },
+			
+			logout: ()=>{
+				const { auth } = getStore();
+					localStorage.removeItem("token")
+					setStore({auth: false})
+				console.log("auth3", auth)
+				  },
 
-			  signup: async (infouserpassw) => {
-                await fetch("/signup", {
+			signup: async (infouserpassw) => {
+                await fetch("https://3001-miguelubeda-teamder-p0o7ksr6hmj.ws-eu62.gitpod.io/api/signup", {
                     method: "POST",
                     body: JSON.stringify(infouserpassw),
                     headers: {
@@ -60,7 +67,7 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
 			addActivity: async (infouserpassw) => {
-                await fetch("https://3001-miguelubeda-teamder-n31f6804ux2.ws-eu62.gitpod.io/api/addActivity", {
+                await fetch("https://3001-miguelubeda-teamder-p0o7ksr6hmj.ws-eu62.gitpod.io/api/addActivity", {
                     method: "POST",
                     body: JSON.stringify(infouserpassw),
                     headers: {

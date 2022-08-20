@@ -8,7 +8,7 @@ export const LoginForm =() => {
   const [password, setPassword] = useState("");
   const navigate = useNavigate();
   
-  useEffect(()=>{if (store.auth===true){navigate("/")} },[store.auth])
+  useEffect(()=>{if (store.auth===true){navigate("/activitypanel")} },[store.auth])
   return (
 
 <>
