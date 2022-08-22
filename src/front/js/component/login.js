@@ -12,7 +12,7 @@ export const LoginForm =() => {
   return (
 
 <>
-      <form>
+      {/* <form onSubmit={e => { e.preventDefault(); }}> */}
   <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
     <input type="email" className="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" onChange={e => setEmail(e.target.value)}/>
@@ -32,7 +32,7 @@ export const LoginForm =() => {
         }}>Submit</button>
             </div>
  
- </form>
+ {/* </form> */}
    
 </>
   );
