@@ -67,11 +67,14 @@ const getState = ({ getStore, getActions, setStore }) => {
             },
 
 			addActivity: async (infouserpassw) => {
+				let tok = localStorage.getItem("token");
+
                 await fetch("https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/addActivity", {
                     method: "POST",
                     body: JSON.stringify(infouserpassw),
                     headers: {
-                        "Content-Type": "application/json"
+                        "Content-Type": "application/json",
+						Authorization: "Bearer " + tok,
                     },
                 }).then((resp) => {
                     if (resp.ok) {
@@ -88,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 				//if (tok == getStore().token) {
 				  await fetch(
-					"https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/privated",
+					"https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/privated",
 					{
 					  method: "GET",
 					  headers: {
@@ -113,7 +116,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//   return "Validation error flux 97";
 				// }
 			  },
-		
+			
 
 
 

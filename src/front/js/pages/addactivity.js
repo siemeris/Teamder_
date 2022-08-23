@@ -18,7 +18,7 @@ export const AddActivity = () => {
 
   return (
 
-    <form className="mx-5 mt-4" onSubmit={e => {e.preventDefault();}}>
+    <form className="mx-5 mt-4" onSubmit={e => {e.preventDefault(); ; e.target.reset();}}>
       <div className="mb-3">
         <label for="exampleInputEmail1" className="form-label">
           Category
@@ -26,7 +26,7 @@ export const AddActivity = () => {
         <div className="form-group">
                 <label className="sr-only">Questions</label>
                 <select id="reg_userquestion" className="form-control" name="user_question" onChange= {e => setCategory(e.target.value)}>
-                  <option selected> Select Category </option>       
+                  <option value> Select Category </option>       
                   <option>Soccer</option>
                 </select>
               </div>
@@ -74,7 +74,7 @@ export const AddActivity = () => {
       
       <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" className="btn btn-info" onClick={() => {
+                            <button type="submit" className="btn btn-info" data-bs-dismiss="modal" onClick={() => {
           actions.addActivity({
             category: category,
             title: title,

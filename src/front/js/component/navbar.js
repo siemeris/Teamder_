@@ -1,11 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import Logo2 from "/workspace/Teamder/src/front/img/Logo2.png";
 import "/workspace/Teamder/src/front/styles/navbar.css";
 import { SignUpPage } from "/workspace/Teamder/src/front/js/component/signup.js" ;
 import { LoginForm } from "/workspace/Teamder/src/front/js/component/login.js" ;
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+  const { store, actions } = useContext(Context);
 
   return (
     <>

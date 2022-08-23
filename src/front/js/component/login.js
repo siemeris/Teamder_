@@ -12,7 +12,7 @@ export const LoginForm =() => {
   return (
 
 <>
-      {/* <form onSubmit={e => { e.preventDefault(); }}> */}
+      <form onSubmit={e => { e.preventDefault(); e.target.reset(); }}>
   <div className="mb-3">
     <label htmlFor="exampleInputEmail1" className="form-label">Email address</label>
     <input type="email" className="form-control" id="exampleInputEmail3" aria-describedby="emailHelp" onChange={e => setEmail(e.target.value)}/>
@@ -24,7 +24,7 @@ export const LoginForm =() => {
   </div>
   <div className="modal-footer">
               <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="submit" className="btn btn-info" onClick={() => {
+              <button type="submit" className="btn btn-info" data-bs-dismiss= "modal" onClick={() => {
           actions.login({
             email: email,
             password: password,
@@ -32,7 +32,7 @@ export const LoginForm =() => {
         }}>Submit</button>
             </div>
  
- {/* </form> */}
+ </form>
    
 </>
   );
