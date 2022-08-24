@@ -18,7 +18,7 @@ export const AddActivity = () => {
 
   return (
 
-    <form className="mx-5 mt-4" onSubmit={e => {e.preventDefault(); ; e.target.reset();}}>
+    <form className="mx-5 mt-4" onSubmit={e => {e.preventDefault(); e.target.reset();}}>
       <div className="mb-3">
         <label for="exampleInputEmail1" className="form-label">
           Category
@@ -28,6 +28,12 @@ export const AddActivity = () => {
                 <select id="reg_userquestion" className="form-control" name="user_question" onChange= {e => setCategory(e.target.value)}>
                   <option value> Select Category </option>       
                   <option>Soccer</option>
+                  <option>Yoga</option>
+                  <option>Cycling</option>
+                  <option>Running</option>
+                  <option>Basketball</option>
+                  <option>Volleyball</option>
+                  <option>Others</option>
                 </select>
               </div>
       </div>
