@@ -1,13 +1,23 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import "/workspace/Teamder/src/front/styles/activitypanel.css";
 import { AddActivity } from "./addactivity.js";
+import { Link, Navigate, useNavigate} from "react-router-dom";
+import { Context } from "../store/appContext";
 
 export function ActivityPanel() {
     const [value, onChange] = useState(new Date());
-
+    const {store, actions} = useContext(Context)
+    const navigate = useNavigate();
+    const token = localStorage.getItem('token');
+    
+    useEffect(() =>{
+        actions.private()}
+        ,[store.auth])
     return (
+        <>
+        {token && store.auth === true?
         <div className="app-body pt-5">
             <main className="pt-5">
                 <div className="container">
@@ -136,10 +146,10 @@ export function ActivityPanel() {
                         <div className="modal-body">
                         <AddActivity />
                         </div>
-                        <div className="modal-footer">
+                        {/* <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                             <button type="button" className="btn btn-info">Add Activity</button>
-                        </div>
+                        </div> */}
                     </div>
                 </div>
             </div>
@@ -174,13 +184,18 @@ export function ActivityPanel() {
                         </div>
                         <div className="modal-footer">
                             <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" className="btn btn-danger">Delete</button>
+                            <button type="button" className="btn btn-danger" onClick={() => {
+          actions.deleteactivity(index)
+        }}>Delete</button>
                         </div>
                     </div>
                 </div>
             </div>
 
         </div>
+        : navigate("/") 
+    }
+</>
 
 
     );

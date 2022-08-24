@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			login: (infouserpass) => {
 				const response = fetch(
-				  "/token",
+				  "https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/token",
 				  {
 					//mode: 'no-cors',
 					method: "POST",
@@ -44,9 +44,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  .then(data =>{localStorage.setItem("token", data.token); })
 			  .catch();
 			  },
+			
+			logout: ()=>{
+				const { auth } = getStore();
+					localStorage.removeItem("token")
+					setStore({auth: false})
+				console.log("auth3", auth)
+				  },
 
-			  signup: async (infouserpassw) => {
-                await fetch("/signup", {
+			signup: async (infouserpassw) => {
+                await fetch("https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/signup", {
                     method: "POST",
                     body: JSON.stringify(infouserpassw),
                     headers: {
@@ -58,7 +65,58 @@ const getState = ({ getStore, getActions, setStore }) => {
                     }
                 });
             },
-		
+
+			addActivity: async (infouserpassw) => {
+				let tok = localStorage.getItem("token");
+
+                await fetch("https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/addActivity", {
+                    method: "POST",
+                    body: JSON.stringify(infouserpassw),
+                    headers: {
+                        "Content-Type": "application/json",
+						Authorization: "Bearer " + tok,
+                    },
+                }).then((resp) => {
+                    if (resp.ok) {
+                        console.log("registro OK");
+                    }
+					else {
+						console.log(resp.status)
+					}
+                });
+            },
+
+			private: async () => {
+				let tok = localStorage.getItem("token");
+				
+				//if (tok == getStore().token) {
+				  await fetch(
+					"https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/privated",
+					{
+					  method: "GET",
+					  headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + tok,
+					  },
+					}
+				  ).then((res) => {
+					if (res.status == 200) {
+					  console.log("Todo bien con el fetch en private");
+					  const { auth } = getStore();
+					  console.log("auth4", auth)
+					  setStore({ auth: true });
+					} else {
+					  console.log(
+						"Algo ha ido mal con el token y el require en el private Fetch"
+					  );
+					  // return res.json()
+					}
+				  });
+				// } else {
+				//   return "Validation error flux 97";
+				// }
+			  },
+			
 
 
 
