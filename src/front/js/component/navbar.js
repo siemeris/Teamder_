@@ -5,6 +5,7 @@ import { SignUpPage } from "/workspace/Teamder/src/front/js/component/signup.js"
 import { LoginForm } from "/workspace/Teamder/src/front/js/component/login.js" ;
 import Logo3 from "/workspace/Teamder/src/front/img/Logo3.png";
 import "/workspace/Teamder/src/front/styles/navbar.css"
+import { Context } from "../store/appContext";
 
 
 export const Navbar = () => {
