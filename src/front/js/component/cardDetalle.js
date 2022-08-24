@@ -1,5 +1,6 @@
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
+import soccer from "/workspace/Teamder/src/front/img/Diseño sin título.png";
 
 export const CardDetalle = () => {
   return (
@@ -9,27 +10,32 @@ export const CardDetalle = () => {
         <div className="row">
           <div>
             <div className="card px-1 py-1 border border-light shadow border-4 rounded-1">
-              <Link to="/activity-description">
-                <img
-                  src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
-                  className="card-img-top"
-                  alt="group of people playing soccer"
-                />
-              </Link>
               <div className="card-body">
-                <h5 className="card-title text-center mt-1">Soccer</h5>
+                <h5 className="card-title text-center mt-1">
+                  {" "}
+                  <Link to="/activity-description">
+                    <img
+                      src={soccer}
+                      className="card-img-top mx-2"
+                      style={{ width: "1.5rem" }}
+                      alt="group of people playing soccer"
+                    />
+                  </Link>
+                  Soccer
+                </h5>
                 <h6 className="card-subtitle mb-2 text-muted ">Date</h6>
                 <h6 className="card-subtitle mb-2 text-muted">City</h6>
-                <div>
+                <hr></hr>
+                <div className="text-center mt-2">
                   <button
                     type="button"
-                    className="btn btn-outline-info"
+                    className="btn btn-outline-info "
                     id="boton usuario"
                     onClick={() => {
                       alert("¡Ya estás apuntado!");
                     }}
                   >
-                    <i className="fa-solid fa fa-user"></i>
+                    Join
                   </button>
                 </div>
               </div>
