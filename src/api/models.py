@@ -37,7 +37,7 @@ class User(db.Model):
                "password": self.password,
             #  "mobile": self.mobile,
             #  "address": self.address,
-               "activities": self.obtain_activities()
+               # "activities": self.obtain_activities()
          }
 
      def obtain_activities(self):

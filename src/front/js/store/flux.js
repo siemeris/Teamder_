@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			login: (infouserpass) => {
 				const response = fetch(
-				  "https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/token",
+				  "https://3001-miguelubeda-teamder-h6o2adlt309.ws-eu62.gitpod.io/api/token",
 				  {
 					//mode: 'no-cors',
 					method: "POST",
@@ -53,7 +53,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				  },
 
 			signup: async (infouserpassw) => {
-                await fetch("https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/signup", {
+                await fetch("https://3001-miguelubeda-teamder-h6o2adlt309.ws-eu62.gitpod.io/api/signup", {
                     method: "POST",
                     body: JSON.stringify(infouserpassw),
                     headers: {
@@ -69,7 +69,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addActivity: async (infouserpassw) => {
 				let tok = localStorage.getItem("token");
 
-                await fetch("https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/addActivity", {
+                await fetch("https://3001-miguelubeda-teamder-h6o2adlt309.ws-eu62.gitpod.io/api/addActivity", {
                     method: "POST",
                     body: JSON.stringify(infouserpassw),
                     headers: {
@@ -91,7 +91,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				
 				//if (tok == getStore().token) {
 				  await fetch(
-					"https://3001-miguelubeda-teamder-0m1xa6c5iu8.ws-eu62.gitpod.io/api/privated",
+					"https://3001-miguelubeda-teamder-h6o2adlt309.ws-eu62.gitpod.io/api/privated",
 					{
 					  method: "GET",
 					  headers: {
