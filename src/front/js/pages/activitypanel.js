@@ -13,7 +13,8 @@ export function ActivityPanel() {
     const token = localStorage.getItem('token');
     
     useEffect(() =>{
-        actions.private()}
+        actions.private();
+        actions.getActivities()}
         ,[store.auth])
     return (
         <>
@@ -43,84 +44,38 @@ export function ActivityPanel() {
                                     </div>
                                 </div>
                                 <div className="row">
-                                    <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
-                                        <div>
-                                            <div
-                                                className="event-card card"
-                                                style={{ backgroundColor: "rgb(15, 231, 241)" }}
-                                            >
-                                                <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
-                                                    <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
-                                                    <button type="button" className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropDEL"><i className="far fa fa-trash"></i></button>
-                                                    <span className="visually-hidden"></span>
-                                                </span>
-                                                <div className="card-body">
-                                                    <div className="card-title h5">Soccer</div>
-                                                    <h3 className="event-type">Soccer events</h3>
-                                                    <p className="event-time">11:47 AM - 11:50 AM</p>
+                                {store.getActivities.map((value, i)=>{
+                                    return(
+                                        <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
+                                            <div>
+                                                <div
+                                                    className="event-card card"
+                                                    style={{ backgroundColor: "rgb(15, 231, 241)" }}
+                                                >
+                                                    <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
+                                                        <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
+                                                        <button type="button" className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropDEL"><i className="far fa fa-trash"></i></button>
+                                                        <span className="visually-hidden"></span>
+                                                    </span>
+                                                    <div className="card-body">
+                                                        <div className="card-title h5">{value.category}</div>
+                                                        <h3 className="event-type">Soccer events</h3>
+                                                        <p className="event-time">11:47 AM - 11:50 AM</p>
+
+                                                    </div>
 
                                                 </div>
-
-                                            </div>
-                                            <div className="event-card date-card card">
-                                                <div className="date-body card-body">
-                                                    <h3 className="event-type month">JUN</h3>
-                                                    <h3 className="event-type date">11</h3>
+                                                <div className="event-card date-card card">
+                                                    <div className="date-body card-body">
+                                                        <h3 className="event-type month">JUN</h3>
+                                                        <h3 className="event-type date">11</h3>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
-                                        <div>
-                                            <div
-                                                className="event-card card"
-                                                style={{ backgroundColor: "rgb(15, 231, 241)" }}
-                                            >
-                                                <span className="position-absolute top-0 end-0 badge badge-light rounded-pill ">
-                                                    
-                                                    <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
-                                                    <button type="button" className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropDEL"><i className="far fa fa-trash"></i></button>
-                                                    <span className="visually-hidden"></span>
-                                                </span>
-                                                <div className="card-body">
-                                                    <div className="card-title h5">Trekking</div>
-                                                    <h3 className="event-type">Trekking activities</h3>
-                                                    <p className="event-time">11:00 AM - 11:30 AM</p>
-                                                </div>
-                                            </div>
-                                            <div className="event-card date-card card">
-                                                <div className="date-body card-body">
-                                                    <h3 className="event-type month">JUN</h3>
-                                                    <h3 className="event-type date">12</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
-                                        <div>
-                                            <div
-                                                className="event-card card"
-                                                style={{ backgroundColor: "rgb(15, 231, 241)" }}
-                                            >
-                                                <span className="position-absolute top-0 end-0 badge badge-light rounded-pill ">
-                                                    <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
-                                                    <button type="button" className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropDEL"><i className="far fa fa-trash"></i></button>
-                                                    <span className="visually-hidden"></span>
-                                                </span>
-                                                <div className="card-body">
-                                                    <div className="card-title h5">Basket</div>
-                                                    <h3 className="event-type">Address</h3>
-                                                    <p className="event-time">11:00 AM - 11:30 AM</p>
-                                                </div>
-                                            </div>
-                                            <div className="event-card date-card card">
-                                                <div className="date-body card-body">
-                                                    <h3 className="event-type month">JUN</h3>
-                                                    <h3 className="event-type date">16</h3>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    )
+                                }
+                                )}
                                 </div>
                             </div>
                             <div className="col-lg-4 col-md-4 col-sm-12 col-12">

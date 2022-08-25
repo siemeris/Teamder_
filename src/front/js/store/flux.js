@@ -4,6 +4,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "",
             auth: false,
 			message: null,
+			activities: null,
+			userActivities: null,
+			postedActivities: null,
 			// demo: [
 			// 	// {
 			// 	// 	title: "FIRST",
@@ -117,7 +120,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// }
 			  },
 			
-
+			  getActivities: async () => {
+				fetch(
+                    "https://3001-miguelubeda-teamder-h6o2adlt309.ws-eu62.gitpod.io/api/getAllActivities"
+                  )
+                    .then((resp) => {
+                      if (resp.ok) {
+                        console.log("El request se hizo bien");
+                        return resp.json();
+                      } else {
+                        console.log("Hubo un Error " + resp.status + " en el request");
+                      }
+                    })
+                    .then((data) => {
+						setStore({activities: data.result})
+                    })
+                    .catch((error) => {
+                      //error handling
+                      console.error("ERROR:", error);
+                    });
+			},
 
 
 
