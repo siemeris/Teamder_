@@ -27,7 +27,7 @@ export const Home = () => {
           {" "}
           <CardDetalle />
         </div>
-        <div className="col-3">
+        {/* <div className="col-3">
           {" "}
           <CardDetalle />
         </div>
@@ -38,7 +38,7 @@ export const Home = () => {
         <div className="col-3">
           {" "}
           <CardDetalle />
-        </div>
+        </div> */}
       </div>
       <h1 className="text-center text-info p-2 mt-5">Near you</h1>
       <hr></hr>

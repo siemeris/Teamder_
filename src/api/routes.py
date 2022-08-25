@@ -60,6 +60,21 @@ def get_target_activities():
         "Target_Activities": Actividades,
     }), 200
 
+@api.route('/joinActivity', methods=['POST'])
+@jwt_required()
+def join_activity(index):
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    actividad = Activities.query.get(index)
+    listaActividades = User.query.filter_by(id=user.id).first().activities
+    listaActividades.append(actividad)
+    db.session.commit()
+
+    return jsonify({
+        "success": "activity added",
+        "Activities": list(map(lambda x: x.serialize(), listaActividades))
+    }), 200
+
 @api.route('/signup', methods=['POST'])
 def signup():
     request_body = request.get_json(force=True)
