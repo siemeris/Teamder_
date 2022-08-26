@@ -15,7 +15,7 @@ export function ActivityPanel() {
     useEffect(() =>{
         actions.private();
         actions.getActivities()}
-        ,[store.auth])
+        ,[])
     return (
         <>
         {token && store.auth === true?
@@ -44,7 +44,7 @@ export function ActivityPanel() {
                                     </div>
                                 </div>
                                 <div className="row">
-                                {store.getActivities.map((value, i)=>{
+                                {store.activities.map((value, i)=>{
                                     return(
                                         <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
                                             <div>
