@@ -24,7 +24,7 @@ export function ActivityPanel() {
                 <div className="container">
                     <div className="div-event">
                         <div className="row">
-                            <div className="col-lg-8 col-md-8 col-sm-12 col-12">
+                            <div className="col-lg-8 col-md-8 col-sm-12 col-12 mt-2">
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div>
@@ -58,17 +58,16 @@ export function ActivityPanel() {
                                                         <span className="visually-hidden"></span>
                                                     </span>
                                                     <div className="card-body">
-                                                        <div className="card-title h5">{value.category}</div>
-                                                        <h3 className="event-type">Soccer events</h3>
-                                                        <p className="event-time">11:47 AM - 11:50 AM</p>
+                                                        <div className="card-title h5">{value.name}</div>
+                                                        <h3 className="event-type">{value.location}</h3>
+                                                        <p className="event-time">{value.time}</p>
 
                                                     </div>
 
                                                 </div>
                                                 <div className="event-card date-card card">
                                                     <div className="date-body card-body">
-                                                        <h3 className="event-type month">JUN</h3>
-                                                        <h3 className="event-type date">11</h3>
+                                                        <h3 className="event-type month">{value.date}</h3>
                                                     </div>
                                                 </div>
                                             </div>
@@ -84,6 +83,48 @@ export function ActivityPanel() {
                                 </div>
                                 <Calendar onChange={onChange} value={value} locale="en-GB" />
                                 {" "}
+                            </div>
+                            <div className="col-lg-8 col-md-8 col-sm-12 col-12 mb-5">
+                                <div className="row">
+                                    <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                                        <div>
+                                            <h2>Events you are going</h2>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div className="row">
+                                {store.postedActivities.map((value, i)=>{
+                                    return(
+                                        <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
+                                            <div>
+                                                <div
+                                                    className="event-card card"
+                                                    style={{ backgroundColor: "rgb(15, 231, 241)" }}
+                                                >
+                                                    <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
+                                                        <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
+                                                        <button type="button" className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropDEL"><i className="far fa fa-trash"></i></button>
+                                                        <span className="visually-hidden"></span>
+                                                    </span>
+                                                    <div className="card-body">
+                                                        <div className="card-title h5">{value.name}</div>
+                                                        <h3 className="event-type">{value.location}</h3>
+                                                        <p className="event-time">{value.time}</p>
+
+                                                    </div>
+
+                                                </div>
+                                                <div className="event-card date-card card">
+                                                    <div className="date-body card-body">
+                                                        <h3 className="event-type month">{value.date}</h3>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )
+                                }
+                                )}
+                                </div>
                             </div>
                         </div>
                         <div></div>

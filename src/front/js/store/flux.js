@@ -122,6 +122,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			
 			  getActivities: async () => {
 				
+
+				
 				fetch(
                     "https://3001-miguelubeda-teamder-o0uudfejlyx.ws-eu63.gitpod.io/api/getAllActivities"
                   )
