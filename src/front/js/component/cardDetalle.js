@@ -11,11 +11,12 @@ export const CardDetalle = () => {
   }, []);
 
   return (
-    <div className="container mx-auto mt-4">
-      <div className="row">
+    <div className="container mt-4">
+      <div className="row d-flex justify-content-around">
       {store.activities.map((value,index) => {
         return (
-          <div key={index} className="card px-1 py-1 border border-light shadow border-4 rounded-1">
+          
+          <div key={index} className="card px-1 py-1 border border-light shadow border-4 rounded-1" style={{width: '12rem'}}>
             <div className="card-body">
               <h5 className="card-title text-center mt-1">
                 {" "}
@@ -27,7 +28,7 @@ export const CardDetalle = () => {
                     alt="group of people playing soccer"
                   />
                 </Link>
-                Soccer
+                {value.category}
               </h5>
               <h6 className="card-subtitle mb-2 text-muted ">{value.date}</h6>
               <h6 className="card-subtitle mb-2 text-muted">{value.city}</h6>
@@ -37,8 +38,9 @@ export const CardDetalle = () => {
                   type="button"
                   className="btn btn-outline-info "
                   id="boton usuario"
-                  onClick={() => {actions.joinActivity(index); 
-                    alert("¡Ya estás apuntado!");
+                  onClick={() => {actions.joinActivity({
+                    index: value.id
+                  });
                   }}
                 >
                   Join
@@ -48,5 +50,6 @@ export const CardDetalle = () => {
           </div>
         )})}
         </div>
-        </div>)
+        </div>
+        )
 };

@@ -62,17 +62,19 @@ def get_target_activities():
 
 @api.route('/joinActivity', methods=['POST'])
 @jwt_required()
-def join_activity(index):
+def join_activity():
+    request_body = request.get_json(force=True)
+    activity_id = request_body["index"]
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
-    actividad = Activities.query.get(index)
+    actividad = Activities.query.get(activity_id)
     listaActividades = User.query.filter_by(id=user.id).first().activities
     listaActividades.append(actividad)
     db.session.commit()
 
     return jsonify({
         "success": "activity added",
-        "Activities": list(map(lambda x: x.serialize(), listaActividades))
+        "ActividadesAnotadas": list(map(lambda x: x.serialize(), listaActividades))
     }), 200
 
 @api.route('/signup', methods=['POST'])

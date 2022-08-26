@@ -22,11 +22,10 @@ export const Home = () => {
       <Card />
       <h1 className="text-center text-info p-2 mt-5">Activities</h1>
       <hr></hr>
-      <div className="row">
-        <div className="col-3">
-          {" "}
+      <div className="row d-flex justify-content-around">
+        
           <CardDetalle />
-        </div>
+  
         {/* <div className="col-3">
           {" "}
           <CardDetalle />
