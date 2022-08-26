@@ -14,7 +14,7 @@ export function ActivityPanel() {
     
     useEffect(() =>{
         actions.private();
-        actions.getActivities()}
+        actions.getPostedActivities()}
         ,[])
     return (
         <>
@@ -44,7 +44,7 @@ export function ActivityPanel() {
                                     </div>
                                 </div>
                                 <div className="row">
-                                {store.activities.map((value, i)=>{
+                                {store.postedActivities.map((value, i)=>{
                                     return(
                                         <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
                                             <div>

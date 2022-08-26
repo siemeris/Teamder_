@@ -5,8 +5,8 @@ const getState = ({ getStore, getActions, setStore }) => {
             auth: false,
 			message: null,
 			activities: [],
-			userActivities: null,
-			postedActivities: null,
+			userActivities: [],
+			postedActivities: [],
 			// demo: [
 			// 	// {
 			// 	// 	title: "FIRST",
@@ -121,12 +121,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			  },
 			
 			  getActivities: async () => {
+				
 				fetch(
                     "https://3001-miguelubeda-teamder-o0uudfejlyx.ws-eu63.gitpod.io/api/getAllActivities"
                   )
                     .then((resp) => {
                       if (resp.ok) {
-                        console.log("El request se hizo bien");
+                        console.log("El request se hizo bien" );
                         return resp.json();
                       } else {
                         console.log("Hubo un Error " + resp.status + " en el request");
@@ -141,6 +142,56 @@ const getState = ({ getStore, getActions, setStore }) => {
                     });
 			},
 
+			getTargetActivities: async () => {
+				let tok = localStorage.getItem("token");
+				fetch(
+                    "https://3001-miguelubeda-teamder-o0uudfejlyx.ws-eu63.gitpod.io/api/getTargetActivities"
+                  )
+                    .then((resp) => {
+                      if (resp.ok) {
+                        console.log("El request se hizo bien" );
+                        return resp.json();
+                      } else {
+                        console.log("Hubo un Error " + resp.status + " en el request");
+                      }
+                    })
+                    .then((data) => {
+						setStore({userActivities: data.result})
+                    })
+                    .catch((error) => {
+                      //error handling
+                      console.error("ERROR:", error);
+                    });
+			},
+
+			getPostedActivities: async () => {
+				let tok = localStorage.getItem("token");
+				fetch(
+                    "https://3001-miguelubeda-teamder-o0uudfejlyx.ws-eu63.gitpod.io/api/getPostedActivities",
+					{
+						method: "GET",
+						headers: {
+						  "Content-Type": "application/json",
+						  Authorization: "Bearer " + tok,
+						},
+					  }
+                  )
+                    .then((resp) => {
+                      if (resp.ok) {
+                        console.log("El request se hizo bien" );
+                        return resp.json();
+                      } else {
+                        console.log("Hubo un Error " + resp.status + " en el request");
+                      }
+                    })
+                    .then((data) => {
+						setStore({postedActivities: data.Posted_Activities})
+                    })
+                    .catch((error) => {
+                      //error handling
+                      console.error("ERROR:", error);
+                    });
+			},
 
 
 
