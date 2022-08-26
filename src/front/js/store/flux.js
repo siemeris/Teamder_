@@ -35,6 +35,7 @@ const getState = ({ getStore, getActions, setStore }) => {
                         setStore({
                             activities: data.result,
                         }))
+						
 					.catch((error) => {
                             //error handling
                             console.error("ERROR:", error);
