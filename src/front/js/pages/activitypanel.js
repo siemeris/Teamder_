@@ -5,22 +5,41 @@ import "/workspace/Teamder/src/front/styles/activitypanel.css";
 import { AddActivity } from "./addactivity.js";
 import { Link, Navigate, useNavigate} from "react-router-dom";
 import { Context } from "../store/appContext";
+import { differenceInCalendarDays } from 'date-fns';
 
 export function ActivityPanel() {
     const { store, actions } = useContext(Context)
     const [date, setDate] = useState([
-        new Date(2022, 8, 28),
-        new Date(2022, 8, 27),
+        new Date(2022, 8, 15),
+        new Date(2022, 8, 16),
       ]);
     const [datelist, setDatelist] = useState([
-
+        new Date(2022, 8, 30),
+        new Date(2022, 10, 17),
+        new Date(2022, 11, 17),
     ]);
     let dateString = store.dates;
 
 
-    
+
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
+
+
+    function isSameDay(a, b) {
+        return differenceInCalendarDays(a, b) === 0;
+      }
+
+function tileClassName({ date, view }) {
+  // Add class to tiles in month view only
+  if (view === 'month') {
+    // Check if a date React-Calendar wants to check is on the list of dates to add class to
+    if (datelist.find(dDate => isSameDay(dDate, date))) {
+      return 'react-calendar__tile--active';
+    }
+  }
+}
+
 
     useEffect(() => {
         actions.private();
@@ -38,14 +57,16 @@ export function ActivityPanel() {
             const [day, month, year] = value.split("/")
             const newDate = new Date(+year, +month - 1, +day);
             console.log(date, "date antes del push")
-            // date.push(newDate)
-            console.log(newDate, "newDate")
-            setDatelist(date => [...date, newDate]);
+            datelist.push(newDate)
+            // console.log(newDate, "newDate")
+            // setDatelist(date => [...date, newDate]);
             console.log(date, "date")
         })
-    })
+    },[store.postedActivities])
 
         console.log(store.dates, "dates activity panel" )
+
+
     return (
         <>
         {token && store.auth === true?
@@ -113,7 +134,22 @@ export function ActivityPanel() {
                                 </div>
                                 <Calendar onChange={setDate}
                                             selectRange={true}
-                                            defaultValue={date} locale="en-GB" />
+                                            defaultValue={date} locale="en-GB" tileClassName={tileClassName}/>
+                                            
+                                            {/* {({ date }) => {
+                                                if (datelist.find((x) => {
+                                                    return (
+                                                      date.getDay() === new Date(x.start).getDay() &&
+                                                      date.getMonth() === new Date(x.start).getMonth() &&
+                                                      date.getDate() === new Date(x.start).getDate()
+                                                    );
+                                                  }))  {
+                                                    console.log(date, "date en calendar")
+                                                  return 'react-calendar__tile--active';
+                                                }
+                                                
+                                                return null;
+                                              }}  */}
                             </div>
                             <div className="col-lg-8 col-md-8 col-sm-12 col-12 mb-5">
                                 <div className="row">
