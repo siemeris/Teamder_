@@ -38,6 +38,16 @@ def obtenerActivity():
     }    
     return jsonify(response_body), 200
 
+
+@api.route('/getAllUsers', methods=['GET'])
+def obtenerUser():
+    act_query = User.query.all()
+    all_users = list(map(lambda x: x.serialize(), act_query))
+    response_body = {
+        "result": all_users
+    }    
+    return jsonify(response_body), 200
+
 @api.route('/getPostedActivities', methods=['GET'])
 @jwt_required()
 def get_posted_activities():

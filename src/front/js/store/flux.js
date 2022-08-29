@@ -22,6 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			activities: [],
 			markers: [],
 			dates: [],
+			users: [],
 
 
 		},
@@ -81,7 +82,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error("ERROR:", error);
 					});
 			},
+			getUsers: async () => {
+				await fetch(
+					"https://3001-miguelubeda-teamder-pwfv3ilttnl.ws-eu63.gitpod.io/api/getAllUsers"
+				)
+					.then((resp) => {
+						if (resp.ok) {
+							console.log("El request se hizo bien");
+							return resp.json();
+						} else {
+							console.log("Hubo un Error " + resp.status + " en el request");
+						}
+					})
+					.then((data) => {
+						setStore({
+							users: data.result,
+						});
 
+
+					})
+
+					.catch((error) => {
+						//error handling
+						console.error("ERROR:", error);
+					});
+			},
 			login: (infouserpass) => {
 				const response = fetch(
 
