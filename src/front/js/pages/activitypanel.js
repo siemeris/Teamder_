@@ -19,9 +19,6 @@ export function ActivityPanel() {
     
     const [value, setValue] = useState(new Date());
     let dateString = store.dates;
-
-
-
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
 
