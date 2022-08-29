@@ -10,14 +10,14 @@ import { differenceInCalendarDays } from 'date-fns';
 export function ActivityPanel() {
     const { store, actions } = useContext(Context)
     const [date, setDate] = useState([
-        new Date(2022, 8, 15),
-        new Date(2022, 8, 16),
+        new Date(2020, 8, 15),
+        new Date(2020, 8, 16),
       ]);
     const [datelist, setDatelist] = useState([
-        new Date(2022, 8, 30),
-        new Date(2022, 10, 17),
-        new Date(2022, 11, 17),
+
     ]);
+    
+    const [value, setValue] = useState(new Date());
     let dateString = store.dates;
 
 
@@ -35,7 +35,7 @@ function tileClassName({ date, view }) {
   if (view === 'month') {
     // Check if a date React-Calendar wants to check is on the list of dates to add class to
     if (datelist.find(dDate => isSameDay(dDate, date))) {
-      return 'react-calendar__tile--active';
+      return 'react-calendar__tile--hasActive';
     }
   }
 }
@@ -50,7 +50,7 @@ function tileClassName({ date, view }) {
         //   }
         //   );
     }
-        , [])
+        , [store.auth])
 
     useEffect(()=>{
         dateString.map((value) => {
@@ -133,8 +133,8 @@ function tileClassName({ date, view }) {
                                     <h4>Calendar</h4>
                                 </div>
                                 <Calendar onChange={setDate}
-                                            selectRange={true}
-                                            defaultValue={date} locale="en-GB" tileClassName={tileClassName}/>
+                                            selectRange={false}
+                                            value={value} locale="en-GB" tileClassName={tileClassName}/>
                                             
                                             {/* {({ date }) => {
                                                 if (datelist.find((x) => {
