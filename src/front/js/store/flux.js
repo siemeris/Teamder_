@@ -4,6 +4,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			token: "",
 			auth: false,
 			message: null,
+			activities: [],
+			userActivities: [],
+			postedActivities: [],
 			// demo: [
 			// 	// {
 			// 	// 	title: "FIRST",
@@ -18,6 +21,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ]
 			activities: [],
 			markers: [],
+			dates: [],
+
 
 		},
 		actions: {
@@ -79,6 +84,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			login: (infouserpass) => {
 				const response = fetch(
+
 					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/token",
 					{
 						//mode: 'no-cors',
@@ -86,6 +92,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						body: JSON.stringify(infouserpass),
 						headers: { "Content-Type": "application/json" },
 					}
+
 				)
 					.then(function (response) {
 						if (!response.ok) {
@@ -112,6 +119,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			signup: async (infouserpassw) => {
+
 				await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/signup", {
 					method: "POST",
 					body: JSON.stringify(infouserpassw),
@@ -128,11 +136,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			addActivity: async (infouserpassw) => {
 				let tok = localStorage.getItem("token");
 
+
 				await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/addActivity", {
 					method: "POST",
 					body: JSON.stringify(infouserpassw),
 					headers: {
 						"Content-Type": "application/json",
+
 						Authorization: "Bearer " + tok,
 					},
 				}).then((resp) => {
@@ -173,8 +183,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let tok = localStorage.getItem("token");
 
 				//if (tok == getStore().token) {
-				await fetch(
+
+				  await fetch(
+
+
 					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/privated",
+
 					{
 						method: "GET",
 						headers: {
@@ -198,10 +212,95 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// } else {
 				//   return "Validation error flux 97";
 				// }
+
+			  },
+			
+			  getActivities: async () => {
+				
+				
+				fetch(
+                    "https://3001-miguelubeda-teamder-3q101u6nf7x.ws-eu63.gitpod.io/api/getAllActivities"
+                  )
+                    .then((resp) => {
+                      if (resp.ok) {
+                        console.log("El request se hizo bien" );
+                        return resp.json();
+                      } else {
+                        console.log("Hubo un Error " + resp.status + " en el request");
+                      }
+                    })
+                    .then((data) => {
+						setStore({activities: data.result})
+                    })
+                    .catch((error) => {
+                      //error handling
+                      console.error("ERROR:", error);
+                    });
 			},
 
+			getTargetActivities: async () => {
+				let tok = localStorage.getItem("token");
+				fetch(
+                    "https://3001-miguelubeda-teamder-3q101u6nf7x.ws-eu63.gitpod.io/api/getTargetActivities"
+                  )
+                    .then((resp) => {
+                      if (resp.ok) {
+                        console.log("El request se hizo bien" );
+                        return resp.json();
+                      } else {
+                        console.log("Hubo un Error " + resp.status + " en el request");
+                      }
+                    })
+                    .then((data) => {
+						setStore({userActivities: data.result})
+                    })
+                    .catch((error) => {
+                      //error handling
+                      console.error("ERROR:", error);
+                    });
+			},
 
+			getPostedActivities: async () => {
+				let tok = localStorage.getItem("token");
+				fetch(
+                    "https://3001-miguelubeda-teamder-3q101u6nf7x.ws-eu63.gitpod.io/api/getPostedActivities",
+					{
+						method: "GET",
+						headers: {
+						  "Content-Type": "application/json",
+						  Authorization: "Bearer " + tok,
+						},
+					  }
+                  )
+                    .then((resp) => {
+                      if (resp.ok) {
+                        console.log("El request se hizo bien" );
+                        return resp.json();
+                      } else {
+                        console.log("Hubo un Error " + resp.status + " en el request");
+                      }
+                    })
+                    .then((data) => {
+						setStore({postedActivities: data.Posted_Activities})
+						let { dates } = getStore()
+						const { postedActivities } = getStore()
 
+						console.log(postedActivities.length, "long activities")
+
+						if (postedActivities.length > dates.length) {
+							postedActivities.map((value, index) => {
+								let fecha = value.date
+								dates.push(fecha)
+								setStore(dates)
+							})
+						}
+						console.log(dates, "dates del flux")
+                    })
+                    .catch((error) => {
+                      //error handling
+                      console.error("ERROR:", error);
+                    });
+			},
 
 
 
