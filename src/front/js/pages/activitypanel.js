@@ -7,15 +7,45 @@ import { Link, Navigate, useNavigate} from "react-router-dom";
 import { Context } from "../store/appContext";
 
 export function ActivityPanel() {
-    const [value, onChange] = useState(new Date());
-    const {store, actions} = useContext(Context)
+    const { store, actions } = useContext(Context)
+    const [date, setDate] = useState([
+        new Date(2022, 8, 28),
+        new Date(2022, 8, 27),
+      ]);
+    const [datelist, setDatelist] = useState([
+
+    ]);
+    let dateString = store.dates;
+
+
+    
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
-    
-    useEffect(() =>{
+
+    useEffect(() => {
         actions.private();
-        actions.getPostedActivities()}
-        ,[])
+        actions.getPostedActivities();
+        // store.activities.map((value, index) => {
+        //     dateString.append(value.date);
+        //     console.log(value.date);
+        //   }
+        //   );
+    }
+        , [])
+
+    useEffect(()=>{
+        dateString.map((value) => {
+            const [day, month, year] = value.split("/")
+            const newDate = new Date(+year, +month - 1, +day);
+            console.log(date, "date antes del push")
+            // date.push(newDate)
+            console.log(newDate, "newDate")
+            setDatelist(date => [...date, newDate]);
+            console.log(date, "date")
+        })
+    })
+
+        console.log(store.dates, "dates activity panel" )
     return (
         <>
         {token && store.auth === true?
@@ -81,8 +111,9 @@ export function ActivityPanel() {
                                 <div>
                                     <h4>Calendar</h4>
                                 </div>
-                                <Calendar onChange={onChange} value={value} locale="en-GB" />
-                                {" "}
+                                <Calendar onChange={setDate}
+                                            selectRange={true}
+                                            defaultValue={date} locale="en-GB" />
                             </div>
                             <div className="col-lg-8 col-md-8 col-sm-12 col-12 mb-5">
                                 <div className="row">
