@@ -33,8 +33,6 @@ const Layout = () => {
                         <Route element={<ActivityPanel />} path="/activitypanel" />
                         <Route element={<UserProfile />} path="/userprofile" />
                         <Route element={<Category />} path="/category/:category_id" />
-                  
-                    
                     </Routes>
                     <Footer />
                 </ScrollToTop>
