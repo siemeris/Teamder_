@@ -24,7 +24,7 @@ def addActivity():
     request_body = request.get_json(force=True)
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
-    activity = Activities(category = request_body["category"], name = request_body["title"], players = request_body["participants"], date = request_body["date"], city = request_body["city"], location = request_body["location"], time = request_body["time"], user_id = user.id)
+    activity = Activities(category = request_body["category"], name = request_body["title"], players = request_body["participants"], date = request_body["date"], city = request_body["city"], location = request_body["location"], time = request_body["time"], user_id = user.id, latitude = request_body["latitude"], longitude = request_body["longitude"],)
     db.session.add(activity)
     db.session.commit()
     return jsonify(), 200

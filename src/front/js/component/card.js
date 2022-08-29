@@ -38,7 +38,7 @@ export const Card = () => {
               }}
             >
               {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
-              <Link to="/category/Volleybal">
+              <Link to="/category/Volleyball">
                 {" "}
                 <img
                   src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"

@@ -2,7 +2,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: "",
-            auth: false,
+			auth: false,
 			message: null,
 			// demo: [
 			// 	// {
@@ -17,154 +17,189 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	// }
 			// ]
 			activities: [],
+			markers: [],
+
 		},
 		actions: {
-			getActivities: async() => {
-                await fetch(
-                        "https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getAllActivities"
-                    )
-                    .then((resp) => {
-                        if (resp.ok) {
-                            console.log("El request se hizo bien");
-                            return resp.json();
-                        } else {
-                            console.log("Hubo un Error " + resp.status + " en el request");
-                        }
-                    })
-                    .then((data) =>
-                        setStore({
-                            activities: data.result,
-                        }))
-						
+			getMarkers: () => {
+				let { markers } = getStore()
+				const { activities } = getStore()
+				console.log(activities.length, "long activities")
+
+				if (activities.length > markers.length) {
+					activities.map((value, index) => {
+
+						let latitude = parseFloat(value.latitude)
+						let longitude = parseFloat(value.longitude)
+						let categoria = value.category
+						let fecha = value.date
+						let place = value.location
+						let marker = {
+							position: {
+								lat: latitude,
+								lng: longitude
+							},
+							label: { color: "white", text: " " },
+							draggable: true,
+							texto: categoria,
+							fecha: fecha,
+							lugar: place,
+						};
+						markers.push(marker)
+						setStore(markers)
+					})
+				}
+				console.log(markers, "markers del flux")
+			},
+			getActivities: async () => {
+				await fetch(
+					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getAllActivities"
+				)
+					.then((resp) => {
+						if (resp.ok) {
+							console.log("El request se hizo bien");
+							return resp.json();
+						} else {
+							console.log("Hubo un Error " + resp.status + " en el request");
+						}
+					})
+					.then((data) => {
+						setStore({
+							activities: data.result,
+						});
+
+
+					})
+
 					.catch((error) => {
-                            //error handling
-                            console.error("ERROR:", error);
-                        });
-            },
+						//error handling
+						console.error("ERROR:", error);
+					});
+			},
 
 			login: (infouserpass) => {
 				const response = fetch(
-				  "https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/token",
-				  {
-					//mode: 'no-cors',
-					method: "POST",
-					body: JSON.stringify(infouserpass),
-					headers: { "Content-Type": "application/json" },
-				  }
+					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/token",
+					{
+						//mode: 'no-cors',
+						method: "POST",
+						body: JSON.stringify(infouserpass),
+						headers: { "Content-Type": "application/json" },
+					}
 				)
-				.then(function(response) {
-				  if (!response.ok) {
-				  throw Error(response.statusText);
-				  }
-				  else{
-					setStore({ auth: true });
-					const { auth } = getStore();
-						console.log("auth1", auth)
-					
-				  }
-				  return response.json()
-				  // Aquí es donde pones lo que quieres hacer con la respuesta.
-			  })
-			  .then(data =>{localStorage.setItem("token", data.token); })
-			  .catch();
-			  },
-			
-			logout: ()=>{
+					.then(function (response) {
+						if (!response.ok) {
+							throw Error(response.statusText);
+						}
+						else {
+							setStore({ auth: true });
+							const { auth } = getStore();
+							console.log("auth1", auth)
+
+						}
+						return response.json()
+						// Aquí es donde pones lo que quieres hacer con la respuesta.
+					})
+					.then(data => { localStorage.setItem("token", data.token); })
+					.catch();
+			},
+
+			logout: () => {
 				const { auth } = getStore();
-					localStorage.removeItem("token")
-					setStore({auth: false})
+				localStorage.removeItem("token")
+				setStore({ auth: false })
 				console.log("auth3", auth)
-				  },
+			},
 
 			signup: async (infouserpassw) => {
-                await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/signup", {
-                    method: "POST",
-                    body: JSON.stringify(infouserpassw),
-                    headers: {
-                        "Content-Type": "application/json"
-                    },
-                }).then((resp) => {
-                    if (resp.ok) {
-                        console.log("registro OK");
-                    }
-                });
-            },
+				await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/signup", {
+					method: "POST",
+					body: JSON.stringify(infouserpassw),
+					headers: {
+						"Content-Type": "application/json"
+					},
+				}).then((resp) => {
+					if (resp.ok) {
+						console.log("registro OK");
+					}
+				});
+			},
 
 			addActivity: async (infouserpassw) => {
 				let tok = localStorage.getItem("token");
 
-                await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/addActivity", {
-                    method: "POST",
-                    body: JSON.stringify(infouserpassw),
-                    headers: {
-                        "Content-Type": "application/json",
+				await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/addActivity", {
+					method: "POST",
+					body: JSON.stringify(infouserpassw),
+					headers: {
+						"Content-Type": "application/json",
 						Authorization: "Bearer " + tok,
-                    },
-                }).then((resp) => {
-                    if (resp.ok) {
-                        console.log("registro OK");
-                    }
+					},
+				}).then((resp) => {
+					if (resp.ok) {
+						console.log("registro OK");
+					}
 					else {
 						console.log(resp.status)
 					}
-                });
-            },
+				});
+			},
 
 			joinActivity: async (index) => {
 				let tok = localStorage.getItem("token");
 
-                await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/joinActivity", {
-                    method: "POST",
-                    body: JSON.stringify(index),
-                    headers: {
-                        "Content-Type": "application/json",
+				await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/joinActivity", {
+					method: "POST",
+					body: JSON.stringify(index),
+					headers: {
+						"Content-Type": "application/json",
 						Authorization: "Bearer " + tok,
-                    },
-                }).then((resp) => {
-                    if (resp.ok) {
-                        console.log("registro OK");
+					},
+				}).then((resp) => {
+					if (resp.ok) {
+						console.log("registro OK");
 						console.log(index, "index")
 						alert("¡Ya estás apuntado!");
-                    }
+					}
 					else {
 						console.log(index, "index")
 						console.log(resp.status)
 						alert("Please sign up or login to continue")
 					}
-                });
-            },
+				});
+			},
 
 			private: async () => {
 				let tok = localStorage.getItem("token");
-				
+
 				//if (tok == getStore().token) {
-				  await fetch(
+				await fetch(
 					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/privated",
 					{
-					  method: "GET",
-					  headers: {
-						"Content-Type": "application/json",
-						Authorization: "Bearer " + tok,
-					  },
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + tok,
+						},
 					}
-				  ).then((res) => {
+				).then((res) => {
 					if (res.status == 200) {
-					  console.log("Todo bien con el fetch en private");
-					  const { auth } = getStore();
-					  console.log("auth4", auth)
-					  setStore({ auth: true });
+						console.log("Todo bien con el fetch en private");
+						const { auth } = getStore();
+						console.log("auth4", auth)
+						setStore({ auth: true });
 					} else {
-					  console.log(
-						"Algo ha ido mal con el token y el require en el private Fetch"
-					  );
-					  // return res.json()
+						console.log(
+							"Algo ha ido mal con el token y el require en el private Fetch"
+						);
+						// return res.json()
 					}
-				  });
+				});
 				// } else {
 				//   return "Validation error flux 97";
 				// }
-			  },
-			
+			},
+
 
 
 
@@ -180,14 +215,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// },
 
 			getMessage: async () => {
-				try{
+				try {
 					// fetching data from the backend
 					const resp = await fetch(process.env.BACKEND_URL + "/api/hello")
 					const data = await resp.json()
 					setStore({ message: data.message })
 					// don't forget to return something, that is how the async resolves
 					return data;
-				}catch(error){
+				} catch (error) {
 					console.log("Error loading message from backend", error)
 				}
 			},
