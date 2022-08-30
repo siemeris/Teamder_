@@ -31,7 +31,7 @@ const Layout = () => {
                         <Route element={<Single />} path="/single/:theid" />
                         <Route element={<h1>Not found!</h1>} />
                         <Route element={<ActivityPanel />} path="/activitypanel" />
-                        <Route element={<UserProfile />} path="/userprofile" />
+                        <Route element={<UserProfile />} path="/userProfile" />
                         <Route element={<Category />} path="/category/:category_id" />
                     </Routes>
                     <Footer />

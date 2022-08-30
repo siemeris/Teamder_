@@ -2,8 +2,9 @@ import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import teamderImg from "/workspace/Teamder/src/front/img/teamderImg.png";
 import "../../styles/home.css";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { UserEdit } from "./useredit";
+
 
 export const UserProfile = () => {
   const { store, actions } = useContext(Context);

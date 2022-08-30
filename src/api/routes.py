@@ -48,6 +48,16 @@ def obtenerUser():
     }    
     return jsonify(response_body), 200
 
+@api.route('/getCurrentUser', methods=['GET'])
+def obtenerCurrentUser():
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    response = User.query.filter.by(id=user.id).first()
+    response_body = {
+        "Current_User": response
+    }    
+    return jsonify(response_body), 200
+
 @api.route('/getPostedActivities', methods=['GET'])
 @jwt_required()
 def get_posted_activities():
