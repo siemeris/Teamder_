@@ -22,6 +22,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			activities: [],
 			markers: [],
 			dates: [],
+			index:0
 
 
 		},
@@ -193,7 +194,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						console.log("registro OK");
 						console.log(index, "index")
-						alert("??Ya est??s desapuntado!");
+						alert("Desapuntado :(");
 					}
 					else {
 						console.log(index, "index")

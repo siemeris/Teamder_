@@ -59,12 +59,16 @@ export function ActivityPanel() {
         })
     }, [store.postedActivities])
 
-    useEffect(()=>{
+    useEffect(() => {
         actions.getPostedActivities()
         actions.getTargetActivities()
-    },[store.dates])
+    }, [store.dates])
     // console.log(store.dates, "dates activity panel" )
 
+    useEffect(() => {
+        actions.getPostedActivities()
+        actions.getTargetActivities()
+    }, [store.index])
 
     return (
         <>
@@ -97,7 +101,7 @@ export function ActivityPanel() {
                                             {store.userActivities.map((value, index) => {
                                                 // setIndexUser(value.id)
                                                 return (
-                                                    <div key={index} className="cards col-lg-4 col-md-6 col-sm-6 col-12">
+                                                    <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
                                                         <div>
                                                             <div
                                                                 className="event-card card"
@@ -105,18 +109,10 @@ export function ActivityPanel() {
                                                             >
                                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
                                                                     {/* <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button> */}
-                                                                    <button type="button" onClick={() => {
-                                                                        actions.leaveActivity({
-                                                                            //index: indexUser
-                                                                            index: value.id
-                                                                        })
-                                                                    }} className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
-                                                                    {/* onClick={() => {
-                                                                        actions.leaveActivity({
-                                                                            //index: indexUser
-                                                                            index: value.id
-                                                                        })
-                                                                    }} */}
+                                                                    <button type="button" className="btn btn-link btn-sm text-danger" onClick={() => {
+                                                                        store.index = value.id,
+                                                                            console.log(store.index, "index")
+                                                                    }} data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
                                                                     <span className="visually-hidden"></span>
                                                                 </span>
                                                                 <div className="card-body">
@@ -182,9 +178,9 @@ export function ActivityPanel() {
                                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
                                                                     <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
                                                                     <button type="button" onClick={() => {
-                                                                        actions.deleteActivity({
-                                                                            index: value.id
-                                                                        })}} className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropDEL"><i className="far fa fa-trash"></i></button>
+                                                                        store.index = value.id,
+                                                                            console.log(store.index, "index")
+                                                                    }} className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropDEL"><i className="far fa fa-trash"></i></button>
                                                                     <span className="visually-hidden"></span>
                                                                 </span>
                                                                 <div className="card-body">
@@ -261,7 +257,11 @@ export function ActivityPanel() {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" className="btn btn-danger" >Delete</button>
+                                    <button type="submit" data-bs-dismiss= "modal" onClick={() => {
+                                        actions.deleteActivity({
+                                            index: store.index
+                                        })
+                                    }} className="btn btn-danger" >Delete</button>
                                 </div>
                             </div>
                         </div>
@@ -279,13 +279,12 @@ export function ActivityPanel() {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="button" className="btn btn-danger" >Leave</button>
-                                    {/* onClick={() => {
+                                    <button type="submit" className="btn btn-danger" data-bs-dismiss= "modal" onClick={() => {
                                         actions.leaveActivity({
-                                            //index: indexUser
-                                            index: 48
+                                            index: store.index
                                         })
-                                    }} */}
+                                    }}  >Leave</button>
+                                    {/*  */}
                                 </div>
                             </div>
                         </div>
