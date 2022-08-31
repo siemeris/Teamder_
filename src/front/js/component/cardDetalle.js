@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { Context } from "../store/appContext";
-import { Link } from "react-router-dom";
 import soccer from "/workspace/Teamder/src/front/img/Diseño sin título.png";
 import Basquet from "/workspace/Teamder/src/front/img/Basquet.png";
 import Ciclyn from "/workspace/Teamder/src/front/img/Ciclyng.png";
@@ -10,42 +9,39 @@ import Yoga from "/workspace/Teamder/src/front/img/Yoga.png";
 
 export const CardDetalle = () => {
   const { store, actions } = useContext(Context);
-  const [category, setCategory] = useState("");
 
   useEffect(() => {
     actions.getActivities();
   }, []);
 
-  let hangmanImage = null;
-  switch (category) {
-    case "Soccer":
-      hangmanImage = soccer;
-      // console.log("Soccer");
-      break;
-    case "Yoga":
-      hangmanImage = Yoga;
-      // console.log("Yoga");
-      break;
-    case "Basquetball":
-      hangmanImage = Basquet;
-      // console.log("Basquet");
-      break;
-    case "Ciclyng":
-      hangmanImage = Ciclyn;
-      // console.log("Ciclyn");
-      break;
-    case "Running":
-      hangmanImage = Running;
-      // console.log("Running");
-      break;
-    case "Voleyball":
-      hangmanImage = Voley;
-      // console.log("Voleyball");
-      break;
-    default:
-      hangmanImage = null;
-  }
+  const hangman = (Image) => {
+    let hangmanImage = null;
 
+    switch (Image) {
+      case "Soccer":
+        hangmanImage = soccer;
+        break;
+      case "Yoga":
+        hangmanImage = Yoga;
+        break;
+      case "Basketball":
+        hangmanImage = Basquet;
+        break;
+      case "Cycling":
+        hangmanImage = Ciclyn;
+        break;
+      case "Running":
+        hangmanImage = Running;
+        break;
+      case "Volleyball":
+        hangmanImage = Voley;
+        break;
+      default:
+        hangmanImage = null;
+    }
+    return hangmanImage;
+  };
+  let image = null;
   return (
     <div className="container mt-4">
       <div
@@ -53,8 +49,6 @@ export const CardDetalle = () => {
         style={{ height: "15rem", overflowX: "auto" }}
       >
         {store.activities.map((value, index) => {
-          setCategory(value.category);
-          console.log(value.category);
           return (
             <div
               key={index}
@@ -63,15 +57,13 @@ export const CardDetalle = () => {
             >
               <div className="card-body">
                 <h5 className="card-title text-center mt-1">
-                  {" "}
-                  <Link to="/activity-description">
-                    <img
-                      src={hangmanImage}
-                      className="card-img-top mx-2"
-                      style={{ width: "1.5rem" }}
-                      alt="group of people playing soccer"
-                    />
-                  </Link>
+                  {(image = hangman(value.category))}
+                  <img
+                    src={image}
+                    className="card-img-top mx-2"
+                    style={{ width: "1.5rem" }}
+                    // alt="group of people playing"
+                  />
                   {value.category}
                 </h5>
                 <h6 className="card-subtitle mb-2 text-muted ">{value.date}</h6>
