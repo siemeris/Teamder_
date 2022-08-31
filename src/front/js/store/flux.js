@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getMarkers: () => {
 				let { markers } = getStore()
 				const { activities } = getStore()
-				console.log(activities.length, "long activities")
+				// console.log(activities.length, "long activities")
 
 				if (activities.length > markers.length) {
 					activities.map((value, index) => {
@@ -54,7 +54,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						setStore(markers)
 					})
 				}
-				console.log(markers, "markers del flux")
+				// console.log(markers, "markers del flux")
 			},
 			getActivities: async () => {
 				await fetch(
@@ -179,6 +179,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
+			leaveActivity: async (index) => {
+				let tok = localStorage.getItem("token");
+
+				await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/leaveActivity", {
+					method: "DELETE",
+					body: JSON.stringify(index),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + tok,
+					},
+				}).then((resp) => {
+					if (resp.ok) {
+						console.log("registro OK");
+						console.log(index, "index")
+						alert("??Ya est??s desapuntado!");
+					}
+					else {
+						console.log(index, "index")
+						console.log(resp.status)
+						alert("Algo fue mal")
+					}
+				});
+			},
+
 			private: async () => {
 				let tok = localStorage.getItem("token");
 
@@ -241,23 +265,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getTargetActivities: async () => {
 				let tok = localStorage.getItem("token");
 				fetch(
-                    "https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getTargetActivities"
-                  )
-                    .then((resp) => {
-                      if (resp.ok) {
-                        console.log("El request se hizo bien" );
-                        return resp.json();
-                      } else {
-                        console.log("Hubo un Error " + resp.status + " en el request");
-                      }
-                    })
-                    .then((data) => {
-						setStore({userActivities: data.result})
-                    })
-                    .catch((error) => {
-                      //error handling
-                      console.error("ERROR:", error);
-                    });
+					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getTargetActivities",
+					{
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + tok,
+						},
+					}
+				)
+					.then((resp) => {
+						if (resp.ok) {
+							console.log("El request se hizo bien");
+							return resp.json();
+						} else {
+							console.log("Hubo un Error " + resp.status + " en el request");
+						}
+					})
+					.then((data) => {
+						setStore({ userActivities: data.Target_Activities })
+						let { dates } = getStore()
+						const { userActivities } = getStore()
+
+						// console.log(postedActivities.length, "long activities")
+
+							userActivities.map((value, index) => {
+								let fecha = value.date
+								dates.push(fecha)
+								setStore(dates)
+							})
+						
+					})
+					.catch((error) => {
+						//error handling
+						console.error("ERROR:", error);
+					});
 			},
 
 			getPostedActivities: async () => {
@@ -285,16 +327,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let { dates } = getStore()
 						const { postedActivities } = getStore()
 
-						console.log(postedActivities.length, "long activities")
+						// console.log(postedActivities.length, "long activities")
 
-						if (postedActivities.length > dates.length) {
+						
 							postedActivities.map((value, index) => {
 								let fecha = value.date
 								dates.push(fecha)
 								setStore(dates)
 							})
-						}
-						console.log(dates, "dates del flux")
+						
+				
                     })
                     .catch((error) => {
                       //error handling

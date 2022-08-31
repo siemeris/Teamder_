@@ -41,6 +41,7 @@ function tileClassName({ date, view }) {
     useEffect(() => {
         actions.private();
         actions.getPostedActivities();
+        actions.getTargetActivities();
         // store.activities.map((value, index) => {
         //     dateString.append(value.date);
         //     console.log(value.date);
@@ -53,15 +54,15 @@ function tileClassName({ date, view }) {
         dateString.map((value) => {
             const [day, month, year] = value.split("/")
             const newDate = new Date(+year, +month - 1, +day);
-            console.log(date, "date antes del push")
+            // console.log(date, "date antes del push")
             datelist.push(newDate)
             // console.log(newDate, "newDate")
             // setDatelist(date => [...date, newDate]);
-            console.log(date, "date")
+            // console.log(date, "date")
         })
     },[store.postedActivities])
 
-        console.log(store.dates, "dates activity panel" )
+        // console.log(store.dates, "dates activity panel" )
 
 
     return (
@@ -76,7 +77,7 @@ function tileClassName({ date, view }) {
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div>
-                                            <h2>Events</h2>
+                                            <h2>Events you are going</h2>
                                         </div>
                                     </div>
                                     <div className="col-lg-6 col-md-6 col-sm-6 col-6">
@@ -92,23 +93,23 @@ function tileClassName({ date, view }) {
                                     </div>
                                 </div>
                                 <div className="row">
-                                {store.postedActivities.map((value, i)=>{
+                                {store.userActivities.map((value, index)=>{
                                     return(
-                                        <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
+                                        <div key={index} className="cards col-lg-4 col-md-6 col-sm-6 col-12">
                                             <div>
                                                 <div
                                                     className="event-card card"
                                                     style={{ backgroundColor: "rgb(15, 231, 241)" }}
                                                 >
                                                     <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
-                                                        <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
-                                                        <button type="button" className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropDEL"><i className="far fa fa-trash"></i></button>
+                                                        {/* <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button> */}
+                                                        <button type="button" className="btn btn-link btn-sm text-danger" data-toggle="tooltip" data-placement="top" title="delete" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
                                                         <span className="visually-hidden"></span>
                                                     </span>
                                                     <div className="card-body">
                                                         <div className="card-title h5">{value.name}</div>
                                                         <h3 className="event-type">{value.location}</h3>
-                                                        <p className="event-time">{value.time}</p>
+                                                        <p className="event-time">{value.time} {value.id}</p>
 
                                                     </div>
 
@@ -152,7 +153,7 @@ function tileClassName({ date, view }) {
                                 <div className="row">
                                     <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                                         <div>
-                                            <h2>Events you are going</h2>
+                                            <h2>Events</h2>
                                         </div>
                                     </div>
                                 </div>
@@ -247,6 +248,28 @@ function tileClassName({ date, view }) {
                             <button type="button" className="btn btn-danger" onClick={() => {
           actions.deleteactivity(index)
         }}>Delete</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="modal fade" id="staticBackdropLEAVE" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title" id="staticBackdropLabel">Delete event</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            <p>Are you sure you want to leave this event?</p>
+                        </div>
+                        <div className="modal-footer">
+                            <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                            <button type="button" className="btn btn-danger" onClick={() => {
+          actions.leaveActivity({
+            index: 48
+          })
+        }}>Leave</button>
                         </div>
                     </div>
                 </div>

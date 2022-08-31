@@ -13,8 +13,8 @@ export const MapComponent = () => {
         store.markers=[]
         actions.getMarkers()
         //actions.getActivities();
-        console.log(store.markers, "markers del map component")
-        console.log(store.activities)
+        // console.log(store.markers, "markers del map component")
+        // console.log(store.activities)
         //    navigator.geolocation.getCurrentPosition(
         //     ({ coords: { latitude: lat, longitude: lng } }) => {
         //       const pos = { lat, lng };
