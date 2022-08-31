@@ -94,6 +94,23 @@ def leave_activity():
         "ActividadesAnotadas": list(map(lambda x: x.serialize(), listaActividades))
     }), 200
 
+@api.route('/deleteActivity', methods=['DELETE'])
+@jwt_required()
+def delete_activity():
+    request_body = request.get_json(force=True)
+    activity_id = request_body["index"]
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    actividad = Activities.query.get(activity_id)
+    listaActividades = User.query.filter_by(id=user.id).first().postedactivities
+    listaActividades.remove(actividad)
+    db.session.commit()
+
+    return jsonify({
+        "success": "favorite deleted",
+        "ActividadesAnotadas": list(map(lambda x: x.serialize(), listaActividades))
+    }), 200
+
 @api.route('/signup', methods=['POST'])
 def signup():
     request_body = request.get_json(force=True)

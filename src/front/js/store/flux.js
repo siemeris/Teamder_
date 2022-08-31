@@ -203,6 +203,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 
+			deleteActivity: async (index) => {
+				let tok = localStorage.getItem("token");
+
+				await fetch("https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/deleteActivity", {
+					method: "DELETE",
+					body: JSON.stringify(index),
+					headers: {
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + tok,
+					},
+				}).then((resp) => {
+					if (resp.ok) {
+						console.log("registro OK");
+						console.log(index, "index")
+						alert("Actividad eliminada");
+					}
+					else {
+						console.log(index, "index")
+						console.log(resp.status)
+						alert("Algo fue mal")
+					}
+				});
+			},
+
 			private: async () => {
 				let tok = localStorage.getItem("token");
 
