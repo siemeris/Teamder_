@@ -103,7 +103,7 @@ def delete_activity():
     user = User.query.get(current_user_id)
     actividad = Activities.query.get(activity_id)
     listaActividades = User.query.filter_by(id=user.id).first().postedactivities
-    listaActividades.remove(actividad)
+    db.session.delete(actividad)
     db.session.commit()
 
     return jsonify({

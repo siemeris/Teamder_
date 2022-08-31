@@ -59,7 +59,7 @@ class Activities(db.Model):
      latitude = db.Column(db.String(120), nullable=True)
      longitude = db.Column(db.String(120), nullable=True)
      users = db.relationship("User", secondary=takingActivity, back_populates="activities")
-     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=True)
+     user_id = db.Column(db.Integer, db.ForeignKey('user.id'), nullable=False)
 
      def __repr__(self):
           return '<Activities {self.name}>'
