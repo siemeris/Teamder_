@@ -23,6 +23,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			markers: [],
 			dates: [],
 			users: [],
+			currentUser: []
 
 
 		},
@@ -107,6 +108,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error("ERROR:", error);
 					});
 			},
+
+			getCurrentUser: async () => {
+				let tok = localStorage.getItem("token");
+				await fetch(
+					"https://3001-miguelubeda-teamder-pwfv3ilttnl.ws-eu63.gitpod.io/api/getCurrentUser",
+					{
+						method: "GET",
+						headers: {
+							"Content-Type": "application/json",
+
+							Authorization: "Bearer " + tok,
+						},
+					})
+					.then((resp) => {
+						if (resp.ok) {
+							console.log("El request se hizo bien");
+							return resp.json();
+						} else {
+							console.log("Hubo un Error " + resp.status + " en el request");
+						}
+					})
+					.then((data) => {
+						console.log(data);
+						setStore({
+							currentUser: data
+						});
+					})
+
+					.catch((error) => {
+						//error handling
+						console.error("ERROR:", error);
+					});
+			},
+
+
 			login: (infouserpass) => {
 				const response = fetch(
 

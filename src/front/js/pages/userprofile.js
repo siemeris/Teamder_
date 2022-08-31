@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
 import teamderImg from "/workspace/Teamder/src/front/img/teamderImg.png";
 import "../../styles/home.css";
@@ -9,7 +9,18 @@ import { UserEdit } from "./useredit";
 export const UserProfile = () => {
   const { store, actions } = useContext(Context);
 
+
+
+  useEffect(() => {
+    
+    actions.getCurrentUser();
+    console.log(store.currentUser.Current_email, "DatosUsuario del useEffect");
+    
+}
+    , [])
+  
   return (
+    <>
     <div className="container pt-5">
       <div className="main-body">
         <nav aria-label="breadcrumb" className="main-breadcrumb">
@@ -38,7 +49,7 @@ export const UserProfile = () => {
                     width="150"
                   ></img>
                   <div className="mt-3">
-                    <h4>John Doe</h4>
+                    <h4>John Doe {store.currentUser.Current_email} </h4>
                     <p className="text-secondary mb-1">Active Teamder Player</p>
                     <p className="text-muted font-size-sm">
                       Bay Area, San Francisco, CA
@@ -153,5 +164,6 @@ export const UserProfile = () => {
       </div>
 
     </div>
+    </>
   );
 };
