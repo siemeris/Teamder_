@@ -13,62 +13,30 @@ export function ActivityPanel() {
         new Date(2020, 8, 15),
         new Date(2020, 8, 16),
     ]);
-    const [datelist, setDatelist] = useState([
-
-    ]);
-
     const [value, setValue] = useState(new Date());
-    let dateString = store.dates;
     const navigate = useNavigate();
     const token = localStorage.getItem('token');
     // const [indexUser,setIndexUser]=useState("")
 
+    useEffect(() => {
+        actions.private();
+    }, [store.auth])
+
+    useEffect(() => {
+        store.dates=[]
+        actions.getPostedActivities();
+    }, [store.activities])
+
+    useEffect(() => {
+        store.datesUser=[]
+         actions.getTargetActivities();
+         actions.getPostedActivities();
+     }, [store.index])
+
+
     function isSameDay(a, b) {
         return differenceInCalendarDays(a, b) === 0;
     }
-
-    function tileClassName({ date, view }) {
-        // Add class to tiles in month view only
-        if (view === 'month') {
-            // Check if a date React-Calendar wants to check is on the list of dates to add class to
-            if (datelist.find(dDate => isSameDay(dDate, date))) {
-                return 'react-calendar__tile--hasActive';
-            }
-        }
-    }
-
-
-    useEffect(() => {
-        actions.private();
-        actions.getPostedActivities();
-        actions.getTargetActivities();
-        // store.activities.map((value, index) => {
-        //     dateString.append(value.date);
-        //     console.log(value.date);
-        //   }
-        //   );
-    }
-        , [store.auth])
-
-    useEffect(() => {
-        dateString.map((value) => {
-            const [day, month, year] = value.split("/")
-            const newDate = new Date(+year, +month - 1, +day);
-            // console.log(date, "date antes del push")
-            datelist.push(newDate)
-        })
-    }, [store.postedActivities])
-
-    useEffect(() => {
-        actions.getPostedActivities()
-        actions.getTargetActivities()
-    }, [store.dates])
-    // console.log(store.dates, "dates activity panel" )
-
-    useEffect(() => {
-        actions.getPostedActivities()
-        actions.getTargetActivities()
-    }, [store.index])
 
     return (
         <>
@@ -89,7 +57,10 @@ export function ActivityPanel() {
                                                 <div className="div-create text-end">
                                                     <h6>
                                                         Create event
-                                                        <button type="button" className="btn btn-outline-info btn-sm ms-1" data-bs-toggle="modal" data-bs-target="#staticBackdropCREATE">
+                                                        <button type="button" className="btn btn-outline-info btn-sm ms-1" onClick={() => {
+                                                                        store.index = value.id,
+                                                                            console.log(store.index, "index")
+                                                                    }} data-bs-toggle="modal" data-bs-target="#staticBackdropCREATE">
                                                             +
                                                         </button>
 
@@ -118,7 +89,7 @@ export function ActivityPanel() {
                                                                 <div className="card-body">
                                                                     <div className="card-title h5">{value.name}</div>
                                                                     <h3 className="event-type">{value.location}</h3>
-                                                                    <p className="event-time">{value.time} {value.id}</p>
+                                                                    <p className="event-time">{value.time}</p>
 
                                                                 </div>
 
@@ -141,22 +112,20 @@ export function ActivityPanel() {
                                         </div>
                                         <Calendar onChange={setDate}
                                             selectRange={false}
-                                            value={value} locale="en-GB" tileClassName={tileClassName} />
-
-                                        {/* {({ date }) => {
-                                                if (datelist.find((x) => {
-                                                    return (
-                                                      date.getDay() === new Date(x.start).getDay() &&
-                                                      date.getMonth() === new Date(x.start).getMonth() &&
-                                                      date.getDate() === new Date(x.start).getDate()
-                                                    );
-                                                  }))  {
-                                                    console.log(date, "date en calendar")
-                                                  return 'react-calendar__tile--active';
-                                                }
+                                            value={value} locale="en-GB" tileClassName={({ date, view })=>{
+                                                // Add class to tiles in month view only
+                                                let fechas = store.datesUser.concat(store.dates)
                                                 
-                                                return null;
-                                              }}  */}
+                                                if (view === 'month') {
+                                                    // Check if a date React-Calendar wants to check is on the list of dates to add class to
+                                                    if (fechas.find(dDate => isSameDay(dDate, date))) {
+                                                        return 'react-calendar__tile--hasActive';
+                                                    }
+                                                    // else if (store.dates.find(dDate => isSameDay(dDate, date))) {
+                                                    //     return 'react-calendar__tile--hasActive';
+                                                    // }
+                                                }
+                                            }} />
                                     </div>
                                     <div className="col-lg-8 col-md-8 col-sm-12 col-12 mb-5">
                                         <div className="row">
@@ -257,10 +226,11 @@ export function ActivityPanel() {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" data-bs-dismiss= "modal" onClick={() => {
+                                    <button type="submit" data-bs-dismiss="modal" onClick={() => {
                                         actions.deleteActivity({
                                             index: store.index
                                         })
+                                        actions.getActivities()
                                     }} className="btn btn-danger" >Delete</button>
                                 </div>
                             </div>
@@ -279,10 +249,12 @@ export function ActivityPanel() {
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                                    <button type="submit" className="btn btn-danger" data-bs-dismiss= "modal" onClick={() => {
+                                    <button type="submit" className="btn btn-danger" data-bs-dismiss="modal" onClick={() => {
                                         actions.leaveActivity({
                                             index: store.index
                                         })
+                                        store.datesUser=[]
+                                        actions.getTargetActivities()
                                     }}  >Leave</button>
                                     {/*  */}
                                 </div>

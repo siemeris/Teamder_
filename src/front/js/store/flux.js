@@ -19,10 +19,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	// 	initial: "white"
 			// 	// }
 			// ]
-			activities: [],
 			markers: [],
 			dates: [],
-			index:0
+			datesUser: [],
+			index: 0,
 
 
 		},
@@ -149,6 +149,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}).then((resp) => {
 					if (resp.ok) {
 						console.log("registro OK");
+						let {index} = getStore()
+						index +=1
+						setStore(index)
 					}
 					else {
 						console.log(resp.status)
@@ -233,7 +236,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//if (tok == getStore().token) {
 
-				  await fetch(
+				await fetch(
 
 
 					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/privated",
@@ -262,34 +265,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//   return "Validation error flux 97";
 				// }
 
-			  },
-			
-			  getActivities: async () => {
-				
-				
+			},
+
+			getActivities: async () => {
+
+
 				fetch(
-                    "https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getAllActivities"
-                  )
-                    .then((resp) => {
-                      if (resp.ok) {
-                        console.log("El request se hizo bien" );
-                        return resp.json();
-                      } else {
-                        console.log("Hubo un Error " + resp.status + " en el request");
-                      }
-                    })
-                    .then((data) => {
-						setStore({activities: data.result})
-                    })
-                    .catch((error) => {
-                      //error handling
-                      console.error("ERROR:", error);
-                    });
+					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getAllActivities"
+				)
+					.then((resp) => {
+						if (resp.ok) {
+							console.log("El request se hizo bien");
+							return resp.json();
+						} else {
+							console.log("Hubo un Error " + resp.status + " en el request");
+						}
+					})
+					.then((data) => {
+						setStore({ activities: data.result })
+					})
+					.catch((error) => {
+						//error handling
+						console.error("ERROR:", error);
+					});
 			},
 
 			getTargetActivities: async () => {
 				let tok = localStorage.getItem("token");
-				fetch(
+				await fetch(
 					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getTargetActivities",
 					{
 						method: "GET",
@@ -309,18 +312,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then((data) => {
 						setStore({ userActivities: data.Target_Activities })
-						let { dates } = getStore()
+						let { datesUser } = getStore()
 						const { userActivities } = getStore()
 
 						// console.log(postedActivities.length, "long activities")
 
-							userActivities.map((value, index) => {
-								let fecha = value.date
-								dates.push(fecha)
-								setStore(dates)
-							})
-						
+						userActivities.map((value, index) => {
+							let fecha = value.date
+							const [day, month, year] = fecha.split("/")
+							const newDate = new Date(+year, +month - 1, +day);
+							// console.log(date, "date antes del push")
+							datesUser.push(newDate)
+						})
+
+
+						setStore(datesUser)
 					})
+
+
 					.catch((error) => {
 						//error handling
 						console.error("ERROR:", error);
@@ -329,44 +338,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			getPostedActivities: async () => {
 				let tok = localStorage.getItem("token");
-				fetch(
-                    "https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getPostedActivities",
+				await fetch(
+					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getPostedActivities",
 					{
 						method: "GET",
 						headers: {
-						  "Content-Type": "application/json",
-						  Authorization: "Bearer " + tok,
+							"Content-Type": "application/json",
+							Authorization: "Bearer " + tok,
 						},
-					  }
-                  )
-                    .then((resp) => {
-                      if (resp.ok) {
-                        console.log("El request se hizo bien" );
-                        return resp.json();
-                      } else {
-                        console.log("Hubo un Error " + resp.status + " en el request");
-                      }
-                    })
-                    .then((data) => {
-						setStore({postedActivities: data.Posted_Activities})
+					}
+				)
+					.then((resp) => {
+						if (resp.ok) {
+							console.log("El request se hizo bien");
+							return resp.json();
+						} else {
+							console.log("Hubo un Error " + resp.status + " en el request");
+						}
+					})
+					.then((data) => {
+						setStore({ postedActivities: data.Posted_Activities })
 						let { dates } = getStore()
 						const { postedActivities } = getStore()
 
 						// console.log(postedActivities.length, "long activities")
 
-						
-							postedActivities.map((value, index) => {
-								let fecha = value.date
-								dates.push(fecha)
-								setStore(dates)
-							})
-						
-				
-                    })
-                    .catch((error) => {
-                      //error handling
-                      console.error("ERROR:", error);
-                    });
+
+						postedActivities.map((value, index) => {
+							let fecha = value.date
+							const [day, month, year] = fecha.split("/")
+							const newDate = new Date(+year, +month - 1, +day);
+							// console.log(date, "date antes del push")
+							dates.push(newDate)
+							setStore(dates)
+						})
+
+
+					})
+					.catch((error) => {
+						//error handling
+						console.error("ERROR:", error);
+					});
 			},
 
 
