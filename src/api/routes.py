@@ -59,7 +59,7 @@ def obtenerCurrentUser():
         "Current_name": response.name,
         "Current_lastname": response.lastname,
         "Current_age": response.age,
-        "Current_gender": respoonse.gender,
+        "Current_gender": response.gender,
         "Current_email": response.email
         
     }

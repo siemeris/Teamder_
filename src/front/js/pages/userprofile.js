@@ -50,11 +50,8 @@ export const UserProfile = () => {
                     width="150"
                   ></img>
                   <div className="mt-3">
-                    <h4>John Doe {store.currentUser.Current_email} </h4>
+                    <h4>{store.currentUser.Current_name} {store.currentUser.Current_lastname} </h4>
                     <p className="text-secondary mb-1">Active Teamder Player</p>
-                    <p className="text-muted font-size-sm">
-                      Bay Area, San Francisco, CA
-                    </p>
                     {/* <button className="btn btn-info">Follow</button>
                     <button className="btn btn-outline-info">Message</button> */}
                   </div>
@@ -69,14 +66,14 @@ export const UserProfile = () => {
                   <div className="col-sm-3">
                     <h6 className="mb-0">Full Name</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">Kenneth Valdez</div>
+                  <div className="col-sm-9 text-secondary">{store.currentUser.Current_name} {store.currentUser.Current_lastname}</div>
                 </div>
                 {/* <hr> */}
                 <div className="row">
                   <div className="col-sm-3">
                     <h6 className="mb-0">Email</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">fip@jukmuh.al</div>
+                  <div className="col-sm-9 text-secondary">{store.currentUser.email}</div>
                 </div>
                 {/* <hr> */}
                 {/* <hr> */}
@@ -99,13 +96,13 @@ export const UserProfile = () => {
                   <div className="col-sm-3">
                     <h6 className="mb-0">Age</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">25</div>
+                  <div className="col-sm-9 text-secondary">{store.currentUser.Current_age}</div>
                 </div>
                 <div className="row">
                   <div className="col-sm-3">
                     <h6 className="mb-0">Gender</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">Male</div>
+                  <div className="col-sm-9 text-secondary">{store.currentUser.Current_gender}</div>
                 </div>
                 {/* <hr> */}
                 <div className="row">
