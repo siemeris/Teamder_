@@ -57,12 +57,11 @@ export const CardDetalle = () => {
             >
               <div className="card-body">
                 <h5 className="card-title text-center mt-1">
-                  {(image = hangman(value.category))}
                   <img
-                    src={image}
+                    src={(image = hangman(value.category))}
                     className="card-img-top mx-2"
                     style={{ width: "1.5rem" }}
-                    // alt="group of people playing"
+                    alt="group of people playing"
                   />
                   {value.category}
                 </h5>
