@@ -47,7 +47,7 @@ function tileClassName({ date, view }) {
         //   }
         //   );
     }
-        , [store.auth])
+        , [])
 
     useEffect(()=>{
         dateString.map((value) => {
@@ -57,11 +57,11 @@ function tileClassName({ date, view }) {
             datelist.push(newDate)
             // console.log(newDate, "newDate")
             // setDatelist(date => [...date, newDate]);
-            console.log(date, "date")
+            // console.log(date, "date")
         })
     },[store.postedActivities])
 
-        console.log(store.dates, "dates activity panel" )
+        // console.log(store.dates, "dates activity panel" )
 
 
     return (

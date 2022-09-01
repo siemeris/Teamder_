@@ -19,7 +19,7 @@ export const CardDetalle = () => {
 
 
   // const url2 = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + location + "&appid=74b3467d2c3033271c21502ee8e7ca5e&units=metric"
-
+  // "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=Madrid&units=metric"
   useEffect(() => { actions.getActivities(); }, [])
 
   // useEffect(()=>{

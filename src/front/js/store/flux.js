@@ -25,7 +25,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			urlIcon:"",
 			iconsList: [],
 			locationList: [],
-			tempList: []
+			dateList:[],
+			tempList: [],
+			weather:[],
 
 		},
 		actions: {
@@ -117,19 +119,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 						});
 
 						let { locationList } = getStore()
+						let { dateList } = getStore()
 
 						let { activities } = getStore()
 						activities.map((value, index) => {
 							console.log(value.city, "city del map")
 							let location = value.city
+							let date = value.date
 							locationList.push(location)
+							dateList.push(date)
 							setStore(locationList)
+							setStore(dateList)
 						})
 
 
 						console.log(locationList, "location get weather")
 						locationList.map((value, index) => {
-							const url = "https://api.openweathermap.org/data/2.5/weather?q=" + value + "&lang=en&units=metric&appid=74b3467d2c3033271c21502ee8e7ca5e"
+							// const url = "https://api.openweathermap.org/data/2.5/weather?q=" + value + "&lang=en&units=metric&appid=74b3467d2c3033271c21502ee8e7ca5e"
+							const url = "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=" + value + "&units=metric"
 							console.log(url, "url")
 							fetch(url)
 								.then((resp) => {
@@ -145,21 +152,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 									console.log("Este es el body del request", data); //this will print on the console the exact object received from the server
 									// console.log(body.map((t) => t.label));
 									// setLista(body.map((t) => t.label));
-									console.log(data.main.temp)
-									// setTemp(Math.round(data.main.temp))
-									let { tempList } = getStore()
-									tempList.push(Math.round(data.main.temp))
-									setStore(tempList)
+									setStore({weather: data})
+									const {weather} = getStore()
+									console.log(weather, "weather")
 
-									let {iconCode} = getStore()
-									let {iconsList} = getStore()
-									let {urlIcon} = getStore()
+									let{tempList} =getStore()
+									tempList.push(Math.round(data.list[0].main.temp))
 
-									// icono de la API estático
-									iconCode = data.weather[0].icon
-									urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
-									iconsList.push(urlIcon)
-									setStore(iconsList)
+									let{dateList} = getStore()
+									console.log(dateList, "dateList")
+									
+									//CON LA URL DE WEATHER, NO DE FORECAST
+									// let { tempList } = getStore()
+									// tempList.push(Math.round(data.main.temp))
+									// setStore(tempList)
+
+									// let {iconCode} = getStore()
+									// let {iconsList} = getStore()
+									// let {urlIcon} = getStore()
+
+									// // icono de la API estático
+									// iconCode = data.weather[0].icon
+									// urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
+									// iconsList.push(urlIcon)
+									// setStore(iconsList)
 
 								})
 								.catch((error) => {
@@ -393,7 +409,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let { dates } = getStore()
 						const { postedActivities } = getStore()
 
-						console.log(postedActivities.length, "long activities")
+						// console.log(postedActivities.length, "long activities")
 
 						if (postedActivities.length > dates.length) {
 							postedActivities.map((value, index) => {
@@ -402,7 +418,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 								setStore(dates)
 							})
 						}
-						console.log(dates, "dates del flux")
+						// console.log(dates, "dates del flux")
 					})
 					.catch((error) => {
 						//error handling
