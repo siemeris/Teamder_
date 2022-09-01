@@ -8,11 +8,12 @@ import { UserEdit } from "./useredit";
 
 export const UserProfile = () => {
   const { store, actions } = useContext(Context);
+  const navigate = useNavigate();
+  const token = localStorage.getItem("token");
 
-
-
+  useEffect(() => {if (store.auth===true){navigate("/userProfile")} }
+  , [store.auth])
   useEffect(() => {
-    
     actions.getCurrentUser();
     console.log(store.currentUser.Current_email, "DatosUsuario del useEffect");
     console.log
