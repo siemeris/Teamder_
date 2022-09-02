@@ -38,6 +38,33 @@ def obtenerActivity():
     }    
     return jsonify(response_body), 200
 
+
+@api.route('/getAllUsers', methods=['GET'])
+def obtenerUser():
+    act_query = User.query.all()
+    all_users = list(map(lambda x: x.serialize(), act_query))
+    response_body = {
+        "result": all_users
+    }    
+    return jsonify(response_body), 200
+
+@api.route('/getCurrentUser', methods=['GET'])
+@jwt_required()
+def obtenerCurrentUser():
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    response = User.query.filter_by(id=user.id).first()
+    response_body = {
+        "Current_username": response.username,
+        "Current_name": response.name,
+        "Current_lastname": response.lastname,
+        "Current_age": response.age,
+        "Current_gender": response.gender,
+        "Current_email": response.email
+        
+    }
+    return jsonify(response_body), 200
+
 @api.route('/getPostedActivities', methods=['GET'])
 @jwt_required()
 def get_posted_activities():
