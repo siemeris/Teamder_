@@ -26,15 +26,15 @@ export const CardDetalle = () => {
   //    actions.getWeather()
   //  },[store.locationList])
 
-  useEffect(() => { actions.getWeather();  }, [])
+  useEffect(() => { store.tempList=[]; store.iconsList=[]; actions.getWeather();}, [])
   // useEffect(()=>{
   //   store.tempList=[]
   //    actions.getWeather()
   //  },[store.locationList])
 
   // console.log(store.locationList, "listado location")
-  // console.log(store.tempList, "listado temperaturas")
-  // console.log(store.iconsList, "listado URLiconos")
+  console.log(store.tempList, "listado temperaturas CardDetalle")
+  console.log(store.iconsList, "listado URLiconos CardDetalle")
 
   return (
     <div className="container mt-4">
@@ -42,7 +42,6 @@ export const CardDetalle = () => {
         {store.activities.map((value, index) => {
           // store.location=value.city
           // console.log(store.location, "store.location")
-      
           // actions.getWeather(value.city)
           return (
 

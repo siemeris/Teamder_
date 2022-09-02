@@ -26,10 +26,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			iconCode: "",
 			urlIcon: "",
 			iconsList: [],
-			locationList: [],
-			dateList: [],
+			// locationList: [],
+			dateWeather: "",
 			tempList: [],
 			weather: [],
+			temperatura: ""
 
 		},
 		actions: {
@@ -91,27 +92,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 							activities: data.result,
 						});
 
-						let { locationList } = getStore()
-						let { dateList } = getStore()
-
 						let { activities } = getStore()
 						activities.map((value, index) => {
-							let location = value.city
-							let date = value.date
-							locationList.push(location)
-							//modificando el date para que tenga formato de api 2022-12-01
-							const [day, month, year] = date.split('/')
-							date=year + "-" + month + "-" + day
-							dateList.push(date)
-							setStore(locationList)
-							setStore(dateList)
-						})
-
-						console.log(locationList, "location get weather")
-						console.log(dateList, "dateList getWeather")
-						locationList.map((value, index) => {
 							// const url = "https://api.openweathermap.org/data/2.5/weather?q=" + value + "&lang=en&units=metric&appid=74b3467d2c3033271c21502ee8e7ca5e"
-							const url = "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=" + value + "&units=metric"
+							const url = "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=" + value.city + "&units=metric"
 							console.log(url, "url")
 							fetch(url)
 								.then((resp) => {
@@ -131,47 +115,64 @@ const getState = ({ getStore, getActions, setStore }) => {
 									const { weather } = getStore()
 									console.log(weather, "weather getweather")
 
-									//TEMPERATURA
+									// //TEMPERATURA
 									let { tempList } = getStore()
-									tempList.push(Math.round(weather.list[0].main.temp))
-									setStore(tempList)
-									console.log(tempList, "tempList del flux")
-									//ICONOS
+									// tempList.push(Math.round(weather.list[0].main.temp))
+									// setStore(tempList)
+									// console.log(tempList, "tempList del flux")
+									// //ICONOS
 									let {iconCode} = getStore()
 									let {iconsList} = getStore()
 									let {urlIcon} = getStore()
-									iconCode = weather.list[0].weather[0].icon
-									urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
-									iconsList.push(urlIcon)
-									setStore(iconsList)
-									
-									
-									let { dateList } = getStore()
-									console.log(dateList, "dateList getweather")
+									// iconCode = weather.list[0].weather[0].icon
+									// urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
+									// iconsList.push(urlIcon)
+									// setStore(iconsList)
+
+									let { temperatura } = getStore()
+									let { dateWeather } = getStore()
+									dateWeather = value.date
+
+									//modificando el date para que tenga formato de api 2022-12-01
+									let [day, month, year] = dateWeather.split('/')
+									dateWeather = year + "-" + month + "-" + day
+
+									setStore(dateWeather)
+									console.log(dateWeather, "dateWeather getweather")
 
 									console.log(weather.list[0].dt_txt, "fecha api weather")
 									console.log(weather.list.length, "longitud de la lista weather")
-									console.log(dateList[0], "fecha del datelist")
+									console.log(dateWeather, "fecha del datelist")
 
-									for(let j=0; j<dateList.length; j++){
-									for (let i=0; i<weather.list.length; i++){
-									if(weather.list[i].dt_txt.includes(dateList[j])){
-										console.log("funciona")
-										iconCode=weather.list[i].weather[0].icon
-										urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
-										iconsList.push(urlIcon)
-										setStore(iconsList)
-										tempList.push(Math.round(weather.list[i].main.temp))
-										setStore(tempList)
-									}
-									else{
-										console.log("no está la fecha")
-										tempList.push("TBD")
-										setStore(tempList)
+
+									for (let i = 0; i < weather.list.length; i++) {
+										if (weather.list[i].dt_txt.includes(dateWeather)) {
+											console.log("funciona")
+											iconCode = weather.list[i].weather[0].icon
+											urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
+											
+											setStore(urlIcon)
+											temperatura = Math.round(weather.list[i].main.temp)
+											setStore(temperatura)
+											
+											break
+										}
+										if (!weather.list[i].dt_txt.includes(dateWeather)){
+											console.log("no está la fecha")
+											temperatura = "TBD"
+											// setStore(tempList)
+											// urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
+
+										}
 										
 									}
-								}
-							}
+									tempList.push(temperatura)
+									setStore(tempList)
+									console.log(tempList, "tempList dentro del for")
+
+									iconsList.push(urlIcon)
+									setStore(iconsList)
+
 
 									//CON LA URL DE WEATHER, NO DE FORECAST
 									// let { tempList } = getStore()
@@ -254,18 +255,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 							activities: data.result,
 						});
 
-						let { locationList } = getStore()
-						let { dateList } = getStore()
+						// let { locationList } = getStore()
+						// let { dateList } = getStore()
 
-						let { activities } = getStore()
-						activities.map((value, index) => {
-							let location = value.city
-							let date = value.date
-							locationList.push(location)
-							dateList.push(date)
-							setStore(locationList)
-							setStore(dateList)
-						})
+						// let { activities } = getStore()
+						// activities.map((value, index) => {
+						// 	let location = value.city
+						// 	let date = value.date
+						// 	locationList.push(location)
+						// 	dateList.push(date)
+						// 	setStore(locationList)
+						// 	setStore(dateList)
+						// })
 
 
 
