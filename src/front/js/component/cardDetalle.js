@@ -64,7 +64,7 @@ export const CardDetalle = () => {
                 <h6 className="card-subtitle mb-2 text-muted">{value.city}</h6>
                 <div className="text-center">
                   <img src={store.iconsList[index]}></img>
-                  {store.tempList[index]}ºC
+                  {store.tempList[index]}
                 </div>
                 <hr className="m-2"></hr>
                 <div className="text-center">

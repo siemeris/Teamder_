@@ -138,31 +138,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 									dateWeather = year + "-" + month + "-" + day
 
 									setStore(dateWeather)
-									console.log(dateWeather, "dateWeather getweather")
+									console.log(weather, "Weather weather")
 
 									console.log(weather.list[0].dt_txt, "fecha api weather")
 									console.log(weather.list.length, "longitud de la lista weather")
 									console.log(dateWeather, "fecha del datelist")
 
 
-									for (let i = 0; i < weather.list.length; i++) {
-										if (weather.list[i].dt_txt.includes(dateWeather)) {
+									for (let i = weather.list.length-1; i >0; i--) {
+										if (weather.list[i].dt_txt.includes(dateWeather) && (!weather.list[i].dt_txt.includes("21:00:00"))&& (!weather.list[i].dt_txt.includes("00:00:00"))) {
 											console.log("funciona")
 											iconCode = weather.list[i].weather[0].icon
 											urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
 											
 											setStore(urlIcon)
-											temperatura = Math.round(weather.list[i].main.temp)
+											temperatura = Math.round(weather.list[i].main.temp) + "ºC"
 											setStore(temperatura)
 											
 											break
 										}
 										if (!weather.list[i].dt_txt.includes(dateWeather)){
 											console.log("no está la fecha")
-											temperatura = "TBD"
+											temperatura = ""
 											// setStore(tempList)
-											// urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
-
+											//urlIcon = `http://openweathermap.org/img/wn/02d.png`
+											urlIcon = `http://openweathermap.org/img/wn/50d.png`
 										}
 										
 									}
