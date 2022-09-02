@@ -1,4 +1,4 @@
-giconst getState = ({ getStore, getActions, setStore }) => {
+const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: "",
