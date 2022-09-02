@@ -20,15 +20,21 @@ export const CardDetalle = () => {
 
   // const url2 = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + location + "&appid=74b3467d2c3033271c21502ee8e7ca5e&units=metric"
   // "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=Madrid&units=metric"
-  useEffect(() => { actions.getActivities(); }, [])
+  
 
   // useEffect(()=>{
   //    actions.getWeather()
   //  },[store.locationList])
 
-  console.log(store.locationList, "listado location")
-  console.log(store.tempList, "listado temperaturas")
-  console.log(store.iconsList, "listado URLiconos")
+  useEffect(() => { actions.getWeather();  }, [])
+  // useEffect(()=>{
+  //   store.tempList=[]
+  //    actions.getWeather()
+  //  },[store.locationList])
+
+  // console.log(store.locationList, "listado location")
+  // console.log(store.tempList, "listado temperaturas")
+  // console.log(store.iconsList, "listado URLiconos")
 
   return (
     <div className="container mt-4">
@@ -36,7 +42,7 @@ export const CardDetalle = () => {
         {store.activities.map((value, index) => {
           // store.location=value.city
           // console.log(store.location, "store.location")
-          console.log(value.city)
+      
           // actions.getWeather(value.city)
           return (
 

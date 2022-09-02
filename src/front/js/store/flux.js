@@ -1,3 +1,5 @@
+import { set } from "date-fns";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -21,13 +23,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ]
 			markers: [],
 			dates: [],
-			iconCode:"",
-			urlIcon:"",
+			iconCode: "",
+			urlIcon: "",
 			iconsList: [],
 			locationList: [],
-			dateList:[],
+			dateList: [],
 			tempList: [],
-			weather:[],
+			weather: [],
 
 		},
 		actions: {
@@ -71,6 +73,140 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	})
 
 			// },
+			getWeather: async () => {
+
+				await fetch(
+					"https://3001-miguelubeda-teamder-ygfdc0g635s.ws-eu63.gitpod.io/api/getAllActivities"
+				)
+					.then((resp) => {
+						if (resp.ok) {
+							console.log("El request se hizo bien");
+							return resp.json();
+						} else {
+							console.log("Hubo un Error " + resp.status + " en el request");
+						}
+					})
+					.then((data) => {
+						setStore({
+							activities: data.result,
+						});
+
+						let { locationList } = getStore()
+						let { dateList } = getStore()
+
+						let { activities } = getStore()
+						activities.map((value, index) => {
+							let location = value.city
+							let date = value.date
+							locationList.push(location)
+							//modificando el date para que tenga formato de api 2022-12-01
+							const [day, month, year] = date.split('/')
+							date=year + "-" + month + "-" + day
+							dateList.push(date)
+							setStore(locationList)
+							setStore(dateList)
+						})
+
+						console.log(locationList, "location get weather")
+						console.log(dateList, "dateList getWeather")
+						locationList.map((value, index) => {
+							// const url = "https://api.openweathermap.org/data/2.5/weather?q=" + value + "&lang=en&units=metric&appid=74b3467d2c3033271c21502ee8e7ca5e"
+							const url = "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=" + value + "&units=metric"
+							console.log(url, "url")
+							fetch(url)
+								.then((resp) => {
+									if (resp.ok) {
+										console.log("El request se hizo bien");
+										return resp.json();
+									} else {
+										console.log("Hubo un Error " + resp.status + " en el request");
+									}
+								})
+								.then((data) => {
+									//here is were your code should start after the fetch finishes
+									console.log("Este es el body del request", data); //this will print on the console the exact object received from the server
+									// console.log(body.map((t) => t.label));
+									// setLista(body.map((t) => t.label));
+									setStore({ weather: data })
+									const { weather } = getStore()
+									console.log(weather, "weather getweather")
+
+									//TEMPERATURA
+									let { tempList } = getStore()
+									tempList.push(Math.round(weather.list[0].main.temp))
+									setStore(tempList)
+									console.log(tempList, "tempList del flux")
+									//ICONOS
+									let {iconCode} = getStore()
+									let {iconsList} = getStore()
+									let {urlIcon} = getStore()
+									iconCode = weather.list[0].weather[0].icon
+									urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
+									iconsList.push(urlIcon)
+									setStore(iconsList)
+									
+									
+									let { dateList } = getStore()
+									console.log(dateList, "dateList getweather")
+
+									console.log(weather.list[0].dt_txt, "fecha api weather")
+									console.log(weather.list.length, "longitud de la lista weather")
+									console.log(dateList[0], "fecha del datelist")
+
+									for(let j=0; j<dateList.length; j++){
+									for (let i=0; i<weather.list.length; i++){
+									if(weather.list[i].dt_txt.includes(dateList[j])){
+										console.log("funciona")
+										iconCode=weather.list[i].weather[0].icon
+										urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
+										iconsList.push(urlIcon)
+										setStore(iconsList)
+										tempList.push(Math.round(weather.list[i].main.temp))
+										setStore(tempList)
+									}
+									else{
+										console.log("no está la fecha")
+										tempList.push("TBD")
+										setStore(tempList)
+										
+									}
+								}
+							}
+
+									//CON LA URL DE WEATHER, NO DE FORECAST
+									// let { tempList } = getStore()
+									// tempList.push(Math.round(data.main.temp))
+									// setStore(tempList)
+
+									// let {iconCode} = getStore()
+									// let {iconsList} = getStore()
+									// let {urlIcon} = getStore()
+
+									// // icono de la API estático
+									// iconCode = data.weather[0].icon
+									// urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
+									// iconsList.push(urlIcon)
+									// setStore(iconsList)
+
+								})
+								.catch((error) => {
+									//error handling
+									console.error("ERROR:", error);
+								});
+						})
+
+
+
+
+
+					})
+
+					.catch((error) => {
+						//error handling
+						console.error("ERROR:", error);
+					});
+			},
+
 			getMarkers: () => {
 				let { markers } = getStore()
 				const { activities } = getStore()
@@ -123,7 +259,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 						let { activities } = getStore()
 						activities.map((value, index) => {
-							console.log(value.city, "city del map")
 							let location = value.city
 							let date = value.date
 							locationList.push(location)
@@ -133,70 +268,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						})
 
 
-						console.log(locationList, "location get weather")
-						locationList.map((value, index) => {
-							// const url = "https://api.openweathermap.org/data/2.5/weather?q=" + value + "&lang=en&units=metric&appid=74b3467d2c3033271c21502ee8e7ca5e"
-							const url = "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=" + value + "&units=metric"
-							console.log(url, "url")
-							fetch(url)
-								.then((resp) => {
-									if (resp.ok) {
-										console.log("El request se hizo bien");
-										return resp.json();
-									} else {
-										console.log("Hubo un Error " + resp.status + " en el request");
-									}
-								})
-								.then((data) => {
-									//here is were your code should start after the fetch finishes
-									console.log("Este es el body del request", data); //this will print on the console the exact object received from the server
-									// console.log(body.map((t) => t.label));
-									// setLista(body.map((t) => t.label));
-									setStore({weather: data})
-									const {weather} = getStore()
-									console.log(weather, "weather")
 
-									let{tempList} =getStore()
-									tempList.push(Math.round(data.list[0].main.temp))
-
-									let{dateList} = getStore()
-									console.log(dateList, "dateList")
-									
-									//CON LA URL DE WEATHER, NO DE FORECAST
-									// let { tempList } = getStore()
-									// tempList.push(Math.round(data.main.temp))
-									// setStore(tempList)
-
-									// let {iconCode} = getStore()
-									// let {iconsList} = getStore()
-									// let {urlIcon} = getStore()
-
-									// // icono de la API estático
-									// iconCode = data.weather[0].icon
-									// urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
-									// iconsList.push(urlIcon)
-									// setStore(iconsList)
-
-								})
-								.catch((error) => {
-									//error handling
-									console.error("ERROR:", error);
-								});
-						})
-
-
-
-
-
-						// location.push(data.result.city)
-						// console.log(locationList, "array de locations flux")
-						// const { activities } = getStore()
-						// const { location } = getStore()
-						// activities.map((value)=>{
-						// 	location = value.city
-						// 	console.log(value.city, "value.city")
-						// 	getWeather(location,value.date)
-						// })
 
 					})
 
