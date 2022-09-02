@@ -33,8 +33,8 @@ export const CardDetalle = () => {
   //  },[store.locationList])
 
   // console.log(store.locationList, "listado location")
-  console.log(store.tempList, "listado temperaturas CardDetalle")
-  console.log(store.iconsList, "listado URLiconos CardDetalle")
+  // console.log(store.tempList, "listado temperaturas CardDetalle")
+  // console.log(store.iconsList, "listado URLiconos CardDetalle")
 
   return (
     <div className="container mt-4">

@@ -96,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						activities.map((value, index) => {
 							// const url = "https://api.openweathermap.org/data/2.5/weather?q=" + value + "&lang=en&units=metric&appid=74b3467d2c3033271c21502ee8e7ca5e"
 							const url = "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=" + value.city + "&units=metric"
-							console.log(url, "url")
+							// console.log(url, "url")
 							fetch(url)
 								.then((resp) => {
 									if (resp.ok) {
@@ -108,12 +108,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 								})
 								.then((data) => {
 									//here is were your code should start after the fetch finishes
-									console.log("Este es el body del request", data); //this will print on the console the exact object received from the server
+									// console.log("Este es el body del request", data); //this will print on the console the exact object received from the server
 									// console.log(body.map((t) => t.label));
 									// setLista(body.map((t) => t.label));
 									setStore({ weather: data })
 									const { weather } = getStore()
-									console.log(weather, "weather getweather")
+									// console.log(weather, "weather getweather")
 
 									// //TEMPERATURA
 									let { tempList } = getStore()
@@ -138,16 +138,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 									dateWeather = year + "-" + month + "-" + day
 
 									setStore(dateWeather)
-									console.log(weather, "Weather weather")
+									// console.log(weather, "Weather weather")
 
-									console.log(weather.list[0].dt_txt, "fecha api weather")
-									console.log(weather.list.length, "longitud de la lista weather")
-									console.log(dateWeather, "fecha del datelist")
+									// console.log(weather.list[0].dt_txt, "fecha api weather")
+									// console.log(weather.list.length, "longitud de la lista weather")
+									// console.log(dateWeather, "fecha del datelist")
 
 
 									for (let i = weather.list.length-1; i >0; i--) {
 										if (weather.list[i].dt_txt.includes(dateWeather) && (!weather.list[i].dt_txt.includes("21:00:00"))&& (!weather.list[i].dt_txt.includes("00:00:00"))) {
-											console.log("funciona")
+											// console.log("funciona")
 											iconCode = weather.list[i].weather[0].icon
 											urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
 											
@@ -158,7 +158,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 											break
 										}
 										if (!weather.list[i].dt_txt.includes(dateWeather)){
-											console.log("no está la fecha")
+											// console.log("no está la fecha")
 											temperatura = ""
 											// setStore(tempList)
 											//urlIcon = `http://openweathermap.org/img/wn/02d.png`
@@ -168,7 +168,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 									}
 									tempList.push(temperatura)
 									setStore(tempList)
-									console.log(tempList, "tempList dentro del for")
+									// console.log(tempList, "tempList dentro del for")
 
 									iconsList.push(urlIcon)
 									setStore(iconsList)
