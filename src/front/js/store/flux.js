@@ -342,12 +342,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			editUser: async (infoUser) => {
+				let tok = localStorage.getItem("token");
 
 				await fetch("https://3001-miguelubeda-teamder-nrlhrinv3sl.ws-eu63.gitpod.io/api/editUser", {
 					method: "PUT",
 					body: JSON.stringify(infoUser),
 					headers: {
-						"Content-Type": "application/json"
+						"Content-Type": "application/json",
+						Authorization: "Bearer " + tok,
 					},
 				}).then((resp) => {
 					if (resp.ok) {

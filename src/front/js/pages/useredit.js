@@ -24,6 +24,7 @@ export const UserEdit = () => {
   const [password, setPassword] = useState("");
 
   return (
+    <>
     <div className="container">
       <div className="main-body">
         <div className="row gutters-sm">
@@ -67,7 +68,7 @@ export const UserEdit = () => {
                     <h6 className="mb-0">Age</h6>
                   </div>
                   <div className="col-sm-9 text-secondary">
-                    <input type="text" className="form-control" placeholder={store.currentUser.Current_age}></input>
+                    <input type="text" className="form-control" onChange={(e) => setAge(e.target.value)} placeholder={store.currentUser.Current_age}></input>
                   </div>
                 </div>
                 <div className="row mb-3">
@@ -75,7 +76,7 @@ export const UserEdit = () => {
                     <h6 className="mb-0">Gender</h6>
                   </div>
                   <div className="col-sm-9 text-secondary">
-                    <input type="text" className="form-control" placeholder={store.currentUser.Current_gender}></input>
+                    <input type="text" className="form-control" onChange={(e) => setGender(e.target.value)} placeholder={store.currentUser.Current_gender}></input>
                   </div>
                 </div>
               </div>
@@ -84,5 +85,28 @@ export const UserEdit = () => {
         </div>
       </div>
     </div>
+
+<div className="modal-footer m-auto">
+<button type="button" className="btn btn-secondary mx-2" data-bs-dismiss="modal">Cancel</button>
+  <button
+    type="submit"
+    className="btn btn-info"
+    onClick={async () => {
+      await actions.editUser({
+        email: email,
+        password: password,
+        name: name,
+        username: username,
+        lastname: lastname,
+        age: age,
+        gender: gender,
+      });
+    }}
+    data-bs-dismiss="modal"
+  >
+    Save changes
+  </button>
+</div>
+</>
   );
 };

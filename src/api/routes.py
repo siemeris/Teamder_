@@ -187,7 +187,12 @@ def editUser():
     request_body = request.get_json(force=True)
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
-    user = User( name = request_body["name"], username = request_body["username"], lastname = request_body["lastname"], age = request_body["age"], gender = request_body["gender"],email = request_body["email"], password = request_body["password"])
+    user.name = request_body["name"]
+    # user.username = request_body["username"]
+    user.age = request_body["age"]
+    user.gender = request_body["gender"]
+    # user.lastname
+    #  = User( name = request_body["name"], username = , lastname = request_body["lastname"], age = request_body["age"], gender = request_body["gender"],email = request_body["email"], password = request_body["password"])
     db.session.commit()
     return jsonify(), 200
 
