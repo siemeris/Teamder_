@@ -17,8 +17,8 @@ class User(db.Model):
      gender= db.Column(db.String(120), nullable=False)
      email = db.Column(db.String(120), unique=True, nullable=False)
      password = db.Column(db.String(80), nullable=False)
-    # mobile= db.Column(db.Integer, unique=True, nullable=False)
-    # address = db.Column(db.String(80), nullable=False)
+     mobile= db.Column(db.Integer, unique=True, nullable=True)
+     address = db.Column(db.String(80), nullable=True)
     # is_active = db.Column(db.Boolean, nullable=False)
      activities = db.relationship("Activities", secondary=takingActivity, back_populates="users")
      postedactivities = db.relationship('Activities', backref='user', lazy=True)
@@ -28,7 +28,7 @@ class User(db.Model):
      def serialize(self):
           return {
                "id": self.id,
-               "username": self.id,
+               "username": self.username,
                "name": self.name,
                "lastname": self.lastname,
                "age": self.age,
