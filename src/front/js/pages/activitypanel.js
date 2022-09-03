@@ -6,6 +6,7 @@ import { AddActivity } from "./addactivity.js";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { differenceInCalendarDays } from 'date-fns';
+import { EditActivity } from "/workspace/Teamder/src/front/js/component/editactivity";
 
 export function ActivityPanel() {
     const { store, actions } = useContext(Context)
@@ -23,21 +24,21 @@ export function ActivityPanel() {
     }, [store.auth])
 
     useEffect(() => {
-        store.dates=[]
+        store.dates = []
         actions.getPostedActivities();
     }, [store.activities])
 
     useEffect(() => {
-        store.datesUser=[]
-         actions.getTargetActivities();
-         actions.getPostedActivities();
-     }, [store.index])
+        store.datesUser = []
+        actions.getTargetActivities();
+        actions.getPostedActivities();
+    }, [store.index])
 
 
     function isSameDay(a, b) {
         return differenceInCalendarDays(a, b) === 0;
     }
-  
+
 
 
 
@@ -64,7 +65,7 @@ export function ActivityPanel() {
     //     })
     // },[store.postedActivities])
 
-        // console.log(store.dates, "dates activity panel" )
+    // console.log(store.dates, "dates activity panel" )
 
 
     return (
@@ -87,9 +88,9 @@ export function ActivityPanel() {
                                                     <h6>
                                                         Create event
                                                         <button type="button" className="btn btn-outline-info btn-sm ms-1" onClick={() => {
-                                                                        store.index = value.id,
-                                                                            console.log(store.index, "index")
-                                                                    }} data-bs-toggle="modal" data-bs-target="#staticBackdropCREATE">
+                                                            store.index = value.id,
+                                                                console.log(store.index, "index")
+                                                        }} data-bs-toggle="modal" data-bs-target="#staticBackdropCREATE">
                                                             +
                                                         </button>
 
@@ -141,10 +142,10 @@ export function ActivityPanel() {
                                         </div>
                                         <Calendar onChange={setDate}
                                             selectRange={false}
-                                            value={value} locale="en-GB" tileClassName={({ date, view })=>{
+                                            value={value} locale="en-GB" tileClassName={({ date, view }) => {
                                                 // Add class to tiles in month view only
                                                 let fechas = store.datesUser.concat(store.dates)
-                                                
+
                                                 if (view === 'month') {
                                                     // Check if a date React-Calendar wants to check is on the list of dates to add class to
                                                     if (fechas.find(dDate => isSameDay(dDate, date))) {
@@ -174,7 +175,10 @@ export function ActivityPanel() {
                                                                 style={{ backgroundColor: "rgb(15, 231, 241)" }}
                                                             >
                                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
-                                                                    <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
+                                                                    <button type="button" className="btn btn-link btn-sm text-secondary" onClick={() => {
+                                                                        store.index = value.id,
+                                                                            console.log(store.index, "index")
+                                                                    }} data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
                                                                     <button type="button" onClick={() => {
                                                                         store.index = value.id,
                                                                             console.log(store.index, "index")
@@ -233,7 +237,7 @@ export function ActivityPanel() {
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
-                                    <AddActivity />
+                                    <EditActivity />
                                 </div>
                                 <div className="modal-footer">
                                     <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -282,7 +286,7 @@ export function ActivityPanel() {
                                         actions.leaveActivity({
                                             index: store.index
                                         })
-                                        store.datesUser=[]
+                                        store.datesUser = []
                                         actions.getTargetActivities()
                                     }}  >Leave</button>
                                     {/*  */}

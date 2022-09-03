@@ -73,7 +73,7 @@ export const UserProfile = () => {
                   <div className="col-sm-3">
                     <h6 className="mb-0">Email</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">{store.currentUser.email}</div>
+                  <div className="col-sm-9 text-secondary">{store.currentUser.Current_email}</div>
                 </div>
                 {/* <hr> */}
                 {/* <hr> */}
@@ -108,7 +108,7 @@ export const UserProfile = () => {
                 <div className="row">
                   <div className="col-sm-12">
 
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdrop">
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdropUSEREDIT">
                       Edit
                     </button>
                   </div>
@@ -143,7 +143,7 @@ export const UserProfile = () => {
         </div>
       </div>
 
-      <div class="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal fade" id="staticBackdropUSEREDIT" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
           <div class="modal-content">
             <div class="modal-header">

@@ -162,6 +162,37 @@ def create_token():
     access_token = create_access_token(identity=user.id)
     return jsonify({ "token": access_token, "user_id": user.id })
 
+@api.route('/editActivity', methods=['PUT'])
+@jwt_required()
+def editActivity():
+    request_body = request.get_json(force=True)
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    activity_id = request_body["index"]
+    actividad = Activities.query.get(activity_id)
+    actividad.category = request_body["category"]
+    actividad.name = request_body["title"]
+    actividad.players = request_body["participants"]
+    actividad.date = date = request_body["date"]
+    actividad.city = request_body["city"]
+    actividad.location = request_body["location"]
+    actividad.time = request_body["time"]
+    # = Activities(category = request_body["category"], name = request_body["title"], players = request_body["participants"], date = request_body["date"], city = request_body["city"], location = request_body["location"], time = request_body["time"], user_id = user.id)
+    db.session.commit()
+    return jsonify(), 200
+
+@api.route('/editUser', methods=['PUT'])
+@jwt_required()
+def editUser():
+    request_body = request.get_json(force=True)
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    user = User( name = request_body["name"], username = request_body["username"], lastname = request_body["lastname"], age = request_body["age"], gender = request_body["gender"],email = request_body["email"], password = request_body["password"])
+    db.session.commit()
+    return jsonify(), 200
+
+
+
 # Protege una ruta con jwt_required, bloquea las peticiones
 # sin un JWT válido presente.
 @api.route("/privated", methods=["GET"])
