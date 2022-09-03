@@ -41,28 +41,28 @@ export function ActivityPanel() {
 
 
 
-    useEffect(() => {
-        actions.private();
-        actions.getPostedActivities();
-        // store.activities.map((value, index) => {
-        //     dateString.append(value.date);
-        //     console.log(value.date);
-        //   }
-        //   );
-    }
-        , [])
+    // useEffect(() => {
+    //     actions.private();
+    //     actions.getPostedActivities();
+    //     // store.activities.map((value, index) => {
+    //     //     dateString.append(value.date);
+    //     //     console.log(value.date);
+    //     //   }
+    //     //   );
+    // }
+    //     , [])
 
-    useEffect(()=>{
-        dateString.map((value) => {
-            const [day, month, year] = value.split("/")
-            const newDate = new Date(+year, +month - 1, +day);
-            console.log(date, "date antes del push")
-            datelist.push(newDate)
-            // console.log(newDate, "newDate")
-            // setDatelist(date => [...date, newDate]);
-            // console.log(date, "date")
-        })
-    },[store.postedActivities])
+    // useEffect(()=>{
+    //     dateString.map((value) => {
+    //         const [day, month, year] = value.split("/")
+    //         const newDate = new Date(+year, +month - 1, +day);
+    //         console.log(date, "date antes del push")
+    //         datelist.push(newDate)
+    //         // console.log(newDate, "newDate")
+    //         // setDatelist(date => [...date, newDate]);
+    //         // console.log(date, "date")
+    //     })
+    // },[store.postedActivities])
 
         // console.log(store.dates, "dates activity panel" )
 
