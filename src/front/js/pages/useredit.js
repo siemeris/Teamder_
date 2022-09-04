@@ -6,20 +6,14 @@ import { Link } from "react-router-dom";
 
 export const UserEdit = () => {
   const { store, actions } = useContext(Context);
-
-  useEffect(() => {
-    actions.getCurrentUser();
-    console.log(store.currentUser.Current_email, "DatosUsuario del useEffect");
-    console.log;
-  }, []);
-
   const [name, setName] = useState("");
   const [username, setUsername] = useState("");
   const [lastname, setLastname] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const [mobile, setMobile] = useState("");
+
 
   return (
     <>
@@ -37,10 +31,40 @@ export const UserEdit = () => {
                       <input
                         type="text"
                         className="form-control"
-                        value={store.currentUser.Current_name}
+                        onChange={(e) => setName(e.target.value)}
+                        placeholder={store.currentUser.Current_name}
                       ></input>
                     </div>
                   </div>
+
+                  <div className="row mb-3">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Lastname</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      <input
+                        type="text"
+                        className="form-control"
+                        onChange={(e) => setLastname(e.target.value)}
+                        placeholder={store.currentUser.Current_lastname}
+                      ></input>
+                    </div>
+                  </div>
+
+                  <div className="row mb-3">
+                    <div className="col-sm-3">
+                      <h6 className="mb-0">Userame</h6>
+                    </div>
+                    <div className="col-sm-9 text-secondary">
+                      <input
+                        type="text"
+                        className="form-control"
+                        onChange={(e) => setUsername(e.target.value)}
+                        placeholder={store.currentUser.Current_username}
+                      ></input>
+                    </div>
+                  </div>
+                  
                   <div className="row mb-3">
                     <div className="col-sm-3">
                       <h6 className="mb-0">Email</h6>
@@ -50,6 +74,7 @@ export const UserEdit = () => {
                         type="text"
                         className="form-control"
                         placeholder={store.currentUser.Current_email}
+                        onChange={(e) => setEmail(e.target.value)}
                       ></input>
                     </div>
                   </div>
@@ -62,6 +87,8 @@ export const UserEdit = () => {
                         type="text"
                         className="form-control"
                         placeholder="(320) 380-4539"
+                        onChange={(e) => setMobile(e.target.value)}
+
                       ></input>
                     </div>
                   </div>
@@ -73,7 +100,9 @@ export const UserEdit = () => {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder="Bay Area, San Francisco, CA"
+                        placeholder={store.currentUser.Current_email}
+                        onChange={(e) => setAddress(e.target.value)}
+
                       ></input>
                     </div>
                   </div>
@@ -128,6 +157,7 @@ export const UserEdit = () => {
               name: name,
               username: username,
               lastname: lastname,
+              mobile: mobile,
               age: age,
               gender: gender,
             });

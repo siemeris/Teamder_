@@ -65,6 +65,25 @@ def obtenerCurrentUser():
     }
     return jsonify(response_body), 200
 
+# @api.route('/getCurrentActivity', methods=['GET'])
+# @jwt_required()
+# def obtenerCurrentActivity():
+#     current_user_id = get_jwt_identity()
+#     user = User.query.get(current_user_id)
+#     listaActividades = User.query.filter_by(id=user.id).first().activities
+#     Actividades = list(map(lambda x: x.serialize(), response))
+#     response_body = {
+#         "Current_category": response.category,
+#         "Current_title": response.title,
+#         "Current_description": response.description,
+#         "Current_players": response.players,
+#         "Current_date": response.date,
+#         "Current_city": response.city,
+#         "Current_location": response.location,
+#         "Current_time": response.time,
+#     }
+#     return jsonify(response_body), 200
+
 @api.route('/getPostedActivities', methods=['GET'])
 @jwt_required()
 def get_posted_activities():
@@ -75,6 +94,26 @@ def get_posted_activities():
     return jsonify({
         "Posted_Activities": Actividades,
     }), 200
+
+@api.route('/getCurrentActivity', methods=['GET'])
+@jwt_required()
+def get_current_activity():
+    request_body = request.get_json(force=True)
+    current_user_id = get_jwt_identity()
+    user = User.query.get(current_user_id)
+    activity_id = request_body["index"]
+    response = Activities.query.filter_by(id=activity_id).first()
+    response_body = {
+        "Current_category": response.category,
+        "Current_title": response.name,
+        "Current_description": response.description,
+        "Current_players": response.players,
+        "Current_date": response.date,
+        "Current_city": response.city,
+        "Current_location": response.location,
+        "Current_time": response.time,
+    }
+    return jsonify(response_body), 200
 
 @api.route('/getTargetActivities', methods=['GET'])
 @jwt_required()
@@ -141,7 +180,7 @@ def delete_activity():
 @api.route('/signup', methods=['POST'])
 def signup():
     request_body = request.get_json(force=True)
-    user = User( name = request_body["name"], username = request_body["username"], lastname = request_body["lastname"], age = request_body["age"], gender = request_body["gender"],email = request_body["email"], password = request_body["password"])
+    user = User( name = request_body["name"], username = request_body["username"], lastname = request_body["lastname"], age = request_body["age"], gender = request_body["gender"],email = request_body["email"], password = request_body["password"], mobile = request_body["mobile"], address = request_body["address"] )
     db.session.add(user)
     db.session.commit()
     return jsonify(), 200
@@ -177,7 +216,6 @@ def editActivity():
     actividad.city = request_body["city"]
     actividad.location = request_body["location"]
     actividad.time = request_body["time"]
-    # = Activities(category = request_body["category"], name = request_body["title"], players = request_body["participants"], date = request_body["date"], city = request_body["city"], location = request_body["location"], time = request_body["time"], user_id = user.id)
     db.session.commit()
     return jsonify(), 200
 
@@ -188,11 +226,13 @@ def editUser():
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
     user.name = request_body["name"]
-    # user.username = request_body["username"]
+    user.username = request_body["username"]
     user.age = request_body["age"]
     user.gender = request_body["gender"]
-    # user.lastname
-    #  = User( name = request_body["name"], username = , lastname = request_body["lastname"], age = request_body["age"], gender = request_body["gender"],email = request_body["email"], password = request_body["password"])
+    user.lastname = request_body["lastname"]
+    user.address = request_body["address"]
+    user.mobile = request_body["mobile"]
+    user.email = request_body["email"]
     db.session.commit()
     return jsonify(), 200
 

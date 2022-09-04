@@ -16,7 +16,6 @@ export const UserProfile = () => {
   useEffect(() => {
     actions.getCurrentUser();
     console.log(store.currentUser.Current_email, "DatosUsuario del useEffect");
-    console.log
 }
     , [])
   
@@ -52,8 +51,6 @@ export const UserProfile = () => {
                   <div className="mt-3">
                     <h4>{store.currentUser.Current_name} {store.currentUser.Current_lastname} </h4>
                     <p className="text-secondary mb-1">Active Teamder Player</p>
-                    {/* <button className="btn btn-info">Follow</button>
-                    <button className="btn btn-outline-info">Message</button> */}
                   </div>
                 </div>
               </div>
@@ -68,6 +65,14 @@ export const UserProfile = () => {
                   </div>
                   <div className="col-sm-9 text-secondary">{store.currentUser.Current_name} {store.currentUser.Current_lastname}</div>
                 </div>
+
+                <div className="row">
+                  <div className="col-sm-3">
+                    <h6 className="mb-0">Username</h6>
+                  </div>
+                  <div className="col-sm-9 text-secondary">{store.currentUser.Current_username} </div>
+                </div>
+                
                 {/* <hr> */}
                 <div className="row">
                   <div className="col-sm-3">
@@ -152,10 +157,6 @@ export const UserProfile = () => {
             </div>
             <div class="modal-body">
               <UserEdit />
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-              <button type="button" class="btn btn-info">Save Changes</button>
             </div>
           </div>
         </div>

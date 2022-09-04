@@ -35,8 +35,8 @@ class User(db.Model):
                "gender": self.gender,
                "email": self.email,
                "password": self.password,
-            #  "mobile": self.mobile,
-            #  "address": self.address,
+               "mobile": self.mobile,
+               "address": self.address,
                # "activities": self.obtain_activities()
          }
 
