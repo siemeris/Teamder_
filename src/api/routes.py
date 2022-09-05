@@ -60,7 +60,8 @@ def obtenerCurrentUser():
         "Current_lastname": response.lastname,
         "Current_age": response.age,
         "Current_gender": response.gender,
-        "Current_email": response.email
+        "Current_email": response.email,
+        "Current_address": response.address,
         
     }
     return jsonify(response_body), 200
@@ -95,14 +96,14 @@ def get_posted_activities():
         "Posted_Activities": Actividades,
     }), 200
 
-@api.route('/getCurrentActivity', methods=['GET'])
+@api.route('/getCurrentActivity/<int:index>', methods=['GET'])
 @jwt_required()
-def get_current_activity():
-    request_body = request.get_json(force=True)
+def get_current_activity(index):
+    # request_body = request.get_json(force=True)
     current_user_id = get_jwt_identity()
     user = User.query.get(current_user_id)
-    activity_id = request_body["index"]
-    response = Activities.query.filter_by(id=activity_id).first()
+    # activity_id = index
+    response = Activities.query.filter_by(id=index).first()
     response_body = {
         "Current_category": response.category,
         "Current_title": response.name,
@@ -216,6 +217,8 @@ def editActivity():
     actividad.city = request_body["city"]
     actividad.location = request_body["location"]
     actividad.time = request_body["time"]
+    actividad.latitude = request_body["latitude"]
+    actividad.longitude = request_body["longitude"]
     db.session.commit()
     return jsonify(), 200
 

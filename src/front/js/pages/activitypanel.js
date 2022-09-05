@@ -26,7 +26,7 @@ export function ActivityPanel() {
     useEffect(() => {
         store.dates = []
         actions.getPostedActivities();
-        actions.getCurrentActivity();
+        
     }, [store.activities])
 
     useEffect(() => {
@@ -99,6 +99,7 @@ export function ActivityPanel() {
                                                         <button type="button" className="btn btn-outline-info btn-sm ms-1" onClick={() => {
                                                             store.index = value.id,
                                                                 console.log(store.index, "index")
+
                                                         }} data-bs-toggle="modal" data-bs-target="#staticBackdropCREATE">
                                                             +
                                                         </button>
@@ -120,8 +121,9 @@ export function ActivityPanel() {
                                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
                                                                     {/* <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button> */}
                                                                     <button type="button" className="btn btn-link btn-sm text-danger" onClick={() => {
-                                                                        store.index = value.id,
-                                                                            console.log(store.index, "index")
+                                                                        actions.getCurrentActivity({index: value.id});
+                                                                            console.log(store.currentActivity, "CA AP")
+                                                                            console.log(store.index, "index");
                                                                     }} data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
                                                                     <span className="visually-hidden"></span>
                                                                 </span>
@@ -187,8 +189,9 @@ export function ActivityPanel() {
                                                                     <button type="button" className="btn btn-link btn-sm text-secondary" onClick={() => {
                                                                         
                                                                         store.index = value.id,
-                                                                            console.log(store.index, "index")
-                                                                        // actions.getCurrentActivity(store.index)
+                                                                            console.log(store.index, "index boton edit")
+                                                                        actions.getCurrentActivity(store.index)
+                                                                        
                                                                     }} data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
                                                                     <button type="button" onClick={() => {
                                                                         store.index = value.id,
@@ -248,7 +251,7 @@ export function ActivityPanel() {
                                     <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                 </div>
                                 <div className="modal-body">
-                                    <EditActivity />
+                                    <EditActivity title={store.currentActivity.Current_title} date={store.currentActivity.Current_date} />
                                 </div>
                             </div>
                         </div>

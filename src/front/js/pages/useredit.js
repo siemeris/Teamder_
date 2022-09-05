@@ -13,6 +13,7 @@ export const UserEdit = () => {
   const [gender, setGender] = useState("");
   const [email, setEmail] = useState("");
   const [mobile, setMobile] = useState("");
+  const [address, setAddress] = useState("")
 
 
   return (
@@ -100,7 +101,7 @@ export const UserEdit = () => {
                       <input
                         type="text"
                         className="form-control"
-                        placeholder={store.currentUser.Current_email}
+                        placeholder={store.currentUser.Current_address}
                         onChange={(e) => setAddress(e.target.value)}
 
                       ></input>
@@ -153,13 +154,14 @@ export const UserEdit = () => {
           onClick={async () => {
             await actions.editUser({
               email: email,
-              password: password,
+              // password: password,
               name: name,
               username: username,
               lastname: lastname,
               mobile: mobile,
               age: age,
               gender: gender,
+              address: address,
             });
           }}
           data-bs-dismiss="modal"
