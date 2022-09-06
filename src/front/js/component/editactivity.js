@@ -2,20 +2,18 @@ import { Context } from "../store/appContext";
 import React, { useState, useContext, useEffect } from "react";
 import Geocode from "react-geocode";
 
-export const EditActivity = ({propTitle,propDate}) => {
+export const EditActivity = ({ propTitle, propDate }) => {
   const { store, actions } = useContext(Context);
-  const [category, setCategory] = useState('');
-  const [title, setTitle] = useState(store.currentActivity.Current_title);
+  const [category, setCategory] = useState("");
+  const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [participants, setParticipants] = useState(store.currentActivity.Current_players);
-  const [date, setDate] = useState(store.currentActivity.Current_date);
-  const [city, setCity] = useState(store.currentActivity.Current_city);
-  const [location, setLocation] = useState("Bernabeu");
-  const [time, setTime] = useState(store.currentActivity.Current_time);
+  const [participants, setParticipants] = useState("");
+  const [date, setDate] = useState("");
+  const [city, setCity] = useState("");
+  const [location, setLocation] = useState("");
+  const [time, setTime] = useState("");
   const [latitude, setLatitude] = useState("");
   const [longitude, setLongitude] = useState("");
-
-  
 
 
   // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
@@ -53,16 +51,47 @@ export const EditActivity = ({propTitle,propDate}) => {
     );
   }, [location])
 
-  
+  const handleSubmit = (e) => {
+    if (category == '') {
+      // let category2 = store.currentActivity.Current_category
+      setCategory(store.currentActivity.Current_category)
+    }
+    if (title == '') {
+      // let category2 = store.currentActivity.Current_category
+      setTitle(store.currentActivity.Current_title)
+    }
+    if (participants == '') {
+      // let category2 = store.currentActivity.Current_category
+      setParticipants(store.currentActivity.Current_players)
+    }
+    if (date == '') {
+      // let category2 = store.currentActivity.Current_category
+      setDate(store.currentActivity.Current_date)
+    }
+    if (location == '') {
+      // let category2 = store.currentActivity.Current_category
+      setLocation(store.currentActivity.Current_location)
+    }
+    if (city == '') {
+      // let category2 = store.currentActivity.Current_category
+      setCity(store.currentActivity.Current_city)
+    }
+    if (time == '') {
+      // let category2 = store.currentActivity.Current_category
+      setTime(store.currentActivity.Current_time)
+    }
+    console.log(category, "category handlesubmit")
+    console.log(title, "title handlesubmit")
+    e.preventDefault();
+    e.target.reset();
+  }
+
 
 
   return (
     <form
       className="mx-5 mt-4"
-      onSubmit={(e) => {
-        e.preventDefault();
-        e.target.reset();
-      }}
+      onSubmit={handleSubmit}
     >
       <div className="mb-3">
         <label for="exampleInputEmail1" className="form-label">
@@ -74,8 +103,8 @@ export const EditActivity = ({propTitle,propDate}) => {
             id="reg_userquestion"
             className="form-control"
             name="user_question"
-            onLoad={(e) => e ? setCategory(e.target.value) : setCategory(store.currentActivity.Current_category)}
-            // onChange={(e) => setCategory(e.target.value)} 
+            // onLoad={(e) => e ? setCategory(e.target.value) : setCategory(store.currentActivity.Current_category)}
+            onChange={(e) => setCategory(e.target.value)} 
           >
             <option value>Select Category </option>
             <option>Soccer</option>
@@ -85,7 +114,7 @@ export const EditActivity = ({propTitle,propDate}) => {
             <option>Basketball</option>
             <option>Volleyball</option>
             <option>Others</option>
-            
+
           </select>
         </div>
       </div>
@@ -97,7 +126,7 @@ export const EditActivity = ({propTitle,propDate}) => {
           className="form-control"
           type="text"
           aria-label="default input example"
-          onChange={(e) => e ? setTitle(e.target.value) : setTitle(store.currentActivity.Current_title)}
+          onChange={(e) => setTitle(e.target.value)}
           defaultValue={(store.currentActivity.Current_title)}
         ></input>
       </div>
@@ -132,9 +161,9 @@ export const EditActivity = ({propTitle,propDate}) => {
         <input
           class="form-control"
           type="text"
-          defaultValue={store.currentActivity.Current_date} 
+          defaultValue={store.currentActivity.Current_date}
           aria-label="default input example"
-          onBlur={(e) => setDate(e.target.value)}
+          onChange={(e) => setDate(e.target.value)}
         ></input>
       </div>
       <div className="mb-3">
