@@ -122,9 +122,7 @@ export function ActivityPanel() {
                                                                     {/* <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button> */}
                                                                     <button type="button" className="btn btn-link btn-sm text-danger" onClick={() => {
                                                                         actions.getCurrentActivity({index: value.id});
-                                                                            console.log(store.currentActivity, "CA AP")
-                                                                            console.log(store.index, "index");
-                                                                    }} data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
+                                                                            }} data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
                                                                     <span className="visually-hidden"></span>
                                                                 </span>
                                                                 <div className="card-body">

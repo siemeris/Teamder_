@@ -7,7 +7,7 @@ export const EditActivity = ({ propTitle, propDate }) => {
   const [category, setCategory] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
-  const [participants, setParticipants] = useState("");
+  const [participants, setParticipants] = useState(null);
   const [date, setDate] = useState("");
   const [city, setCity] = useState("");
   const [location, setLocation] = useState("");
@@ -51,47 +51,51 @@ export const EditActivity = ({ propTitle, propDate }) => {
     );
   }, [location])
 
-  const handleSubmit = (e) => {
-    if (category == '') {
-      // let category2 = store.currentActivity.Current_category
-      setCategory(store.currentActivity.Current_category)
-    }
-    if (title == '') {
-      // let category2 = store.currentActivity.Current_category
-      setTitle(store.currentActivity.Current_title)
-    }
-    if (participants == '') {
-      // let category2 = store.currentActivity.Current_category
-      setParticipants(store.currentActivity.Current_players)
-    }
-    if (date == '') {
-      // let category2 = store.currentActivity.Current_category
-      setDate(store.currentActivity.Current_date)
-    }
-    if (location == '') {
-      // let category2 = store.currentActivity.Current_category
-      setLocation(store.currentActivity.Current_location)
-    }
-    if (city == '') {
-      // let category2 = store.currentActivity.Current_category
-      setCity(store.currentActivity.Current_city)
-    }
-    if (time == '') {
-      // let category2 = store.currentActivity.Current_category
-      setTime(store.currentActivity.Current_time)
-    }
-    console.log(category, "category handlesubmit")
-    console.log(title, "title handlesubmit")
-    e.preventDefault();
-    e.target.reset();
-  }
+  // useEffect(()=>{
+  //   actions.getCurrentActivity({index: store.index})
+  // },[])
 
+
+  const handleSubmit = (e) => {
+      if (category == '') {
+        // let category2 = store.currentActivity.Current_category
+        setCategory(store.currentActivity.Current_category)
+      }
+      if (title == '') {
+        // let category2 = store.currentActivity.Current_category
+        setTitle(store.currentActivity.Current_title)
+      }
+      if (participants == null) {
+        // let category2 = store.currentActivity.Current_category
+        setParticipants(store.currentActivity.Current_players)
+      }
+      if (date == '') {
+        // let category2 = store.currentActivity.Current_category
+        setDate(store.currentActivity.Current_date)
+      }
+      if (location == '') {
+        // let category2 = store.currentActivity.Current_category
+        setLocation(store.currentActivity.Current_location)
+      }
+      if (city == '') {
+        // let category2 = store.currentActivity.Current_category
+        setCity(store.currentActivity.Current_city)
+      }
+      if (time == '') {
+        // let category2 = store.currentActivity.Current_category
+        setTime(store.currentActivity.Current_time)
+      }
+      console.log(category, "category handlesubmit")
+      console.log(title, "title handlesubmit")
+      e.preventDefault();
+      // e.target.reset();
+  }
 
 
   return (
     <form
       className="mx-5 mt-4"
-      onSubmit={handleSubmit}
+      onClick={handleSubmit}
     >
       <div className="mb-3">
         <label for="exampleInputEmail1" className="form-label">
