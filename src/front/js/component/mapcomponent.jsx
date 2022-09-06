@@ -7,7 +7,7 @@ export const MapComponent = () => {
 
     const { store, actions } = useContext(Context)
     const [activeInfoWindow, setActiveInfoWindow] = useState("");
-    // const [pos, setPos] = useState({})
+    const [pos, setPos] = useState({})
 
     useEffect(() => {
         store.markers=[]
@@ -15,23 +15,23 @@ export const MapComponent = () => {
         //actions.getActivities();
         // console.log(store.markers, "markers del map component")
         // console.log(store.activities)
-        //    navigator.geolocation.getCurrentPosition(
-        //     ({ coords: { latitude: lat, longitude: lng } }) => {
-        //       const pos = { lat, lng };
-        //     setPos(pos)
-        //       console.log(pos)
-        //     })
+            navigator.geolocation.getCurrentPosition(
+             ({ coords: { latitude: lat, longitude: lng } }) => {
+                const pos = { lat, lng };
+                setPos(pos)
+               console.log(pos, "pos")
+             })
     }, [store.activities])
     
     const containerStyle = {
         width: "100%",
         height: "400px",
     }
-    // const center = pos
-    const center = {
-        lat: 40.422202620672174,
-        lng: -3.7039278794489334,
-    }
+    const center = pos
+    // const center = {
+    //     lat: 40.422202620672174,
+    //     lng: -3.7039278794489334,
+    // }
     const mapClicked = (event) => {
         console.log(event.latLng.lat(), event.latLng.lng())
     }
