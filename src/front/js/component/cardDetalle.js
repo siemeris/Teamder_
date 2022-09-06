@@ -31,7 +31,7 @@ export const CardDetalle = () => {
   //    actions.getWeather()
   //  },[store.locationList])
 
-  useEffect(() => { store.tempList=[]; store.iconsList=[]; actions.getWeather();}, [])
+  useEffect(() => {actions.getActivities(); store.tempList=[]; store.iconsList=[]; actions.getWeather();}, [])
   // useEffect(()=>{
   //   store.tempList=[]
   //    actions.getWeather()

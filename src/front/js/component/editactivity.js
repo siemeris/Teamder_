@@ -88,7 +88,7 @@ export const EditActivity = ({ propTitle, propDate }) => {
       console.log(category, "category handlesubmit")
       console.log(title, "title handlesubmit")
       e.preventDefault();
-      // e.target.reset();
+      e.target.reset();
   }
 
 
@@ -234,7 +234,7 @@ export const EditActivity = ({ propTitle, propDate }) => {
               longitude: longitude,
             });
             actions.getActivities()
-            actions.getPostedActivities()
+            // actions.getPostedActivities()
           }}
         >
           Save Changes

@@ -26,7 +26,7 @@ export function ActivityPanel() {
     useEffect(() => {
         store.dates = []
         actions.getPostedActivities();
-        
+
     }, [store.activities])
 
     useEffect(() => {
@@ -74,7 +74,7 @@ export function ActivityPanel() {
 
     // console.log(store.dates, "dates activity panel" )
 
-    
+
 
 
     return (
@@ -121,8 +121,9 @@ export function ActivityPanel() {
                                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
                                                                     {/* <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button> */}
                                                                     <button type="button" className="btn btn-link btn-sm text-danger" onClick={() => {
-                                                                        actions.getCurrentActivity({index: value.id});
-                                                                            }} data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
+                                                                        store.index = value.id,
+                                                                            console.log(store.index, "index")
+                                                                    }} data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
                                                                     <span className="visually-hidden"></span>
                                                                 </span>
                                                                 <div className="card-body">
@@ -185,11 +186,10 @@ export function ActivityPanel() {
                                                             >
                                                                 <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
                                                                     <button type="button" className="btn btn-link btn-sm text-secondary" onClick={() => {
-                                                                        
                                                                         store.index = value.id,
-                                                                            console.log(store.index, "index boton edit")
+                                                                        console.log(store.index, "index boton edit")
                                                                         actions.getCurrentActivity(store.index)
-                                                                        
+
                                                                     }} data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button>
                                                                     <button type="button" onClick={() => {
                                                                         store.index = value.id,

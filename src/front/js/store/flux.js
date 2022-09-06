@@ -150,9 +150,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 									for (let i = weather.list.length-1; i >0; i--) {
-										if (weather.list[i].dt_txt.includes(dateWeather) && (!weather.list[i].dt_txt.includes("21:00:00"))&& (!weather.list[i].dt_txt.includes("00:00:00"))) {
+										if (weather.list[i].dt_txt.includes(dateWeather)) {
 											// console.log("funciona")
 											iconCode = weather.list[i].weather[0].icon
+											if (iconCode[2]=="n"){
+												iconCode = iconCode.replace("n","d");
+												console.log(iconCode, "iconCode2")
+											}
 											urlIcon = `http://openweathermap.org/img/wn/${iconCode}.png`
 											
 											setStore(urlIcon)

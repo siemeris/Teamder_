@@ -158,7 +158,7 @@ def leave_activity():
 
     return jsonify({
         "success": "favorite deleted",
-        "ActividadesAnotadas": list(map(lambda x: x.serialize(), listaActividades))
+        # "ActividadesAnotadas": list(map(lambda x: x.serialize(), listaActividades))
     }), 200
 
 @api.route('/deleteActivity', methods=['DELETE'])
