@@ -444,6 +444,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						console.log("registro OK");
 					}
+					else {
+						alert ("Something went wrong with the sign up,please try again");
+						console.log("SignUp wrong")
+					}
 				});
 			},
 

@@ -57,7 +57,7 @@ export const SignUpPage = () => {
                
                 <div className="mb-3">
                   <label htmlFor="exampleInputAge1" className="form-label">
-                    Age
+                    Age (opcional)
                   </label>
                   <input
                     type="int"
@@ -68,7 +68,7 @@ export const SignUpPage = () => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInpuGender1" className="form-label">
-                    Gender
+                    Gender (opcional)
                   </label>
                   <input
                     type="text"
@@ -103,7 +103,7 @@ export const SignUpPage = () => {
                 </div>
                 <div className="mb-3">
                   <label htmlFor="exampleInputEmail1" className="form-label">
-                    Mobile
+                    Mobile (opcional)
                   </label>
                   <input
                     type="email"
@@ -116,7 +116,7 @@ export const SignUpPage = () => {
 
                 <div className="mb-3">
                   <label htmlFor="exampleInputPassword1" className="form-label">
-                    Password
+                    Password 
                   </label>
                   <input
                     type="password"
