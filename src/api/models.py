@@ -16,7 +16,7 @@ class User(db.Model):
      age = db.Column(db.String(120), nullable=False)
      gender= db.Column(db.String(120), nullable=False)
      email = db.Column(db.String(120), unique=True, nullable=False)
-     password = db.Column(db.String(80), nullable=False)
+     password = db.Column(db.String(250), nullable=False)
      mobile= db.Column(db.Integer, unique=True, nullable=True)
      address = db.Column(db.String(80), nullable=True)
     # is_active = db.Column(db.Boolean, nullable=False)

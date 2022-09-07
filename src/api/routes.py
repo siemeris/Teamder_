@@ -5,6 +5,7 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, Activities
 from api.utils import generate_sitemap, APIException
 from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+from werkzeug.security import generate_password_hash,check_password_hash
 
 api = Blueprint('api', __name__)
 
@@ -181,7 +182,8 @@ def delete_activity():
 @api.route('/signup', methods=['POST'])
 def signup():
     request_body = request.get_json(force=True)
-    user = User( name = request_body["name"], username = request_body["username"], lastname = request_body["lastname"], age = request_body["age"], gender = request_body["gender"],email = request_body["email"], password = request_body["password"], mobile = request_body["mobile"], address = request_body["address"] )
+    hash_password = generate_password_hash(request_body["password"],method="sha256")
+    user = User( name = request_body["name"], username = request_body["username"], lastname = request_body["lastname"], age = request_body["age"], gender = request_body["gender"],email = request_body["email"], password = hash_password, mobile = request_body["mobile"], address = request_body["address"] )
     db.session.add(user)
     db.session.commit()
     return jsonify(), 200
@@ -193,14 +195,13 @@ def create_token():
     email = request.json.get("email", None)
     password = request.json.get("password", None)
     # Consulta la base de datos por el nombre de usuario y la contraseña
-    user = User.query.filter_by(email=email, password=password).first()
-    if user is None:
-    # el usuario no se encontró en la base de datos
-        return jsonify({"msg": "Bad username or password"}), 401
+    # user = User.query.filter_by(email=email, password=password).first()
+    user_id = User.query.filter_by(email=email).first().id
+    user_pass = User.query.filter_by(email=email).first().password
     
-    # crea un nuevo token con el id de usuario dentro
-    access_token = create_access_token(identity=user.id)
-    return jsonify({ "token": access_token, "user_id": user.id })
+    if check_password_hash(user_pass, password):
+        access_token = create_access_token(identity=user_id)
+    return jsonify({ "token": access_token, "user_id": user_id })
 
 @api.route('/editActivity', methods=['PUT'])
 @jwt_required()
