@@ -86,7 +86,7 @@ export const UserProfile = () => {
                   <div className="col-sm-3">
                     <h6 className="mb-0">Mobile</h6>
                   </div>
-                  <div className="col-sm-9 text-secondary">(320) 380-4539</div>
+                  <div className="col-sm-9 text-secondary">{store.currentUser.Current_mobile}</div>
                 </div>
                 {/* <hr> */}
                 <div className="row">
@@ -94,7 +94,7 @@ export const UserProfile = () => {
                     <h6 className="mb-0">Address</h6>
                   </div>
                   <div className="col-sm-9 text-secondary">
-                    Bay Area, San Francisco, CA
+                    {store.currentUser.Current_address}
                   </div>
                 </div>
                 <div className="row">
