@@ -120,30 +120,6 @@ export const UserProfile = () => {
                 </div>
               </div>
             </div>
-
-            <div className="row gutters-sm">
-              <div className="col-sm-12 mb-3">
-                <div className="card h-100">
-                  <div className="card-body">
-                    <div className="row">
-                      <h6 className=" col-10 material-icons text-dark mr-2">
-                        Whatsapp Notifications
-                      </h6>
-                      <div className="col-2 text-end">
-                        <div className="container">
-                          <form action="/action_page.php">
-                            <div className="form-check form-switch">
-                              <input className="form-check-input" type="checkbox" id="mySwitch" name="darkmode" value="yes" checked></input>
-                              <label className="form-check-label" for="mySwitch">ON</label>
-                            </div>
-                          </form>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </div>
       </div>

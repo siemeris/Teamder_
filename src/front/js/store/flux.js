@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getWeather: async () => {
 
 				await fetch(
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/getAllActivities"
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/getAllActivities"
 				)
 					.then((resp) => {
 						if (resp.ok) {
@@ -248,7 +248,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getActivities: async () => {
 				await fetch(
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/getAllActivities"
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/getAllActivities"
 				)
 					.then((resp) => {
 						if (resp.ok) {
@@ -288,7 +288,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getUsers: async () => {
 				await fetch(
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/getAllUsers"
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/getAllUsers"
 				)
 					.then((resp) => {
 						if (resp.ok) {
@@ -315,7 +315,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getCurrentUser: async () => {
 				let tok = localStorage.getItem("token");
 				await fetch(
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/getCurrentUser",
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/getCurrentUser",
 					{
 						method: "GET",
 						headers: {
@@ -348,7 +348,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// getCurrentActivity: async () => {
 			// 	let tok = localStorage.getItem("token");
 			// 	await fetch(
-			// 		"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io//api/getCurrentActivity",
+			// 		"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io//api/getCurrentActivity",
 			// 		{
 			// 			method: "GET",
 			// 			headers: {
@@ -381,7 +381,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			editUser: async (infoUser) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/editUser", {
+				await fetch("https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/editUser", {
 					method: "PUT",
 					body: JSON.stringify(infoUser),
 					headers: {
@@ -399,7 +399,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: (infouserpass) => {
 				const response = fetch(
 
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/token",
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/token",
 					{
 						//mode: 'no-cors',
 						method: "POST",
@@ -434,7 +434,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			signup: async (infouserpassw) => {
 
-				await fetch("https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/signup", {
+				await fetch("https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/signup", {
 					method: "POST",
 					body: JSON.stringify(infouserpassw),
 					headers: {
@@ -451,7 +451,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let tok = localStorage.getItem("token");
 
 
-				await fetch("https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/addActivity", {
+				await fetch("https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/addActivity", {
 					method: "POST",
 					body: JSON.stringify(infouserpassw),
 					headers: {
@@ -475,7 +475,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			editActivity: async (infoactivity) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/editActivity", {
+				await fetch("https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/editActivity", {
 					method: "PUT",
 					body: JSON.stringify(infoactivity),
 					headers: {
@@ -495,7 +495,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			joinActivity: async (index) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/joinActivity", {
+				await fetch("https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/joinActivity", {
 					method: "POST",
 					body: JSON.stringify(index),
 					headers: {
@@ -519,7 +519,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			leaveActivity: async (index) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/leaveActivity", {
+				await fetch("https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/leaveActivity", {
 					method: "DELETE",
 					body: JSON.stringify(index),
 					headers: {
@@ -543,7 +543,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteActivity: async (index) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/deleteActivity", {
+				await fetch("https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/deleteActivity", {
 					method: "DELETE",
 					body: JSON.stringify(index),
 					headers: {
@@ -572,7 +572,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				await fetch(
 
 
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/privated",
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/privated",
 
 					{
 						method: "GET",
@@ -604,7 +604,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 				fetch(
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/getAllActivities"
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/getAllActivities"
 				)
 					.then((resp) => {
 						if (resp.ok) {
@@ -627,7 +627,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 			// 	fetch(
-			// 		"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io//api/getAllActivities"
+			// 		"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io//api/getAllActivities"
 			// 	)
 			// 		.then((resp) => {
 			// 			if (resp.ok) {
@@ -649,7 +649,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getTargetActivities: async () => {
 				let tok = localStorage.getItem("token");
 				await fetch(
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/getTargetActivities",
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/getTargetActivities",
 					{
 						method: "GET",
 						headers: {
@@ -695,7 +695,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPostedActivities: async () => {
 				let tok = localStorage.getItem("token");
 				await fetch(
-					"https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/getPostedActivities",
+					"https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/getPostedActivities",
 					{
 						method: "GET",
 						headers: {
@@ -741,7 +741,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let tok = localStorage.getItem("token");
 				// let { index } = getStore()
 				await fetch(
-					`https://3001-miguelubeda-teamder-8b3awbkjrni.ws-eu63.gitpod.io/api/getCurrentActivity/${index}`
+					`https://3001-miguelubeda-teamder-o5l034af427.ws-eu63.gitpod.io/api/getCurrentActivity/${index}`
 					,
 					{
 						method: "GET",
