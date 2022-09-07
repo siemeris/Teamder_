@@ -77,7 +77,7 @@ export const Navbar = () => {
     </nav>
 
     <div className="modal fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div className="modal-dialog modal-lg">
+        <div className="modal-dialog modal-md">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="staticBackdropLabel">Signup</h5>
@@ -91,7 +91,7 @@ export const Navbar = () => {
       </div>
 
       <div className="modal fade" id="staticBackdropLOG" data-bs-backdrop="static" data-bs-keyboard="false" tabIndex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
-        <div className="modal-dialog modal-lg">
+        <div className="modal-dialog modal-md">
           <div className="modal-content">
             <div className="modal-header">
               <h5 className="modal-title" id="staticBackdropLabel">Login</h5>
