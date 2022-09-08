@@ -426,7 +426,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						// Aquí es donde pones lo que quieres hacer con la respuesta.
 					})
 					.then(data => { localStorage.setItem("token", data.token); })
-					.catch();
+					.catch((error) => {
+						alert("Introduce los datos obligatorios.")
+						console.error("ERROR:", error);
+					});
 			},
 
 			logout: () => {
@@ -454,6 +457,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						alert("Something went wrong with the sign up,please try again");
 						console.log("SignUp wrong")
 					}
+				}).catch((error) => {
+					alert("Introduce los datos obligatorios.")
+					console.error("ERROR:", error);
 				});
 			},
 
