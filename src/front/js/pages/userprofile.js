@@ -18,7 +18,11 @@ export const UserProfile = () => {
     console.log(store.currentUser.Current_email, "DatosUsuario del useEffect");
 }
     , [])
-  
+  useEffect(() => {
+      actions.getCurrentUser();
+  }
+      , [store.activador])
+
   return (
     <>
     <div className="container pt-5">
@@ -113,7 +117,7 @@ export const UserProfile = () => {
                 <div className="row">
                   <div className="col-sm-12">
 
-                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdropUSEREDIT">
+                    <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#staticBackdropUSEREDIT" onClick={()=>{store.activador=false}}>
                       Edit
                     </button>
                   </div>
