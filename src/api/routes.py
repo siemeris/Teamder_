@@ -63,6 +63,7 @@ def obtenerCurrentUser():
         "Current_gender": response.gender,
         "Current_email": response.email,
         "Current_address": response.address,
+        "Current_mobile": response.mobile,
         
     }
     return jsonify(response_body), 200
