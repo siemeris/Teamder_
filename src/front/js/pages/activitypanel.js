@@ -81,97 +81,29 @@ export function ActivityPanel() {
         <>
             {token && store.auth === true ?
                 <div className="app-body pt-5">
-                    <main className="pt-5">
-                        <div className="container">
-                            <div className="div-event">
-                                <div className="row">
-                                    <div className="col-lg-8 col-md-8 col-sm-12 col-12 mt-2">
+                    <main className=" principal pt-5">
+                        <div className="container de todo">
+                            <div className="div-general">
+                              <div className="row 1">  
+                               <div className="col-lg-8 col-md-8 col-sm-12 col-12 mb-5">
                                         <div className="row">
                                             <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                                                 <div>
-                                                    <h2>Events you are going</h2>
+                                                    <h2>Events you created</h2>
                                                 </div>
                                             </div>
                                             <div className="col-lg-6 col-md-6 col-sm-6 col-6">
                                                 <div className="div-create text-end">
-                                                    <h6>
-                                                        Create event
-                                                        <button type="button" className="btn btn-outline-info btn-sm ms-1" onClick={() => {
+                                                    <h2>
+                                                        <button type="button" className="btn btn-info btn-lg ms-1 text-white" style={{ height: "5rem", width: "10rem",}} onClick={() => {
                                                             store.index = value.id,
                                                                 console.log(store.index, "index")
 
                                                         }} data-bs-toggle="modal" data-bs-target="#staticBackdropCREATE">
-                                                            +
+                                                            CREATE ACTIVITY
                                                         </button>
 
-                                                    </h6>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div className="row">
-                                            {store.userActivities.map((value, index) => {
-                                                // setIndexUser(value.id)
-                                                return (
-                                                    <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
-                                                        <div>
-                                                            <div
-                                                                className="event-card card"
-                                                                style={{ backgroundColor: "rgb(15, 231, 241)" }}
-                                                            >
-                                                                <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
-                                                                    {/* <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button> */}
-                                                                    <button type="button" className="btn btn-link btn-sm text-danger" onClick={() => {
-                                                                        store.index = value.id,
-                                                                            console.log(store.index, "index")
-                                                                    }} data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
-                                                                    <span className="visually-hidden"></span>
-                                                                </span>
-                                                                <div className="card-body">
-                                                                    <div className="card-title h5">{value.name}</div>
-                                                                    <h3 className="event-type">{value.location}</h3>
-                                                                    <p className="event-time">{value.time}</p>
-
-                                                                </div>
-
-                                                            </div>
-                                                            <div className="event-card date-card card">
-                                                                <div className="date-body card-body">
-                                                                    <h3 className="event-type month">{value.date}</h3>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                )
-                                            }
-                                            )}
-                                        </div>
-                                    </div>
-                                    <div className="col-lg-4 col-md-4 col-sm-12 col-12">
-                                        <div>
-                                            <h4>Calendar</h4>
-                                        </div>
-                                        <Calendar onChange={setDate}
-                                            selectRange={false}
-                                            value={value} locale="en-GB" tileClassName={({ date, view }) => {
-                                                // Add class to tiles in month view only
-                                                let fechas = store.datesUser.concat(store.dates)
-
-                                                if (view === 'month') {
-                                                    // Check if a date React-Calendar wants to check is on the list of dates to add class to
-                                                    if (fechas.find(dDate => isSameDay(dDate, date))) {
-                                                        return 'react-calendar__tile--hasActive';
-                                                    }
-                                                    // else if (store.dates.find(dDate => isSameDay(dDate, date))) {
-                                                    //     return 'react-calendar__tile--hasActive';
-                                                    // }
-                                                }
-                                            }} />
-                                    </div>
-                                    <div className="col-lg-8 col-md-8 col-sm-12 col-12 mb-5">
-                                        <div className="row">
-                                            <div className="col-lg-6 col-md-6 col-sm-6 col-6">
-                                                <div>
-                                                    <h2>Events</h2>
+                                                    </h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -216,9 +148,81 @@ export function ActivityPanel() {
                                             }
                                             )}
                                         </div>
+                                        
                                     </div>
+                                    <div className="col-lg-4 col-md-4 col-sm-12 col-12">
+                                        <div>
+                                            <h4>Calendar</h4>
+                                        </div>
+                                        <Calendar onChange={setDate}
+                                            selectRange={false}
+                                            value={value} locale="en-GB" tileClassName={({ date, view }) => {
+                                                // Add class to tiles in month view only
+                                                let fechas = store.datesUser.concat(store.dates)
+
+                                                if (view === 'month') {
+                                                    // Check if a date React-Calendar wants to check is on the list of dates to add class to
+                                                    if (fechas.find(dDate => isSameDay(dDate, date))) {
+                                                        return 'react-calendar__tile--hasActive';
+                                                    }
+                                                    // else if (store.dates.find(dDate => isSameDay(dDate, date))) {
+                                                    //     return 'react-calendar__tile--hasActive';
+                                                    // }
+                                                }
+                                            }} />
+                                    </div>
+                                    </div>  
+                                <div className="row">
+                                    <div className="col-lg-8 col-md-8 col-sm-12 col-12 mt-2">
+                                        <div className="row">
+                                            <div className="col-lg-6 col-md-6 col-sm-6 col-6">
+                                                <div>
+                                                    <h2>Events you are going</h2>
+                                                </div>
+                                            </div>
+                                            
+                                        </div>
+                                        <div className="row">
+                                            {store.userActivities.map((value, index) => {
+                                                // setIndexUser(value.id)
+                                                return (
+                                                    <div className="cards col-lg-4 col-md-6 col-sm-6 col-12">
+                                                        <div>
+                                                            <div
+                                                                className="event-card card"
+                                                                style={{ backgroundColor: "rgb(15, 231, 241)" }}
+                                                            >
+                                                                <span className="position-absolute top-0 end-0 badge badge-light rounded-pill">
+                                                                    {/* <button type="button" className="btn btn-link btn-sm text-secondary" data-toggle="tooltip" data-placement="top" title="edit" data-bs-toggle="modal" data-bs-target="#staticBackdropEDIT"><i className="far fa fa-edit"></i></button> */}
+                                                                    <button type="button" className="btn btn-link btn-sm text-danger" onClick={() => {
+                                                                        store.index = value.id,
+                                                                            console.log(store.index, "index")
+                                                                    }} data-toggle="tooltip" data-placement="top" title="Leave" data-bs-toggle="modal" data-bs-target="#staticBackdropLEAVE"><i className="fas fa-sign-out-alt"></i></button>
+                                                                    <span className="visually-hidden"></span>
+                                                                </span>
+                                                                <div className="card-body">
+                                                                    <div className="card-title h5">{value.name}</div>
+                                                                    <h3 className="event-type">{value.location}</h3>
+                                                                    <p className="event-time">{value.time}</p>
+
+                                                                </div>
+
+                                                            </div>
+                                                            <div className="event-card date-card card">
+                                                                <div className="date-body card-body">
+                                                                    <h3 className="event-type month">{value.date}</h3>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            }
+                                            )}
+                                        </div>
+                                    </div>
+                                    
+                                   
                                 </div>
-                                <div></div>
                             </div>
                         </div>
                     </main>
