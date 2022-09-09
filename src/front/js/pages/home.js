@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import Jumbotron02 from "/workspace/Teamder/src/front/img/Jumbotron02.png";
-import { Card } from "/workspace/Teamder/src/front/js/component/card.js";
-import { CardDetalle } from "/workspace/Teamder/src/front/js/component/cardDetalle.js";
-import { MapComponent } from "/workspace/Teamder/src/front/js/component/mapcomponent.jsx";
-import LoginForm from "../component/login";
-import SignUpPage from "../component/signup";
+import Jumbotron02 from "../../img/Jumbotron02.png";
+import { Card } from "../component/card.js";
+import { CardDetalle } from "../component/cardDetalle.js";
+import { MapComponent } from "../component/mapcomponent.jsx";
+// import LoginForm from "../component/login";
+// import SignUpPage from "../component/signup";
 
 export const Home = () => {
   const { store, actions } = useContext(Context);

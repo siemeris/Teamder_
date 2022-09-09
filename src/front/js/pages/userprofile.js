@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { Context } from "../store/appContext";
-import teamderImg from "/workspace/Teamder/src/front/img/teamderImg.png";
+// import teamderImg from "/workspace/Teamder/src/front/img/teamderImg.png";
 import "../../styles/home.css";
 import { Link, useParams, Navigate, useNavigate } from "react-router-dom";
 import { UserEdit } from "./useredit";
