@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from "react";
 import { Context } from "../store/appContext";
 import "../../styles/home.css";
-import { CardDetalle } from "/workspace/Teamder/src/front/js/component/cardDetalle.js";
+// import { CardDetalle } from "/workspace/Teamder/src/front/js/component/cardDetalle.js";
 import { Link, useParams } from "react-router-dom";
 import soccer from "../../img/Diseño sin título.png";
 import Basquet from "../../img/Basquet.png";
