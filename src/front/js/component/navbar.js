@@ -1,10 +1,9 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { Link, useNavigate } from "react-router-dom";
-import "/workspace/Teamder/src/front/styles/navbar.css";
-import { SignUpPage } from "/workspace/Teamder/src/front/js/component/signup.js" ;
-import { LoginForm } from "/workspace/Teamder/src/front/js/component/login.js" ;
-import Logo3 from "/workspace/Teamder/src/front/img/Logo3.png";
-import "/workspace/Teamder/src/front/styles/navbar.css"
+import { SignUpPage } from "./signup.js" ;
+import { LoginForm } from "./login.js" ;
+import Logo3 from "../../img/Logo3.png";
+import "../../styles/navbar.css"
 import { Context } from "../store/appContext";
 
 
