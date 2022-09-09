@@ -10,8 +10,8 @@ import Yoga from "../../img/Yoga.png";
 
 export const CardDetalle = () => {
   const { store, actions } = useContext(Context);
-  const [temp, setTemp] = useState("");
-  const [icon, setIcon] = useState("");
+  // const [temp, setTemp] = useState("");
+  // const [icon, setIcon] = useState("");
   const [defaultOptions, setOpt] = useState({
     loop: true,
     autoplay: true,
