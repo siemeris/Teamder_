@@ -1,11 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Voley from "/workspace/Teamder/src/front/img/Voley.png"
-import Soccer from "/workspace/Teamder/src/front/img/Diseño sin título.png"
-import Basquet from "/workspace/Teamder/src/front/img/Basquet.png"
-import Yoga from "/workspace/Teamder/src/front/img/Yoga.png"
-import Running from "/workspace/Teamder/src/front/img/Running.png"
-import Cycling from "/workspace/Teamder/src/front/img/Ciclyng.png"
+import Voley from "../../img/Voley.png"
+import Soccer from "../../img/Diseño sin título.png"
+import Basquet from "../../img/Basquet.png"
+import Yoga from "../../img/Yoga.png"
+import Running from "../../img/Running.png"
+import Cycling from "../../img/Ciclyng.png"
 
 export const Card = () => {
   return (
