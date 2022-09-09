@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import "/workspace/Teamder/src/front/styles/footer.css"
+import "../../styles/footer.css"
 
 export const Footer = () => {
   return (
