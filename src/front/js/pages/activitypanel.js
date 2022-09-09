@@ -1,12 +1,12 @@
 import React, { useState, useEffect, useContext } from 'react';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
-import "/workspace/Teamder/src/front/styles/activitypanel.css";
+import "../../styles/activitypanel.css";
 import { AddActivity } from "./addactivity.js";
 import { Link, Navigate, useNavigate } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { differenceInCalendarDays } from 'date-fns';
-import { EditActivity } from "/workspace/Teamder/src/front/js/component/editactivity";
+import { EditActivity } from "../component/editactivity";
 
 export function ActivityPanel() {
     const { store, actions } = useContext(Context)
