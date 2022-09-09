@@ -3,12 +3,12 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { CardDetalle } from "/workspace/Teamder/src/front/js/component/cardDetalle.js";
 import { Link, useParams } from "react-router-dom";
-import soccer from "/workspace/Teamder/src/front/img/Diseño sin título.png";
-import Basquet from "/workspace/Teamder/src/front/img/Basquet.png";
-import Ciclyn from "/workspace/Teamder/src/front/img/Ciclyng.png";
-import Running from "/workspace/Teamder/src/front/img/Running.png";
-import Voley from "/workspace/Teamder/src/front/img/Voley.png";
-import Yoga from "/workspace/Teamder/src/front/img/Yoga.png";
+import soccer from "../../img/Diseño sin título.png";
+import Basquet from "../../img/Basquet.png";
+import Ciclyn from "../../img/Ciclyng.png";
+import Running from "../../img/Running.png";
+import Voley from "../../img/Voley.png";
+import Yoga from "../../img/Yoga.png";
 
 export const Category = () => {
   const { store, actions } = useContext(Context);
