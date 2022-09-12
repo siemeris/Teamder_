@@ -82,7 +82,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getWeather: async () => {
 
 				await fetch(
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/getAllActivities"
+					process.env.BACKEND_URL + "/api/getAllActivities"
 				)
 					.then((resp) => {
 						if (resp.ok) {
@@ -249,7 +249,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getActivities: async () => {
 				await fetch(
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/getAllActivities"
+					process.env.BACKEND_URL + "/api/getAllActivities"
 				)
 					.then((resp) => {
 						if (resp.ok) {
@@ -289,7 +289,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			getUsers: async () => {
 				await fetch(
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/getAllUsers"
+					process.env.BACKEND_URL + "/api/getAllUsers"
 				)
 					.then((resp) => {
 						if (resp.ok) {
@@ -316,7 +316,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getCurrentUser: async () => {
 				let tok = localStorage.getItem("token");
 				await fetch(
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/getCurrentUser",
+					process.env.BACKEND_URL + "/api/getCurrentUser",
 					{
 						method: "GET",
 						headers: {
@@ -382,7 +382,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			editUser: async (infoUser) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/editUser", {
+				await fetch(process.env.BACKEND_URL + "/api/editUser", {
 					method: "PUT",
 					body: JSON.stringify(infoUser),
 					headers: {
@@ -400,7 +400,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			login: (infouserpass) => {
 				const response = fetch(
 
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/token",
+					process.env.BACKEND_URL + "/api/token",
 					{
 						//mode: 'no-cors',
 						method: "POST",
@@ -442,7 +442,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			signup: async (infouserpassw) => {
 
-				await fetch("https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/signup", {
+				await fetch(process.env.BACKEND_URL + "/api/signup", {
 					method: "POST",
 					body: JSON.stringify(infouserpassw),
 					headers: {
@@ -467,7 +467,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let tok = localStorage.getItem("token");
 
 
-				await fetch("https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/addActivity", {
+				await fetch(process.env.BACKEND_URL + "/api/addActivity", {
 					method: "POST",
 					body: JSON.stringify(infouserpassw),
 					headers: {
@@ -491,7 +491,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			editActivity: async (infoactivity) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/editActivity", {
+				await fetch(process.env.BACKEND_URL + "/api/editActivity", {
 					method: "PUT",
 					body: JSON.stringify(infoactivity),
 					headers: {
@@ -511,7 +511,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			joinActivity: async (index) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/joinActivity", {
+				await fetch(process.env.BACKEND_URL + "/api/joinActivity", {
 					method: "POST",
 					body: JSON.stringify(index),
 					headers: {
@@ -535,7 +535,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			leaveActivity: async (index) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/leaveActivity", {
+				await fetch(process.env.BACKEND_URL + "/api/leaveActivity", {
 					method: "DELETE",
 					body: JSON.stringify(index),
 					headers: {
@@ -559,7 +559,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			deleteActivity: async (index) => {
 				let tok = localStorage.getItem("token");
 
-				await fetch("https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/deleteActivity", {
+				await fetch(process.env.BACKEND_URL + "/api/deleteActivity", {
 					method: "DELETE",
 					body: JSON.stringify(index),
 					headers: {
@@ -585,10 +585,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//if (tok == getStore().token) {
 
-				await fetch(
-
-
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/privated",
+				await fetch(process.env.BACKEND_URL + "/api/privated",
 
 					{
 						method: "GET",
@@ -620,7 +617,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 
 				fetch(
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/getAllActivities"
+					process.env.BACKEND_URL + "/api/getAllActivities"
 				)
 					.then((resp) => {
 						if (resp.ok) {
@@ -665,7 +662,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getTargetActivities: async () => {
 				let tok = localStorage.getItem("token");
 				await fetch(
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/getTargetActivities",
+					process.env.BACKEND_URL + "/api/getTargetActivities",
 					{
 						method: "GET",
 						headers: {
@@ -711,7 +708,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getPostedActivities: async () => {
 				let tok = localStorage.getItem("token");
 				await fetch(
-					"https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/getPostedActivities",
+					process.env.BACKEND_URL + "/api/getPostedActivities",
 					{
 						method: "GET",
 						headers: {
@@ -756,8 +753,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getCurrentActivity: async (index) => {
 				let tok = localStorage.getItem("token");
 				// let { index } = getStore()
-				await fetch(
-					`https://3001-siemeris-teamder-8mcw9ai70oy.ws-eu64.gitpod.io/api/getCurrentActivity/${index}`
+				await fetch(process.env.BACKEND_URL + "/api/getCurrentActivity/" + index
 					,
 					{
 						method: "GET",
