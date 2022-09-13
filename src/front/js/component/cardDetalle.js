@@ -10,36 +10,9 @@ import Yoga from "../../img/Yoga.png";
 
 export const CardDetalle = () => {
   const { store, actions } = useContext(Context);
-  // const [temp, setTemp] = useState("");
-  // const [icon, setIcon] = useState("");
-  const [defaultOptions, setOpt] = useState({
-    loop: true,
-    autoplay: true,
-    animationData: null,
-    rendererSettings: {
-      preserveAspectRatio: "xMidYMid slice"
-    }
-  })
-  const [location, setLocation] = useState("")
-
-
-  // const url2 = "https://api.openweathermap.org/data/2.5/forecast/daily?q=" + location + "&appid=74b3467d2c3033271c21502ee8e7ca5e&units=metric"
-  // "https://api.openweathermap.org/data/2.5/forecast?appid=74b3467d2c3033271c21502ee8e7ca5e&q=Madrid&units=metric"
-  
-
-  // useEffect(()=>{
-  //    actions.getWeather()
-  //  },[store.locationList])
 
   useEffect(() => {actions.getActivities(); store.tempList=[]; store.iconsList=[]; actions.getWeather();}, [])
-  // useEffect(()=>{
-  //   store.tempList=[]
-  //    actions.getWeather()
-  //  },[store.locationList])
 
-  // console.log(store.locationList, "listado location")
-  // console.log(store.tempList, "listado temperaturas CardDetalle")
-  // console.log(store.iconsList, "listado URLiconos CardDetalle")
 
   const hangman = (Image) => {
     let hangmanImage = null;
