@@ -230,6 +230,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						let categoria = value.category
 						let fecha = value.date
 						let place = value.location
+						let ide = value.id
+						let hora = value.time
 						let marker = {
 							position: {
 								lat: latitude,
@@ -240,6 +242,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 							texto: categoria,
 							fecha: fecha,
 							lugar: place,
+							id: ide,
+							time: hora,
 						};
 						markers.push(marker)
 						setStore(markers)

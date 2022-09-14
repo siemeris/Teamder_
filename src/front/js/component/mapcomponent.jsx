@@ -10,19 +10,19 @@ export const MapComponent = () => {
     const [pos, setPos] = useState({})
 
     useEffect(() => {
-        store.markers=[]
+        store.markers = []
         actions.getMarkers()
         //actions.getActivities();
         // console.log(store.markers, "markers del map component")
         // console.log(store.activities)
-            navigator.geolocation.getCurrentPosition(
-             ({ coords: { latitude: lat, longitude: lng } }) => {
+        navigator.geolocation.getCurrentPosition(
+            ({ coords: { latitude: lat, longitude: lng } }) => {
                 const pos = { lat, lng };
                 setPos(pos)
-               console.log(pos, "pos")
-             })
+                console.log(pos, "pos")
+            })
     }, [store.activities])
-    
+
     const containerStyle = {
         width: "100%",
         height: "400px",
@@ -65,8 +65,20 @@ export const MapComponent = () => {
                             (activeInfoWindow === index)
                             &&
                             <InfoWindow position={marker.position}>
-                                <b>{marker.texto}, {marker.fecha}, {marker.lugar}</b>
-                                {/* {marker.position.lat}, {marker.position.lng} */}
+                                <div className=""><p><b>{marker.texto}</b></p>
+                                    <p>{marker.fecha}, {marker.time}</p>
+                                    <p>{marker.lugar}</p>
+                                    <div className="text-center">
+                                        <img src={store.iconsList[index]}></img>
+                                        {store.tempList[index]}
+                                    </div>
+                                    <hr className="m-2"></hr>
+                                    <button className="btn btn-outline-info btn-sm d-flex mx-auto mb-2" onClick={() => {
+                                        actions.joinActivity({
+                                            index: marker.id
+                                        });
+                                    }}>Join</button>
+</div>
                             </InfoWindow>
                         }
                     </Marker>
