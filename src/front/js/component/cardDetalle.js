@@ -55,14 +55,14 @@ export const CardDetalle = () => {
               <div className="card-body">
                 <h5 className="card-title text-center mt-1">
                   {" "}
-                  <Link to="/activity-description">
+                  
                     <img
                     src={(image = hangman(value.category))}
                       className="card-img-top mx-2"
                       style={{ width: "1.5rem" }}
                       alt="group of people playing soccer"
                     />
-                  </Link>
+                  
                   {value.category}
                 </h5>
                 <h6 className="card-subtitle mb-2 text-muted ">{value.date}</h6>
