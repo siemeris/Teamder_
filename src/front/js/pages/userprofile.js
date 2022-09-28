@@ -3,7 +3,7 @@ import { Context } from "../store/appContext";
 import "../../styles/home.css";
 import { useNavigate } from "react-router-dom";
 import { UserEdit } from "./useredit";
-import UserPhoto from "/workspace/Teamder/src/front/img/Profile.jpeg"
+import UserPhoto from "../../img/Profile.jpeg"
 
 
 export const UserProfile = () => {
