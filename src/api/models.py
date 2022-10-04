@@ -17,7 +17,7 @@ class User(db.Model):
      gender= db.Column(db.String(120), nullable=True)
      email = db.Column(db.String(120), unique=True, nullable=False)
      password = db.Column(db.String(250), nullable=False)
-     mobile= db.Column(db.Integer, unique=True, nullable=True)
+     mobile= db.Column(db.Integer, nullable=True)
      address = db.Column(db.String(80), nullable=True)
     # is_active = db.Column(db.Boolean, nullable=False)
      activities = db.relationship("Activities", secondary=takingActivity, back_populates="users")
