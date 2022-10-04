@@ -415,7 +415,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				)
 					.then(function (response) {
 						if (!response.ok) {
-							alert("Introduce los datos obligatorios")
+							alert("Invalid username or password.")
 							throw Error(response.statusText);
 							
 						}
@@ -423,7 +423,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({ auth: true });
 							const { auth } = getStore();
 							console.log("auth1", auth)
-							alert("¡Has accedido correctamente!")
+							alert("Login succesful.")
 
 						}
 						return response.json()
@@ -431,7 +431,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.then(data => { localStorage.setItem("token", data.token); })
 					.catch((error) => {
-						alert("Introduce los datos obligatorios.")
+						alert("Invalid username or password.")
 						console.error("ERROR:", error);
 					});
 			},
@@ -441,7 +441,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				localStorage.removeItem("token")
 				setStore({ auth: false })
 				console.log("auth3", auth)
-				alert ("Te has desconectado correctamente.")
+				alert ("Logout successful.")
 			},
 
 			signup: async (infouserpassw) => {
@@ -455,10 +455,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}).then((resp) => {
 					if (resp.ok) {
 						console.log("registro OK");
-						alert ("¡Te registraste correctamente!")
+						alert ("Signup successful.")
 					}
 					else {
-						alert("Something went wrong with the sign up,please try again");
+						alert("Something went wrong with the sign up,please try again.");
 						console.log("SignUp wrong")
 					}
 				}).catch((error) => {
@@ -526,12 +526,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						console.log("registro OK");
 						console.log(index, "index")
-						alert("¡Ya estás apuntado!");
+						alert("You've joined the activity!");
 					}
 					else {
 						console.log(index, "index")
 						console.log(resp.status)
-						alert("Please sign up or login to continue")
+						alert("Please sign up or login to continue.")
 					}
 				});
 			},
@@ -550,12 +550,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						console.log("registro OK");
 						console.log(index, "index")
-						alert("Desapuntado :(");
+						alert("You've left the activity.");
 					}
 					else {
 						console.log(index, "index")
 						console.log(resp.status)
-						alert("Algo fue mal")
+						alert("Something went wrong.")
 					}
 				});
 			},
@@ -574,12 +574,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					if (resp.ok) {
 						console.log("registro OK");
 						console.log(index, "index")
-						alert("Actividad eliminada");
+						alert("Activity deleted.");
 					}
 					else {
 						console.log(index, "index")
 						console.log(resp.status)
-						alert("Algo fue mal")
+						alert("Something went wrong.")
 					}
 				});
 			},
