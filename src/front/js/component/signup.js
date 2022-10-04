@@ -11,7 +11,7 @@ export const SignUpPage = () => {
   const [username, setUsername] = useState("");
   const [age, setAge] = useState("");
   const [gender, setGender] = useState("");
-  const [mobile, setMobile] = useState("");
+  const [mobile, setMobile] = useState(0);
   const [address, setAddress] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
