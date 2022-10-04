@@ -462,7 +462,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("SignUp wrong")
 					}
 				}).catch((error) => {
-					alert("Introduce los datos obligatorios.")
+					alert("Invalid username or email.")
 					console.error("ERROR:", error);
 				});
 			},
