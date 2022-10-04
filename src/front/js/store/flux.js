@@ -423,7 +423,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 							setStore({ auth: true });
 							const { auth } = getStore();
 							console.log("auth1", auth)
-							alert("Login succesful.")
+							alert("Login successful.")
 
 						}
 						return response.json()
