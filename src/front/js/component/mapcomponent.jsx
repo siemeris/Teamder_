@@ -45,7 +45,7 @@ export const MapComponent = () => {
     }
 
     return (
-        <LoadScript googleMapsApiKey='AIzaSyATlGRXnP8521RNDebgxQjoWXDk2yxgij0'>
+        <LoadScript googleMapsApiKey='AIzaSyCvsNv7d0Qg363J5YZtFiP_E506AdZYTfA'>
             <GoogleMap
                 mapContainerStyle={containerStyle}
                 center={center}
