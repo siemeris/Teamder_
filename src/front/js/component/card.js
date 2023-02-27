@@ -1,151 +1,148 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
-import Voley from "../../img/Voley.png"
-import Soccer from "../../img/Diseño sin título.png"
-import Basquet from "../../img/Basquet.png"
-import Yoga from "../../img/Yoga.png"
-import Running from "../../img/Running.png"
-import Cycling from "../../img/Ciclyng.png"
 
 export const Card = () => {
   return (
     <>
+      {/* FIRST ROW */}
       {/* FIRST CARD */}
-
       <div className="container mx-auto mt-4">
         <div className="row">
-          <div className="col-sm-2">
+          <div className="col-md-4">
             <div
-              className="card px-3 py-3 border border-gray rounded-1"
+              className="card px-3 py-3 border border-gray rounded-1 mb-2"
               style={{
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
               <Link to="/category/Soccer">
                 {" "}
                 <img
-                  src={Soccer}
+                  src="https://images.pexels.com/photos/5235781/pexels-photo-5235781.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   className="card-img-top"
                   alt="group of people playing soccer"
                 />
               </Link>
-              <hr></hr>
+              
               <h5 className="card-title text-center mt-1">Soccer</h5>
             </div>
           </div>
 
           {/* SECOND CARD*/}
-
-          <div className="col-sm-2">
+          <div className="col-md-4">
             <div
-              className="card px-3 py-3 border border-gray rounded-1"
+              className="card px-3 py-3 border border-gray rounded-1 mb-2"
               style={{
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
-              <Link to="/category/Cycling">
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/category/Volleyball">
                 {" "}
                 <img
-                  src={Cycling}
+                  src="https://images.pexels.com/photos/10855503/pexels-photo-10855503.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"
                   className="card-img-top"
-                  alt="group of people cycling"
+                  alt="group of people playing volleyball"
                 />
               </Link>
-              <hr></hr>
-              <h5 className="card-title text-center  mt-1">Cycling</h5>
+              <h5 className="card-title text-center  mt-1">Volleyball</h5>
             </div>
           </div>
 
           {/* THIRD CARD*/}
 
-          <div className="col-sm-2">
+          <div className="col-md-4">
             <div
-              className="card px-3 py-3 border border-gray rounded-1"
+              className="card px-3 py-3 border border-gray rounded-1 mb-2"
               style={{
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
-              <Link to="/category/Volleyball">
-                {" "}
-                <img
-                  src={Voley}
-                  className="card-img-top"
-                  alt="group of people playing volleyball"
-                />
-              </Link>
-              <hr></hr>
-              <h5 className="card-title text-center  mt-1">Volleyball</h5>
-            </div>
-          </div>
-
-          {/* FOURTH CARD */}
-         
-          <div className="col-sm-2">
-            <div
-              className="card px-3 py-3 border border-gray rounded-1"
-              style={{
-                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-              }}
-            >
-              <Link to="/category/Running">
-                {" "}
-                <img
-                  src={Running}
-                  className="card-img-top"
-                  alt="group of people running"
-                />
-              </Link>
-              <hr></hr>
-              <h5 className="card-title text-center  mt-1">Running</h5>
-            </div>
-          </div>
-
-          {/* FIFTH CARD */}
-
-          <div className="col-sm-2">
-            <div
-              className="card px-3 py-3 border border-gray rounded-1"
-              style={{
-                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
-              }}
-            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
               <Link to="/category/Basketball">
                 {" "}
                 <img
-                  src={Basquet}
+                  src="https://images.pexels.com/photos/5560205/pexels-photo-5560205.jpeg?auto=compress&cs=tinysrgb&w=800"
                   className="card-img-top"
                   alt="group of people playing basketball"
                 />
               </Link>
-              <hr></hr>
               <h5 className="card-title text-center  mt-1">Basketball</h5>
             </div>
-          </div>         
+          </div>
+        </div>
+      </div>
 
-          {/* SIXTH CARD */}
+      {/* SECOND ROW */}
 
-          <div className="col-sm-2">
+      {/* FOURTH CARD */}
+      <div className="container mx-auto mt-4 ">
+        <div className="row">
+          <div className="col-md-4">
             <div
-              className="card px-3 py-3 border border-gray rounded-1 "
+              className="card px-3 py-3 border border-gray rounded-1 mb-2"
               style={{
                 boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
               }}
             >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/category/Cycling">
+                {" "}
+                <img
+                  src="https://images.pexels.com/photos/5970275/pexels-photo-5970275.jpeg?auto=compress&cs=tinysrgb&w=800&lazy=load"
+                  className="card-img-top"
+                  alt="group of people cycling"
+                />
+              </Link>
+              <h5 className="card-title text-center  mt-1">Cycling</h5>
+            </div>
+          </div>
+
+          {/* FIFTH CARD */}
+          <div className="col-md-4">
+            <div
+              className="card px-3 py-3 border border-gray rounded-1 mb-2"
+              style={{
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+              }}
+            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
+              <Link to="/category/Running">
+                {" "}
+                <img
+                  src="https://media.istockphoto.com/photos/mature-people-jogging-in-park-picture-id1319764741?k=20&m=1319764741&s=612x612&w=0&h=2jfy8EViJ6SfbdgfQnUq7mbjHmPrIwD-nskljXxiM5Q="
+                  className="card-img-top"
+                  alt="group of people running"
+                />
+              </Link>
+              <h5 className="card-title text-center  mt-1">Running</h5>
+            </div>
+          </div>
+
+          {/* SIXTH CARD */}
+
+          <div className="col-md-4">
+            <div
+              className="card px-3 py-3 border border-gray rounded-1 mb-2"
+              style={{
+                boxShadow: "rgba(0, 0, 0, 0.24) 0px 3px 8px",
+              }}
+            >
+              {/* esto sería para que al pinchar la imagen nos redirija a otro componente */}
               <Link to="/category/Yoga">
                 {" "}
                 <img
-                  src={Yoga}
+                  src="https://images.pexels.com/photos/8172933/pexels-photo-8172933.jpeg?auto=compress&cs=tinysrgb&w=800"
                   className="card-img-top"
                   alt="group of people doing yoga"
                 />
               </Link>
-              <hr></hr>
               <h5 className="card-title text-center  mt-1">Yoga</h5>
             </div>
           </div>
         </div>
       </div>
-     
     </>
   );
 };
