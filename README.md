@@ -52,6 +52,8 @@ To update with all yours tables you can edit the file app.py and go to the line 
 1. Install the packages: `$ npm install`
 2. Start coding! start the webpack dev server `$ npm run start`
 
-## Heroku deployment:
+## Render deployment:
 
-This project is deployed to heroku: https://www.teamder.es
+This project is deployed to Render:   
+https://sample-service-name-qi8a.onrender.com/  
+https://www.teamder.es
