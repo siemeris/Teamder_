@@ -21,7 +21,7 @@ export const AddActivity = () => {
 
 
   // set Google Maps Geocoding API for purposes of quota management. Its optional but recommended.
-  Geocode.setApiKey("AIzaSyC3FGPiMY5b5CKPMkaj31GidCMcuhajC7o");
+  Geocode.setApiKey("AIzaSyDf6xcABJ289S05UpRGK_L5tVt_aJkeiJ0");
 
   // set response language. Defaults to english.
   Geocode.setLanguage("en");
