@@ -55,5 +55,4 @@ To update with all yours tables you can edit the file app.py and go to the line 
 ## Render deployment:
 
 This project is deployed to Render:   
-https://sample-service-name-qi8a.onrender.com/  
-https://www.teamder.es
+sample-service-name-lba1.onrender.com/
